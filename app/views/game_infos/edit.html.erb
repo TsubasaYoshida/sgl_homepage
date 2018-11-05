@@ -1,0 +1,6 @@
+<h2>試合情報編集</h2>
+
+<%= render 'form', game_info: @game_info, edit_flag: true %>
+
+<%= link_to '詳細', @game_info, class: 'btn btn-default' %>
+<%= link_to '試合一覧', game_infos_path, class: 'btn btn-default' %>

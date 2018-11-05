@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>札幌学生野球連盟</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-header">
+        <%= image_tag 'page_title.png', alt: '札幌学生野球連盟', class: 'img-fluid' %>
+      </h1>
+
+      <div class="navigate text-right">
+        <%= link_to 'ホーム', '/' %>
+        <%= link_to '試合速報', game_infos_path %>
+        <%= link_to '順位表', '/standing/show' %>
+        <%= link_to '大会日程', '/nittei/show' %>
+      </div>
+
+      <%= yield %>
+    </div>
+    <div class="col-12 col-12-footer">
+      <footer class="p-footer">
+        <div class="admin">札幌学生野球連盟事務局</div>
+        <div class="row">
+          <div class="col-sm-3">
+            〒064-0953
+            <br>
+            札幌市中央区宮の森3条9-1-30-1001
+          </div>
+          <div class="col-sm-3">
+            TEL：080-6081-9524
+            <br>
+            FAX：011-642-9358
+            <br>
+            MAIL：sgloffice＠yahoo.co.jp
+            <br>
+            <small>
+              ＠を半角にしてお送りください。
+            </small>
+          </div>
+          <div class="col-sm-3 banner">
+            <%= image_tag 'recruit-new-referee.png', alt: '審判員募集', class: 'img-fluid' %>
+          </div>
+          <div class="col-sm-3 banner">
+            ※バナー表示部分②
+          </div>
+        </div>
+        <div class="text-center">
+          <p>&#169; 2012-2018 Sapporo Gakusei League</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+</body>
+</html>

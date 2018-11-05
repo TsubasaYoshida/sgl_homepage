@@ -1,0 +1,54 @@
+<h2>順位表</h2>
+
+<div class="d-none d-sm-block">
+  <table class="table table-bordered text-center">
+    <tr>
+      <td colspan="2" class="bg-red">2018年度秋季1部リーグ戦</td>
+      <% @rank_infos.each do |rank_info| %>
+        <td colspan="2"><%= rank_info.three_letter_name %></td>
+      <% end %>
+      <td>勝利</td>
+      <td>敗戦</td>
+      <td>引分</td>
+    </tr>
+    <% @rank_infos.each_with_index do |rank_info, i| %>
+      <tr>
+        <td><%= rank_info.rank.to_s + '位' %></td>
+        <td class="rank-team-name"><%= rank_info.team_name %></td>
+        <% @result_array[12 * i..11 + 12 * i].each do |result| %>
+          <td><%= result %></td>
+        <% end %>
+        <td><%= rank_info.win %></td>
+        <td><%= rank_info.lose %></td>
+        <td><%= rank_info.draw %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="d-block d-sm-none">
+  <p>2018年度秋季1部リーグ戦</p>
+  <table class="table table-bordered text-center standing-sp">
+    <tr>
+      <td colspan="2"></td>
+      <% @rank_infos.each do |rank_info| %>
+        <td colspan="2"><%= rank_info.two_letter_name %></td>
+      <% end %>
+      <td>勝</td>
+      <td>敗</td>
+      <td>分</td>
+    </tr>
+    <% @rank_infos.each_with_index do |rank_info, i| %>
+      <tr>
+        <td><%= rank_info.rank %></td>
+        <td><%= rank_info.two_letter_name %></td>
+        <% @result_array[12 * i..11 + 12 * i].each do |result| %>
+          <td><%= result %></td>
+        <% end %>
+        <td><%= rank_info.win %></td>
+        <td><%= rank_info.lose %></td>
+        <td><%= rank_info.draw %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,143 @@
+<%= form_with(model: game_info, local: true) do |form| %>
+  <% if game_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game_info.errors.count, "error") %> prohibited this game_info from being saved:</h2>
+
+      <ul>
+        <% game_info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :season, '春季／秋季' %>
+    <%= form.select :season, ['春季', '秋季'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :event, '大会' %>
+    <%= form.select :event, ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :round, 'ラウンド' %>
+    <%= form.select :round, [['リーグ戦', ['第一節', '第二節']],
+                             ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                             ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :disp_date, '試合日' %>
+    <%= form.date_field :disp_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :batting_first_team, '先攻チーム' %>
+    <%= form.grouped_collection_select(:batting_first_team, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :field_first_team, '後攻チーム' %>
+    <%= form.grouped_collection_select(:field_first_team, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stadium, '球場' %>
+    <%= form.text_field :stadium, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :number, '試合順' %>
+    <%= form.select :number, [['第1試合', 1], ['第2試合', 2], ['第3試合', 3]],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time, '試合開始時刻' %>
+    <%= form.time_field :start_time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_time, '試合終了時刻' %>
+    <%= form.time_field :end_time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pitcher_top, '投手（先攻チーム）' %>
+    <%= form.text_field :pitcher_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :catcher_top, '捕手（先攻チーム）' %>
+    <%= form.text_field :catcher_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pitcher_bottom, '投手（後攻チーム）' %>
+    <%= form.text_field :pitcher_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :catcher_bottom, '捕手（後攻チーム）' %>
+    <%= form.text_field :catcher_bottom, class: 'form-control' %>
+  </div>
+
+  <% if edit_flag %>
+
+    <div class="form-group">
+      <%= form.label :homerun_top, '本塁打（先攻チーム）' %>
+      <%= form.text_field :homerun_top, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :homerun_bottom, '本塁打（後攻チーム）' %>
+      <%= form.text_field :homerun_bottom, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :threebase_top, '三塁打（先攻チーム）' %>
+      <%= form.text_field :threebase_top, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :threebase_bottom, '三塁打（後攻チーム）' %>
+      <%= form.text_field :threebase_bottom, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :twobase_top, '二塁打（先攻チーム）' %>
+      <%= form.text_field :twobase_top, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :twobase_bottom, '二塁打（後攻チーム）' %>
+      <%= form.text_field :twobase_bottom, class: 'form-control' %>
+    </div>
+
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :message, '特記事項' %>
+    <%= form.text_field :message, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <%= form.check_box :gameset_flag, class: 'checkbox' %>
+        試合終了フラグ
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-6">
+    <%= render 'infos/info', infos: @infos %>
+  </div>
+  <div class="col-sm-6">
+    <h2>試合速報
+      <small>（最新5試合）</small>
+    </h2>
+    <%= render 'game_infos/index', game_infos: @game_infos %>
+  </div>
+</div>

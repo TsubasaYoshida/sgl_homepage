@@ -1,0 +1,135 @@
+<h2>大会日程</h2>
+
+<%= form_tag({controller: :nittei, action: :find}, method: :get) do %>
+  <div class="row" style="padding-left: 5px; padding-right: 5px">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= select_tag :key_year, options_for_select(Constants.get_year_list, @selected_year), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= select_tag :key_event,
+                       options_for_select(['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'], @selected_event),
+                       class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <%= submit_tag '表示', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+
+<h3>
+  <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+  <small>
+    <br>（2019年4月8日14時更新）
+  </small>
+</h3>
+
+<div class="row" style="padding-left: 5px; padding-right: 5px">
+  <div class="col-sm-6">
+    <p>第一節</p>
+    <% @nittei_infos.each do |nittei_info| %>
+      <table class="table" style="margin-bottom: 0">
+        <tr>
+          <td style="padding-bottom :0">
+            <div class="row">
+              <div class="col-12 text-left" style="padding-bottom: 5px">
+                <%= nittei_info.disp_date.strftime("%Y-%m-%d (%a) ") %>
+                <%= nittei_info.stadium %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 text-right" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.top_team_1) %>
+              </div>
+              <div class="col-2 text-center" style="padding: 5px">
+                <%= nittei_info.start_time_1.strftime("%H:%M") %>
+              </div>
+              <div class="col-5 text-left" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-top: none; padding-top :0; padding-bottom :0">
+            <div class="row">
+              <div class="col-5 text-right" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.top_team_2) %>
+              </div>
+              <div class="col-2 text-center" style="padding: 5px">
+                <%= nittei_info.start_time_2.strftime("%H:%M") %>
+              </div>
+              <div class="col-5 text-left" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-top: none; padding-top :0">
+            <div class="row">
+              <div class="col-5 text-right" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.top_team_3) %>
+              </div>
+              <div class="col-2 text-center" style="padding: 5px">
+                <%= nittei_info.start_time_3.strftime("%H:%M") %>
+              </div>
+              <div class="col-5 text-left" style="padding: 5px">
+                <%= Team.get_three_letter(nittei_info.bottom_team_3) %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <p>第二節</p>
+  </div>
+</div>
+
+
+
+<!--<table class="table" style="margin-bottom: 10px">-->
+<!--  <tr>-->
+<!--    <td style="padding-bottom :0">-->
+<!--      <div class="row">-->
+<!--        <div class="col-12 text-left" style="padding-bottom: 5px">-->
+<!--          2018-09-28 (Fri) 野幌硬式-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <div class="col-5 text-right" style="padding: 5px">-->
+
+<!--        </div>-->
+<!--        <div class="col-2 text-center" style="padding: 5px">-->
+<!--          予備日-->
+<!--        </div>-->
+<!--        <div class="col-5 text-left" style="padding: 5px">-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->
+
+<!--<p style="padding-left: 5px; padding-top :10px">-->
+<!--  ※野幌硬式野球場使用時は、<br>以下の試合開始時間を予定しています。<br>-->
+<!--  <small style="padding-left: 10px">-->
+<!--    第1試合：9時00分<br>-->
+<!--  </small>-->
+<!--  <small style="padding-left: 10px">-->
+<!--    第2試合：11時30分<br>-->
+<!--  </small>-->
+<!--  <small style="padding-left: 10px">-->
+<!--    第3試合：14時00分-->
+<!--  </small>-->
+<!--</p>-->

@@ -1,0 +1,34 @@
+<% game_infos.each do |game_info| %>
+  <table class="table" style="margin-bottom: 0">
+    <tr>
+      <td>
+        <%= link_to game_info do %>
+          <div class="row">
+            <div class="col-12 text-left">
+              <%= game_info.disp_date %>
+            </div>
+          </div>
+          <% vs = " - " %>
+          <div class="row">
+            <div class="col-5 text-right" style="padding: 5px">
+              <%= game_info.batting_first_team %>
+            </div>
+            <div class="col-2 text-center" style="padding: 5px">
+              <%= sum_top = game_info.get_sum_top %>
+              <%= vs %>
+              <%= sum_bottom = game_info.get_sum_bottom %><%= game_info.get_x_index(sum_top, sum_bottom) %>
+            </div>
+            <div class="col-5 text-left" style="padding: 5px">
+              <%= game_info.field_first_team %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center">
+              <%= game_info.get_gameset_msg %>
+            </div>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

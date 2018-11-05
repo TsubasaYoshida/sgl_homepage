@@ -1,0 +1,253 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
+  <br>
+  <small>
+    <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+    <br>
+    <%= @game_info.get_disp_event %> <%= @game_info.round %>
+  </small>
+</h2>
+
+<%
+  team_top = @game_info.get_team_initial(@game_info.batting_first_team)
+  team_bottom = @game_info.get_team_initial(@game_info.field_first_team)
+  sum_top = @game_info.get_sum_top
+  sum_bottom = @game_info.get_sum_bottom
+%>
+
+<table class="table table-bordered table-condensed text-center" style="margin-bottom: 5px; table-layout: fixed;">
+  <tfoot>
+  <tr>
+    <td></td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <% if @game_info.top10 %>
+      <td>10</td>
+    <% end %>
+    <% if @game_info.top11 %>
+      <td>11</td>
+    <% end %>
+    <% if @game_info.top12 %>
+      <td>12</td>
+    <% end %>
+    <td>R</td>
+  </tr>
+
+  <tr>
+    <td><%= team_top %></td>
+    <td><%= @game_info.top1 %></td>
+    <td><%= @game_info.top2 %></td>
+    <td><%= @game_info.top3 %></td>
+    <td><%= @game_info.top4 %></td>
+    <td><%= @game_info.top5 %></td>
+    <td><%= @game_info.top6 %></td>
+    <td><%= @game_info.top7 %></td>
+    <td><%= @game_info.top8 %></td>
+    <td><%= @game_info.top9 %></td>
+    <% if @game_info.top10 %>
+      <td><%= @game_info.top10 %></td>
+    <% end %>
+    <% if @game_info.top11 %>
+      <td><%= @game_info.top11 %></td>
+    <% end %>
+    <% if @game_info.top12 %>
+      <td><%= @game_info.top12 %></td>
+    <% end %>
+    <td><%= sum_top.to_s %></td>
+  </tr>
+
+  <tr>
+    <td><%= team_bottom %></td>
+    <td><%= @game_info.bottom1 %></td>
+    <td><%= @game_info.bottom2 %></td>
+    <td><%= @game_info.bottom3 %></td>
+    <td><%= @game_info.bottom4 %></td>
+
+    <% if !@game_info.bottom5 && @game_info.gameset_flag %>
+      <td>x</td>
+    <%
+      elsif @game_info.bottom5.to_i > 0 && @game_info.gameset_flag && sum_bottom - sum_top >= 10 && !@game_info.top6
+    %>
+      <td><%= @game_info.bottom5 %>x</td>
+    <% else %>
+      <td><%= @game_info.bottom5 %></td>
+    <% end %>
+
+    <% if @game_info.top6 %>
+      <% if !@game_info.bottom6 && @game_info.gameset_flag %>
+        <td>x</td>
+      <%
+        elsif @game_info.bottom6.to_i > 0 && @game_info.gameset_flag && sum_bottom - sum_top >= 10 && !@game_info.top7
+      %>
+        <td><%= @game_info.bottom6 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom6 %></td>
+      <% end %>
+    <% else %>
+      <td></td>
+    <% end %>
+
+    <% if @game_info.top7 %>
+      <% if !@game_info.bottom7 && @game_info.gameset_flag %>
+        <td>x</td>
+      <%
+        elsif @game_info.bottom7.to_i > 0 && @game_info.gameset_flag && sum_bottom - sum_top >= 7 && !@game_info.top8
+      %>
+        <td><%= @game_info.bottom7 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom7 %></td>
+      <% end %>
+    <% else %>
+      <td></td>
+    <% end %>
+
+    <% if @game_info.top8 %>
+      <% if !@game_info.bottom8 && @game_info.gameset_flag %>
+        <td>x</td>
+      <%
+        elsif @game_info.bottom8.to_i > 0 && @game_info.gameset_flag && sum_bottom - sum_top >= 7 && !@game_info.top9
+      %>
+        <td><%= @game_info.bottom8 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom8 %></td>
+      <% end %>
+    <% else %>
+      <td></td>
+    <% end %>
+
+    <% if @game_info.top9 %>
+      <% if !@game_info.bottom9 && @game_info.gameset_flag %>
+        <td>x</td>
+      <% elsif @game_info.bottom9.to_i > 0 && @game_info.gameset_flag && sum_bottom > sum_top && !@game_info.top10 %>
+        <td><%= @game_info.bottom9 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom9 %></td>
+      <% end %>
+    <% else %>
+      <td></td>
+    <% end %>
+
+    <% if @game_info.top10 %>
+      <% if !@game_info.bottom10 && @game_info.gameset_flag %>
+        <td>x</td>
+      <% elsif @game_info.bottom10.to_i > 0 && @game_info.gameset_flag && sum_bottom > sum_top && !@game_info.top11 %>
+        <td><%= @game_info.bottom10 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom10 %></td>
+      <% end %>
+    <% end %>
+
+    <% if @game_info.top11 %>
+      <% if !@game_info.bottom11 && @game_info.gameset_flag %>
+        <td>x</td>
+      <% elsif @game_info.bottom11.to_i > 0 && @game_info.gameset_flag && sum_bottom > sum_top && !@game_info.top12 %>
+        <td><%= @game_info.bottom11 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom11 %></td>
+      <% end %>
+    <% end %>
+
+    <% if @game_info.top12 %>
+      <% if !@game_info.bottom12 && @game_info.gameset_flag %>
+        <td>x</td>
+      <% elsif @game_info.bottom12.to_i > 0 && @game_info.gameset_flag && sum_bottom > sum_top && !@game_info.top13 %>
+        <td><%= @game_info.bottom12 %>x</td>
+      <% else %>
+        <td><%= @game_info.bottom12 %></td>
+      <% end %>
+    <% end %>
+
+    <td><%= sum_bottom.to_s %></td>
+  </tr>
+  </tfoot>
+</table>
+
+<%= simple_format @game_info.get_gameset_msg_show(sum_top, sum_bottom) %>
+
+<% if @game_info.message.present? %>
+  <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+    <tbody>
+    <tr>
+      <td>特記事項</td>
+    </tr>
+    <tr>
+      <td><%= @game_info.message %></td>
+    </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+  <tbody>
+  <tr>
+    <td colspan="2">バッテリー</td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+    <td><%= @game_info.pitcher_top %> - <%= @game_info.catcher_top %></td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0;"><%= team_bottom %></td>
+    <td><%= @game_info.pitcher_bottom %> - <%= @game_info.catcher_bottom %></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+  <tbody>
+  <tr>
+    <td colspan="2">本塁打</td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+    <td><%= @game_info.homerun_top %></td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0;"><%= team_bottom %></td>
+    <td><%= @game_info.homerun_bottom %></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+  <tbody>
+  <tr>
+    <td colspan="2">三塁打</td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+    <td><%= @game_info.threebase_top %></td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0;"><%= team_bottom %></td>
+    <td><%= @game_info.threebase_bottom %></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+  <tbody>
+  <tr>
+    <td colspan="2">二塁打</td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+    <td><%= @game_info.twobase_top %></td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 0;"><%= team_bottom %></td>
+    <td><%= @game_info.twobase_bottom %></td>
+  </tr>
+  </tbody>
+</table>
+
+<%= link_to '試合一覧', game_infos_path, class: 'btn btn-default' %>

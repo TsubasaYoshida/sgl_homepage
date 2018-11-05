@@ -1,0 +1,2 @@
+module NitteiHelper
+end

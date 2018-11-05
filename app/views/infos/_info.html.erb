@@ -1,0 +1,14 @@
+<h2>新着情報</h2>
+
+<table class="table-info">
+  <tbody>
+  <% infos.each do |info| %>
+    <tr>
+      <td><%= info.disp_date %></td>
+    </tr>
+    <tr>
+      <td><%= info.article %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

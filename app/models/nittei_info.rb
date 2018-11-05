@@ -1,0 +1,2 @@
+class NitteiInfo < ApplicationRecord
+end

@@ -1,0 +1,138 @@
+<%= form_with(model: nittei_info, local: true) do |form| %>
+  <% if nittei_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nittei_info.errors.count, "error") %> prohibited this nittei_info from being saved:</h2>
+
+      <ul>
+        <% nittei_info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :disp_date, '試合日' %>
+    <%= form.date_field :disp_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stadium, '球場' %>
+    <%= form.text_field :stadium, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :season, '春季／秋季' %>
+    <%= form.select :season, ['春季', '秋季'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :event, '大会' %>
+    <%= form.select :event, ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :round_1, 'ラウンド（第1試合）' %>
+    <%= form.select :round_1, [['リーグ戦', ['第一節', '第二節']],
+                               ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                               ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :top_team_1, '先攻チーム（第1試合）' %>
+    <%= form.grouped_collection_select(:top_team_1, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bottom_team_1, '後攻チーム（第1試合）' %>
+    <%= form.grouped_collection_select(:bottom_team_1, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time_1, '試合開始時刻（第1試合）' %>
+    <%= form.time_field :start_time_1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message_1, '特記事項（第1試合）' %>
+    <%= form.text_field :message_1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :round_2, 'ラウンド（第2試合）' %>
+    <%= form.select :round_2, [['リーグ戦', ['第一節', '第二節']],
+                               ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                               ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :top_team_2, '先攻チーム（第2試合）' %>
+    <%= form.grouped_collection_select(:top_team_2, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bottom_team_2, '後攻チーム（第2試合）' %>
+    <%= form.grouped_collection_select(:bottom_team_2, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time_2, '試合開始時刻（第2試合）' %>
+    <%= form.time_field :start_time_2, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message_2, '特記事項（第2試合）' %>
+    <%= form.text_field :message_2, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :round_3, 'ラウンド（第3試合）' %>
+    <%= form.select :round_3, [['リーグ戦', ['第一節', '第二節']],
+                               ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                               ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :top_team_3, '先攻チーム（第3試合）' %>
+    <%= form.grouped_collection_select(:top_team_3, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bottom_team_3, '後攻チーム（第3試合）' %>
+    <%= form.grouped_collection_select(:bottom_team_3, League.all, :teams, :name, :name, :name,
+                                       {include_blank: '選択してください'}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time_3, '試合開始時刻（第3試合）' %>
+    <%= form.time_field :start_time_3, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message_3, '特記事項（第3試合）' %>
+    <%= form.text_field :message_3, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <%= form.check_box :rain_date_flag, class: 'checkbox' %>
+        予備日フラグ
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+  </div>
+<% end %>

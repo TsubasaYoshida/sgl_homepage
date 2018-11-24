@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_064633) do
+ActiveRecord::Schema.define(version: 2018_11_18_130534) do
+
+  create_table "event_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "year"
+    t.string "season"
+    t.string "league"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_one_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "event_info_id"
+    t.date "disp_date"
+    t.string "stadium"
+    t.string "round_1"
+    t.string "top_team_1"
+    t.string "bottom_team_1"
+    t.time "start_time_1"
+    t.string "message_1"
+    t.string "round_2"
+    t.string "top_team_2"
+    t.string "bottom_team_2"
+    t.time "start_time_2"
+    t.string "message_2"
+    t.string "round_3"
+    t.string "top_team_3"
+    t.string "bottom_team_3"
+    t.time "start_time_3"
+    t.string "message_3"
+    t.boolean "rain_date_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_info_id"], name: "index_event_one_days_on_event_info_id"
+  end
 
   create_table "game_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "event"
@@ -118,5 +151,6 @@ ActiveRecord::Schema.define(version: 2018_11_03_064633) do
     t.index ["league_id"], name: "index_teams_on_league_id"
   end
 
+  add_foreign_key "event_one_days", "event_infos"
   add_foreign_key "teams", "leagues"
 end

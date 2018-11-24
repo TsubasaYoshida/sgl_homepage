@@ -1,0 +1,109 @@
+<div class="nested-fields well well-compact">
+
+  <div class="card" style="margin-bottom: 10px">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= f.label :disp_date, '試合日' %>
+            <%= f.date_field :disp_date, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= f.label :stadium, '球場' %>
+            <%= f.text_field :stadium, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div class="checkbox" style="padding-top: 32.5px">
+              <label>
+                <%= f.check_box :rain_date_flag, class: 'checkbox' %>
+                予備日フラグ
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <table class="table table-bordered table-sm text-center">
+        <tr>
+          <th></th>
+          <th>ラウンド</th>
+          <th>先攻チーム</th>
+          <th>後攻チーム</th>
+          <th>試合開始時刻</th>
+          <th>特記事項</th>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">第1試合</th>
+          <td>
+            <%= f.select :round_1, [['リーグ戦', ['第一節', '第二節']],
+                                    ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                                    ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                         {include_blank: '選択してください'}, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:top_team_1, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:bottom_team_1, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td><%= f.time_field :start_time_1, class: 'form-control' %></td>
+          <td><%= f.text_field :message_1, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">第2試合</th>
+          <td>
+            <%= f.select :round_2, [['リーグ戦', ['第一節', '第二節']],
+                                    ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                                    ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                         {include_blank: '選択してください'}, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:top_team_2, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:bottom_team_2, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td><%= f.time_field :start_time_2, class: 'form-control' %></td>
+          <td><%= f.text_field :message_2, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle;">第3試合</th>
+          <td>
+            <%= f.select :round_3, [['リーグ戦', ['第一節', '第二節']],
+                                    ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
+                                    ['入替戦', ['第一戦', '第二戦', '第三戦']]],
+                         {include_blank: '選択してください'}, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:top_team_3, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td>
+            <%= f.grouped_collection_select(:bottom_team_3, League.all, :teams, :name, :name, :name,
+                                            {include_blank: '選択してください'}, class: 'form-control') %>
+          </td>
+          <td><%= f.time_field :start_time_3, class: 'form-control' %></td>
+          <td><%= f.text_field :message_3, class: 'form-control' %></td>
+        </tr>
+      </table>
+
+      <div class="padding-bottom10">
+        <%= link_to_remove_association '削除', f, class: 'btn btn-default' %>
+      </div>
+
+    </div>
+  </div>
+
+</div>

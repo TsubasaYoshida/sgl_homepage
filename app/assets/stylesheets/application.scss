@@ -26,6 +26,11 @@ h1 {
   padding: 0;
 }
 
+.admin-h1 {
+  font-size: 20px;
+  padding-top: 15px;
+}
+
 h2 {
   margin-top: 18px;
   font-size: 15px;
@@ -73,7 +78,7 @@ a:link {
   margin-top: 10px;
 }
 
-.admin{
+.admin {
   margin-bottom: 5px;
 }
 
@@ -85,8 +90,8 @@ a:link {
   background-color: #4f5156;
 }
 
-.navigate{
-
+#notice {
+  color: red;
 }
 
 .bg-red {
@@ -94,13 +99,36 @@ a:link {
   background-color: #dc3545;
 }
 
+.bg-green {
+  color: #fff;
+  background-color: #2F4F4F;
+}
+
 .standing-sp td {
   padding: 1px;
 }
 
-.rank-team-name{
+.rank-team-name {
   width: 250px;
 }
 
+.padding-bottom10 {
+  padding-bottom: 10px;
+}
 
+.padding-top10 {
+  padding-top: 10px;
+}
+
+.margin-top30 {
+  margin-top: 30px;
+}
+
+.table-condensed > tbody > tr > td {
+  padding: 0 0 0 5px;
+}
+
+.table-condensed > tfoot > tr > td {
+  padding: 0;
+}
 

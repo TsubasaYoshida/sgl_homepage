@@ -1,0 +1,112 @@
+<%= form_with(model: event_one_day, local: true) do |form| %>
+  <% if event_one_day.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event_one_day.errors.count, "error") %> prohibited this event_one_day from being saved:</h2>
+
+      <ul>
+      <% event_one_day.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_info_id %>
+    <%= form.text_field :event_info_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disp_date %>
+    <%= form.date_select :disp_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stadium %>
+    <%= form.text_field :stadium %>
+  </div>
+
+  <div class="field">
+    <%= form.label :round_1 %>
+    <%= form.text_field :round_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_team_1 %>
+    <%= form.text_field :top_team_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_team_1 %>
+    <%= form.text_field :bottom_team_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time_1 %>
+    <%= form.time_select :start_time_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message_1 %>
+    <%= form.text_field :message_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :round_2 %>
+    <%= form.text_field :round_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_team_2 %>
+    <%= form.text_field :top_team_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_team_2 %>
+    <%= form.text_field :bottom_team_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time_2 %>
+    <%= form.time_select :start_time_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message_2 %>
+    <%= form.text_field :message_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :round_3 %>
+    <%= form.text_field :round_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_team_3 %>
+    <%= form.text_field :top_team_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_team_3 %>
+    <%= form.text_field :bottom_team_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time_3 %>
+    <%= form.time_select :start_time_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message_3 %>
+    <%= form.text_field :message_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rain_date_flag %>
+    <%= form.check_box :rain_date_flag %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

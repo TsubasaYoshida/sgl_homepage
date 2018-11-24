@@ -12,4 +12,10 @@ class Constants
     return year_list.sort.reverse
   end
 
+  def self.get_string_year_list
+    this_year = Date.today.year
+    year_list = [this_year.to_s, (this_year + 1).to_s, (this_year - 1).to_s]
+    return year_list
+  end
+
 end

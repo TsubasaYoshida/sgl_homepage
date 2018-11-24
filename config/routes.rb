@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :event_one_days
+  resources :event_infos
+  get 'admin/top'
   get 'nittei/show'
   get 'nittei/find'
   get 'standing/show'
@@ -9,6 +12,10 @@ Rails.application.routes.draw do
   resources :infos
 
   resources :game_infos do
+    collection do
+      get :management
+    end
+
     member do
       get :score
     end

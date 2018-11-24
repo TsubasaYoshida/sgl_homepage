@@ -20,5 +20,9 @@ module SglHomepage
     config.generators do |g|
       g.assets false
     end
+
+    # タイムゾーン指定
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
   end
 end

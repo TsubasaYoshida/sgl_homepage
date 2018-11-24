@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="padding-top10" id="notice"><%= notice %></div>
 
 <h2>
   <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
@@ -250,4 +250,6 @@
   </tbody>
 </table>
 
-<%= link_to '試合一覧', game_infos_path, class: 'btn btn-default' %>
+<div class="padding-top10">
+  <%= link_to 'もどる', :back, class: 'btn btn-default' %>
+</div>

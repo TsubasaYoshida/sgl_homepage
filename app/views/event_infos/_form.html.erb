@@ -1,0 +1,56 @@
+<%= form_with(model: event_info, local: true) do |form| %>
+  <% if event_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event_info.errors.count, "error") %> prohibited this event_info from being saved:</h2>
+
+      <ul>
+        <% event_info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card" style="margin-bottom: 10px">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :year, '年度' %>
+            <%= form.select :year, Constants.get_string_year_list,
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :season, '春季／秋季' %>
+            <%= form.select :season, ['春季', '秋季'],
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :league, '大会' %>
+            <%= form.select :league, ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'],
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="event_one_days">
+    <%= form.fields_for :event_one_days do |event_one_day| %>
+      <%= render 'event_one_day_fields', f: event_one_day %>
+    <% end %>
+    <div id="links" class="padding-bottom10">
+      <%= link_to_add_association '日程追加', form, :event_one_days, class: 'btn btn-default' %>
+    </div>
+    <div class="form-group">
+      <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+    </div>
+  </div>
+
+
+<% end %>

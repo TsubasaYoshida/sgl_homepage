@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @event_info.year %>
+</p>
+
+<p>
+  <strong>Season:</strong>
+  <%= @event_info.season %>
+</p>
+
+<p>
+  <strong>League:</strong>
+  <%= @event_info.league %>
+</p>
+
+<%= link_to 'Edit', edit_event_info_path(@event_info) %> |
+<%= link_to 'Back', event_infos_path %>

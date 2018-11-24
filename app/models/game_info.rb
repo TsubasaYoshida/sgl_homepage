@@ -28,9 +28,9 @@ class GameInfo < ApplicationRecord
   end
 
   def get_gameset_msg
-    gameset_msg = "（試合中）"
+    gameset_msg = "試合中"
     if self[:gameset_flag]
-      gameset_msg = "（試合終了）"
+      gameset_msg = "試合終了"
     end
     return gameset_msg
   end
@@ -119,6 +119,30 @@ class GameInfo < ApplicationRecord
       return :win if sum_bottom > sum_top
       return :lose if sum_top > sum_bottom
     end
+  end
+
+  def get_inputed_inning
+    unless self[:top1]
+      return "得点未入力"
+    end
+
+    unless self[:bottom1]
+      return "1回オモテ入力済"
+    end
+
+    15.times {|n|
+      str_top = "top" << (n + 1).to_s
+      unless self[str_top.to_sym]
+        return "#{n}回ウラ入力済"
+      end
+
+      str_bottom = "bottom" << (n + 1).to_s
+      unless self[str_bottom.to_sym]
+        return "#{n + 1}回オモテ入力済"
+      end
+    }
+
+    return "15回ウラ入力済"
   end
 
 end

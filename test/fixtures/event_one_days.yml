@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_info: one
+  disp_date: 2018-11-18
+  stadium: MyString
+  round_1: MyString
+  top_team_1: MyString
+  bottom_team_1: MyString
+  start_time_1: 2018-11-18 22:05:34
+  message_1: MyString
+  round_2: MyString
+  top_team_2: MyString
+  bottom_team_2: MyString
+  start_time_2: 2018-11-18 22:05:34
+  message_2: MyString
+  round_3: MyString
+  top_team_3: MyString
+  bottom_team_3: MyString
+  start_time_3: 2018-11-18 22:05:34
+  message_3: MyString
+  rain_date_flag: false
+
+two:
+  event_info: two
+  disp_date: 2018-11-18
+  stadium: MyString
+  round_1: MyString
+  top_team_1: MyString
+  bottom_team_1: MyString
+  start_time_1: 2018-11-18 22:05:34
+  message_1: MyString
+  round_2: MyString
+  top_team_2: MyString
+  bottom_team_2: MyString
+  start_time_2: 2018-11-18 22:05:34
+  message_2: MyString
+  round_3: MyString
+  top_team_3: MyString
+  bottom_team_3: MyString
+  start_time_3: 2018-11-18 22:05:34
+  message_3: MyString
+  rain_date_flag: false

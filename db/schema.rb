@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_130534) do
+ActiveRecord::Schema.define(version: 2018_12_10_134953) do
 
   create_table "event_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -113,31 +113,6 @@ ActiveRecord::Schema.define(version: 2018_11_18_130534) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "nittei_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "event"
-    t.string "season"
-    t.date "disp_date"
-    t.string "stadium"
-    t.string "top_team_1"
-    t.string "bottom_team_1"
-    t.time "start_time_1"
-    t.string "message_1"
-    t.boolean "rain_date_flag"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "top_team_2"
-    t.string "bottom_team_2"
-    t.time "start_time_2"
-    t.string "message_2"
-    t.string "top_team_3"
-    t.string "bottom_team_3"
-    t.time "start_time_3"
-    t.string "message_3"
-    t.string "round_1"
-    t.string "round_2"
-    t.string "round_3"
   end
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

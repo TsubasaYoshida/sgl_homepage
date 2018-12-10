@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'standing/show'
   get 'top/show'
 
-  resources :nittei_infos
 
   resources :infos
 

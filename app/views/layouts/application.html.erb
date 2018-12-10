@@ -23,21 +23,46 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="page-header">
-        <%= image_tag 'page_title.png', alt: '札幌学生野球連盟', class: 'img-fluid' %>
-      </h1>
 
-      <div class="navigate text-right">
-        <%= link_to 'ホーム', '/' %>
-        <%= link_to '試合速報', game_infos_path %>
-        <%= link_to '順位表', '/standing/show' %>
-        <%= link_to '大会日程', '/nittei/show' %>
+      <div class="d-none d-sm-block">
+
+        <div class="row">
+          <div class="col-6">
+            <h1 class="page-header mt-4">
+              <%= link_to '/' do %>
+                <%= image_tag 'icon.png', alt: '札幌学生野球連盟', class: 'img-fluid' %>
+              <% end %>
+            </h1>
+          </div>
+
+          <div class="col-6">
+            <div class="row mt-5 justify-content-end">
+              <nav class="nav">
+                <%= link_to '試合速報', game_infos_path, class: 'nav-link' %>
+                <%= link_to '順位表', '/standing/show', class: 'nav-link' %>
+                <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
+              </nav>
+            </div>
+          </div>
+        </div>
+
       </div>
 
+    </div>
+
+    <div class="d-sm-none d-block">
+      sp
+
+    </div>
+
+    <div class="col-12 margin-top30 border-5px mt-3 mb-4"></div>
+
+    <div class="col-12">
       <%= yield %>
     </div>
-    <div class="col-12 col-12-footer margin-top30">
-      <footer class="p-footer">
+
+    <div class="col-12 col-12-footer margin-top30 border-5px mt-5">
+      <footer class="p-footer mb-5 mt-3">
         <div class="admin">札幌学生野球連盟事務局</div>
         <div class="row">
           <div class="col-sm-3">

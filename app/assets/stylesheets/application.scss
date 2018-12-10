@@ -24,6 +24,8 @@ html, body {
 
 h1 {
   padding: 0;
+  color: black;
+  font-size: 25px;
 }
 
 .admin-h1 {
@@ -86,8 +88,6 @@ a:link {
   margin-top: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #fff;
-  background-color: #4f5156;
 }
 
 #notice {
@@ -132,3 +132,6 @@ a:link {
   padding: 0;
 }
 
+.border-5px {
+  border-top: 5px solid #dee2e6 !important;
+}

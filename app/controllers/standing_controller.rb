@@ -1,12 +1,34 @@
 class StandingController < ApplicationController
   def show
+    first
+  end
+
+  def find
+    key_year = params[:key_year]
+    key_season = params[:key_season]
+    if key_year.nil? || key_season.nil?
+      first
+    else
+      @selected_year = key_year
+      @selected_season = key_season
+      describe
+    end
+  end
+
+  private
+
+  def first
+    @selected_year = GameInfo.order(disp_date: :desc).first.disp_date.year
+    @selected_season = GameInfo.order(disp_date: :desc).first.season
+    describe
+  end
+
+  def describe
     @result_infos = []
     tmp_event_list = ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦']
     tmp_event_list.each do |event|
 
-      target_year = GameInfo.where(event: event).order(disp_date: :desc).first.disp_date.year
-      target_season = GameInfo.where(event: event).order(disp_date: :desc).first.season
-      game_infos = GameInfo.where(event: event, season: target_season, gameset_flag: true).where('disp_date LIKE ?', "#{target_year}%")
+      game_infos = GameInfo.where(event: event, season: @selected_season, gameset_flag: true).where('disp_date LIKE ?', "#{@selected_year}%")
       win_lose_draw_list = []
       teams = Team.where(league: event)
       teams.each do |team|
@@ -60,10 +82,15 @@ class StandingController < ApplicationController
         end
       end
 
-      result_info = [rank_infos, result_array]
+      first_game_info = game_infos.order(updated_at: :desc).first
+      unless first_game_info.nil?
+        updated_at = first_game_info.updated_at
+      end
+      result_info = [rank_infos, result_array, updated_at]
       @result_infos << result_info
     end
 
+    render 'standing/show'
   end
 
   def get_disp_result(game_infos, team_1, team_2, round)

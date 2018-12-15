@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'nittei/show'
   get 'nittei/find'
   get 'standing/show'
+  get 'standing/find'
   get 'top/show'
 
 

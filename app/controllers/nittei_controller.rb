@@ -11,7 +11,12 @@ class NitteiController < ApplicationController
     if key_year.nil? || key_season.nil? || key_event.nil?
       first
     else
-      @nittei_infos = NitteiInfo.where(season: key_season, event: key_event).where('disp_date LIKE ?', "#{key_year}%").order(disp_date: :asc)
+      event_info = EventInfo.find_by(year: key_year, season: key_season, league: key_event)
+
+      # 同じ日に異なるラウンドが入った時にどうするか
+      @nittei_infos_1 = event_info.event_one_days.where(round_1: '第一節').order(disp_date: :asc)
+      @nittei_infos_2 = event_info.event_one_days.where(round_1: '第二節').order(disp_date: :asc)
+
       @selected_year = key_year
       @selected_season = key_season
       @selected_event = key_event
@@ -20,15 +25,17 @@ class NitteiController < ApplicationController
   end
 
   private def first
-    @nittei_info = NitteiInfo.order(disp_date: :desc).first
-    @selected_year = @nittei_info.disp_date.year
-    @selected_season = @nittei_info.season
-    @selected_event = @nittei_info.event
+    event_info = EventInfo.order(year: :desc, season: :desc).first
 
-    @nittei_infos = NitteiInfo
-                        .where(season: @selected_season, event: @selected_event)
-                        .where('disp_date LIKE ?', "#{@selected_year}%")
-                        .order(disp_date: :asc)
+    @selected_year = event_info.year
+    @selected_season = event_info.season
+    @selected_event = event_info.league
+
+    event_info = EventInfo.find_by(year: @selected_year, season: @selected_season, league: @selected_event)
+
+    # 同じ日に異なるラウンドが入った時にどうするか
+    @nittei_infos_1 = event_info.event_one_days.where(round_1: '第一節').order(disp_date: :asc)
+    @nittei_infos_2 = event_info.event_one_days.where(round_1: '第二節').order(disp_date: :asc)
 
     render 'nittei/show'
   end

@@ -1,0 +1,116 @@
+<% nittei_infos.each do |nittei_info| %>
+
+  <% if nittei_info.rain_date_flag %>
+
+    <table class="table" style="margin-bottom: 0">
+      <tr>
+        <td style="padding-bottom :0">
+          <div class="row">
+            <div class="col-12 text-left" style="padding-bottom: 5px">
+              <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
+              <%= nittei_info.stadium %>
+              <span class="badge badge-danger">予備日</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              ---
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_1.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              ---
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top: none; padding-top :0; padding-bottom :0">
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              ---
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_2.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              ---
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top: none; padding-top :0">
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              ---
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_3.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              ---
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  <% else %>
+
+    <table class="table" style="margin-bottom: 0">
+      <tr>
+        <td style="padding-bottom :0">
+          <div class="row">
+            <div class="col-12 text-left" style="padding-bottom: 5px">
+              <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
+              <%= nittei_info.stadium %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              <%= Team.get_three_letter(nittei_info.top_team_1) %>
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_1.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top: none; padding-top :0; padding-bottom :0">
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              <%= Team.get_three_letter(nittei_info.top_team_2) %>
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_2.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-top: none; padding-top :0">
+          <div class="row">
+            <div class="col-4 text-right py-1">
+              <%= Team.get_three_letter(nittei_info.top_team_3) %>
+            </div>
+            <div class="col-4 text-center py-1">
+              <%= nittei_info.start_time_3.strftime("%-H:%M") %>
+            </div>
+            <div class="col-4 text-left py-1">
+              <%= Team.get_three_letter(nittei_info.bottom_team_3) %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>

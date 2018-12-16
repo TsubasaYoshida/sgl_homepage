@@ -43,9 +43,11 @@
         <tr>
           <td><%= rank_info.rank.to_s + '位' %></td>
           <td class="rank-team-name"><%= rank_info.team_name %></td>
-          <% result_array[12 * i..11 + 12 * i].each do |result| %>
-            <td><%= result %></td>
+
+          <% (12 * i..11 + 12 * i).each do |index| %>
+            <td><%= result_array[index] %></td>
           <% end %>
+
           <td><%= rank_info.win %></td>
           <td><%= rank_info.lose %></td>
           <td><%= rank_info.draw %></td>
@@ -81,9 +83,11 @@
         <tr>
           <td><%= rank_info.rank %></td>
           <td><%= rank_info.two_letter_name %></td>
-          <% result_array[12 * i..11 + 12 * i].each do |result| %>
-            <td><%= result %></td>
+
+          <% (12 * i..11 + 12 * i).each do |index| %>
+            <td><%= result_array[index] %></td>
           <% end %>
+
           <td><%= rank_info.win %></td>
           <td><%= rank_info.lose %></td>
           <td><%= rank_info.draw %></td>

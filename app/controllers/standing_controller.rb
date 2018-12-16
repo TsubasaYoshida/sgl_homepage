@@ -30,7 +30,14 @@ class StandingController < ApplicationController
 
       game_infos = GameInfo.where(event: event, season: @selected_season, gameset_flag: true).where('disp_date LIKE ?', "#{@selected_year}%")
       win_lose_draw_list = []
-      teams = Team.where(league: event)
+
+      # 当時のチーム名一覧を取得（入替で所属リーグが変動するためteamsテーブルからすぐ取れない）
+      teams = []
+      team_list = EventInfo.get_team_list(@selected_year, @selected_season, event)
+      team_list.each do |team|
+        teams << Team.find_by(name: team)
+      end
+
       teams.each do |team|
         win_lose_draw = WinLoseDraw.new
         win_lose_draw.team_name = team.name

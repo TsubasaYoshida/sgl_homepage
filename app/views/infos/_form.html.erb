@@ -4,24 +4,24 @@
       <h2><%= pluralize(info.errors.count, "error") %> prohibited this info from being saved:</h2>
 
       <ul>
-      <% info.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :disp_date %>
-    <%= form.date_field :disp_date %>
+  <div class="form-group">
+    <%= form.label :disp_date, '日付' %>
+    <%= form.date_field :disp_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :article %>
-    <%= form.text_area :article %>
+  <div class="form-group">
+    <%= form.label :article, '記事内容' %>
+    <%= form.text_area :article, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
 <% end %>

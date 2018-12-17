@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get 'top/show'
 
 
-  resources :infos
+  resources :infos do
+    collection do
+      get :management
+    end
+  end
 
   resources :game_infos do
     collection do

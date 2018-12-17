@@ -1,0 +1,56 @@
+<h2 class="float-left">新着情報管理</h2>
+
+<div class="padding-bottom10 padding-top10 float-right">
+  <%= link_to '新規作成', new_info_path, class: 'btn btn-default' %>
+</div>
+
+<div class="d-none d-sm-block">
+  <table class="table table-bordered text-center">
+    <tr class="bg-green">
+      <th>日付</th>
+      <th>本文</th>
+      <th colspan="2"></th>
+    </tr>
+    <% @infos.each do |info| %>
+      <tr>
+        <td style="vertical-align: middle;">
+          <%= info.disp_date %>
+        </td>
+        <td style="vertical-align: middle;" class="text-left pl-4">
+          <%= info.article %>
+        </td>
+        <td>
+          <%= link_to '編集', edit_info_path(info), class: 'btn btn-default' %>
+        </td>
+        <td>
+          <%= link_to '削除', info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="d-block d-sm-none">
+  <% @infos.each do |info| %>
+    <table class="table" style="margin-bottom: 0">
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-12 text-left">
+              <%= info.disp_date %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <%= info.article %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="padding-bottom10" align="right">
+      <%= link_to '編集', edit_info_path(info), class: 'btn btn-default' %>
+      <%= link_to '削除', info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

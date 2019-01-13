@@ -1,1 +1,38 @@
 <h2>管理トップ</h2>
+
+<div class="py-2"></div>
+
+<%= link_to '/game_infos/management' do %>
+  <div class="card card-hover">
+    <div class="card-body">
+      <h5 class="card-title">試合情報管理</h5>
+      <p class="card-text pl-3">試合情報の新規作成、編集、削除を行います。</p>
+    </div>
+  </div>
+<% end %>
+
+<div class="py-2"></div>
+
+<div class="d-none d-sm-block">
+
+  <%= link_to event_infos_path do %>
+    <div class="card card-hover">
+      <div class="card-body">
+        <h5 class="card-title">日程情報管理</h5>
+        <p class="card-text pl-3">日程情報の新規作成、編集、削除を行います。</p>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="py-2"></div>
+
+<%= link_to '/infos/management' do %>
+  <div class="card card-hover">
+    <div class="card-body">
+      <h5 class="card-title">新着情報管理</h5>
+      <p class="card-text pl-3">新着情報の新規作成、編集、削除を行います。</p>
+    </div>
+  </div>
+<% end %>

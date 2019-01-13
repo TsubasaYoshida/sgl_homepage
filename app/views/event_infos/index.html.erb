@@ -1,10 +1,21 @@
 <h2 class="float-left">大会日程管理</h2>
 
-<div class="padding-bottom10 padding-top10 float-right">
-  <%= link_to '新規作成', new_event_info_path, class: 'btn btn-default' %>
+<div class="d-sm-none d-block">
+
+  <div class="py-5"></div>
+
+  <p>
+    日程情報はスマートフォンから管理できません。<br>
+    PCにてアクセスをお願いいたします。
+  </p>
 </div>
 
 <div class="d-none d-sm-block">
+
+  <div class="padding-bottom10 padding-top10 float-right">
+    <%= link_to '新規作成', new_event_info_path, class: 'btn btn-default' %>
+  </div>
+
   <table class="table table-bordered text-center">
     <tr class="bg-green">
       <th>年度</th>

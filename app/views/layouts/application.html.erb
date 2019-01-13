@@ -27,13 +27,15 @@
       <div class="d-none d-sm-block">
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <h1 class="page-header mt-4">
               <%= link_to '/' do %>
-                <%= image_tag 'icon.png', alt: '札幌学生野球連盟', class: 'img-fluid' %>
+                <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', class: 'img-fluid float-left' %>
               <% end %>
             </h1>
           </div>
+
+          <div class="col-2"></div>
 
           <div class="col-6">
             <div class="row mt-5 justify-content-end">
@@ -51,8 +53,39 @@
     </div>
 
     <div class="d-sm-none d-block">
-      sp
-
+      <div class="col-12 mt-3">
+        <header>
+          <%= link_to '/' do %>
+            <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', class: 'img-fluid' %>
+          <% end %>
+          <nav class="navbar navbar-expand-lg navbar-light pt-3 text-center">
+            <button type="button" class="navbar-toggler btn-block"
+                    data-toggle="collapse" data-target="#Navber"
+                    aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションバー">
+              menu
+            </button>
+            <div class="collapse navbar-collapse" id="Navber">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <div class="border-top">
+                  <li class="nav-item">
+                    <%= link_to '試合速報', game_infos_path, class: 'nav-link' %>
+                  </li>
+                </div>
+                <div class="border-top">
+                  <li class="nav-item">
+                    <%= link_to '順位表', '/standing/show', class: 'nav-link' %>
+                  </li>
+                </div>
+                <div class="border-top border-bottom">
+                  <li class="nav-item">
+                    <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </header>
+      </div>
     </div>
 
     <div class="col-12 margin-top30 border-5px mt-3 mb-4"></div>

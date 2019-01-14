@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get 'standing/show'
   get 'standing/find'
 
-  resources :event_one_days
+  resources :event_one_days do
+    member do
+      get :new_one_day
+    end
+  end
 
   resources :event_infos do
     member do

@@ -13,9 +13,10 @@ class EventOneDaysController < ApplicationController
   def show
   end
 
-  # GET /event_one_days/new
-  def new
+  # GET /event_one_days/1/new_one_day
+  def new_one_day
     @event_one_day = EventOneDay.new
+    @event_info_id = params[:id]
   end
 
   # GET /event_one_days/1/edit
@@ -32,7 +33,7 @@ class EventOneDaysController < ApplicationController
         format.html { redirect_to @event_one_day, notice: 'Event one day was successfully created.' }
         format.json { render :show, status: :created, location: @event_one_day }
       else
-        format.html { render :new }
+        format.html { render :new_one_day }
         format.json { render json: @event_one_day.errors, status: :unprocessable_entity }
       end
     end

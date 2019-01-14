@@ -116,4 +116,9 @@
   <div class="form-group">
     <%= f.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
+
+  <% if new_flag %>
+    <%= f.hidden_field :event_info_id, :value => event_info_id %>
+  <% end %>
+
 <% end %>

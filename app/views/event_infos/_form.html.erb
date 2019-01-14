@@ -39,18 +39,18 @@
     </div>
   </div>
 
-
   <div id="event_one_days">
-    <%= form.fields_for :event_one_days do |event_one_day| %>
-      <%= render 'event_one_day_fields', f: event_one_day %>
+    <% unless edit_flag %>
+      <%= form.fields_for :event_one_days do |event_one_day| %>
+        <%= render 'event_one_day_fields', f: event_one_day %>
+      <% end %>
+      <div id="links" class="padding-bottom10">
+        <%= link_to_add_association '日程追加', form, :event_one_days, class: 'btn btn-default' %>
+      </div>
     <% end %>
-    <div id="links" class="padding-bottom10">
-      <%= link_to_add_association '日程追加', form, :event_one_days, class: 'btn btn-default' %>
-    </div>
     <div class="form-group">
       <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
     </div>
   </div>
-
 
 <% end %>

@@ -6,7 +6,7 @@ class Constants
     ]
     loop_times = Date.today.year - 2018
     loop_times.times do |n|
-      tmp_year = 2018 + n
+      tmp_year = 2018 + (n + 1)
       year_list << [tmp_year.to_s + '年度', tmp_year]
     end
     return year_list.sort.reverse

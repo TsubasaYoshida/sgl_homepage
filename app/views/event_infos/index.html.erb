@@ -30,10 +30,10 @@
         <%= link_to '大会情報編集', edit_event_info_path(event_info), class: 'btn btn-default' %>
       </td>
       <td>
-        <%= link_to '日程編集', one_days_management_event_info_path(event_info), class: 'btn btn-default' %>
+        <%= link_to '日程情報編集', one_days_management_event_info_path(event_info), class: 'btn btn-default' %>
       </td>
       <td>
-        <%= link_to '削除', event_info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+        <%= link_to '大会ごと削除', event_info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
       </td>
     </tr>
   <% end %>

@@ -1,6 +1,6 @@
 class EventInfosController < ApplicationController
-  before_action :set_event_info, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
+  before_action :set_event_info, only: [:show, :edit, :one_days_management, :update, :destroy]
+  layout 'admin_sp_block'
 
   # GET /event_infos
   # GET /event_infos.json
@@ -20,6 +20,11 @@ class EventInfosController < ApplicationController
 
   # GET /event_infos/1/edit
   def edit
+  end
+
+  # GET /event_infos/1/one_days_management
+  def one_days_management
+    @event_one_days = EventOneDay.where(event_info_id: @event_info).order(disp_date: :asc)
   end
 
   # POST /event_infos

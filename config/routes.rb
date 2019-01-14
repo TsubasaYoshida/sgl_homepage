@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  resources :event_one_days
-  resources :event_infos
+  root to: 'top#show'
+  get 'top/show'
   get 'admin/top'
   get 'nittei/show'
   get 'nittei/find'
   get 'standing/show'
   get 'standing/find'
-  get 'top/show'
 
+  resources :event_one_days
+
+  resources :event_infos do
+    member do
+      get :one_days_management
+    end
+  end
 
   resources :infos do
     collection do
@@ -25,5 +31,4 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'top#show'
 end

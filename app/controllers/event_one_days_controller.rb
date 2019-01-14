@@ -1,5 +1,6 @@
 class EventOneDaysController < ApplicationController
   before_action :set_event_one_day, only: [:show, :edit, :update, :destroy]
+  layout 'admin_sp_block'
 
   # GET /event_one_days
   # GET /event_one_days.json

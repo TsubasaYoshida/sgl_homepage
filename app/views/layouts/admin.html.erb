@@ -27,14 +27,24 @@
         札幌学生野球連盟 管理者用
       </h1>
 
-      <div class="navigate text-right padding-bottom10">
-        <%= link_to '管理トップ', '/admin/top' %>
-        <%= link_to '試合管理', '/game_infos/management' %>
-        <%= link_to '日程管理', event_infos_path %>
-        <%= link_to '新着情報管理', '/infos/management' %>
+      <div class="d-none d-sm-block">
+        <div class="navigate text-right padding-bottom10">
+          <%= link_to '管理トップ', '/admin/top' %>
+          <%= link_to '試合管理', '/game_infos/management' %>
+          <%= link_to '日程管理', event_infos_path %>
+          <%= link_to '新着情報管理', '/infos/management' %>
+        </div>
       </div>
 
-      <%= yield %>
+      <div class="d-sm-none d-block">
+        <div class="navigate text-right padding-bottom10">
+          <%= link_to '管理トップ', '/admin/top' %>
+          <%= link_to '試合管理', '/game_infos/management' %>
+          <%= link_to '新着情報管理', '/infos/management' %>
+        </div>
+      </div>
+
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
 
     <div class="col-12 col-12-footer margin-top30">

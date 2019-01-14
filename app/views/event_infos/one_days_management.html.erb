@@ -1,0 +1,33 @@
+<h2 class="float-left">大会日程編集</h2>
+
+<div class="padding-bottom10 padding-top10 float-right">
+  <%= link_to '新規作成', new_event_one_day_path, class: 'btn btn-default' %>
+</div>
+
+<table class="table table-bordered text-center">
+  <tr class="bg-green">
+    <th>試合日</th>
+    <th>球場</th>
+    <th>予備日</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @event_one_days.each do |event_one_day| %>
+    <tr>
+      <td style="vertical-align: middle;">
+        <%= event_one_day.disp_date %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= event_one_day.stadium %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= '予備日' if event_one_day.rain_date_flag %>
+      </td>
+      <td>
+        <%= link_to '編集', edit_event_one_day_path(event_one_day), class: 'btn btn-default' %>
+      </td>
+      <td>
+        <%= link_to '削除', event_one_day, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,47 @@
+<%= form_with(model: award_player, local: true) do |form| %>
+  <% if award_player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(award_player.errors.count, "error") %> prohibited this award_player from being saved:</h2>
+
+      <ul>
+      <% award_player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :award_info_id %>
+    <%= form.text_field :award_info_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :award %>
+    <%= form.text_field :award %>
+  </div>
+
+  <div class="field">
+    <%= form.label :player %>
+    <%= form.text_field :player %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team %>
+    <%= form.text_field :team %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.text_field :grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_field :remarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

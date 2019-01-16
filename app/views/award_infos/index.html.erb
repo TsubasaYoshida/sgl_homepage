@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Award Infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Season</th>
+      <th>Event</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @award_infos.each do |award_info| %>
+      <tr>
+        <td><%= award_info.year %></td>
+        <td><%= award_info.season %></td>
+        <td><%= award_info.event %></td>
+        <td><%= link_to 'Show', award_info %></td>
+        <td><%= link_to 'Edit', edit_award_info_path(award_info) %></td>
+        <td><%= link_to 'Destroy', award_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Award Info', new_award_info_path %>

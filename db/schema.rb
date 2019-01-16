@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_134953) do
+ActiveRecord::Schema.define(version: 2019_01_15_104004) do
+
+  create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "year"
+    t.string "season"
+    t.string "event"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "award_players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "award_info_id"
+    t.string "award"
+    t.string "player"
+    t.string "team"
+    t.string "grade"
+    t.string "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["award_info_id"], name: "index_award_players_on_award_info_id"
+  end
 
   create_table "event_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -126,6 +146,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_134953) do
     t.index ["league_id"], name: "index_teams_on_league_id"
   end
 
+  add_foreign_key "award_players", "award_infos"
   add_foreign_key "event_one_days", "event_infos"
   add_foreign_key "teams", "leagues"
 end

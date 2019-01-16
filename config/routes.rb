@@ -2,10 +2,24 @@ Rails.application.routes.draw do
   root to: 'top#show'
   get 'top/show'
   get 'admin/top'
+  get 'award/show'
+  get 'award/find'
   get 'nittei/show'
   get 'nittei/find'
   get 'standing/show'
   get 'standing/find'
+
+  resources :award_players do
+    member do
+      get :new_award_player
+    end
+  end
+
+  resources :award_infos do
+    member do
+      get :award_players_management
+    end
+  end
 
   resources :event_one_days do
     member do

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Award info:</strong>
+  <%= @award_player.award_info %>
+</p>
+
+<p>
+  <strong>Award:</strong>
+  <%= @award_player.award %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @award_player.player %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @award_player.team %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @award_player.grade %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @award_player.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_award_player_path(@award_player) %> |
+<%= link_to 'Back', award_players_path %>

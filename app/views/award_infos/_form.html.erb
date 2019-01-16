@@ -1,0 +1,56 @@
+<%= form_with(model: award_info, local: true) do |form| %>
+  <% if award_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(award_info.errors.count, "error") %> prohibited this award_info from being saved:</h2>
+
+      <ul>
+        <% award_info.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card" style="margin-bottom: 10px">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :year, '年度' %>
+            <%= form.select :year, Constants.get_year_list_from_2007,
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :season, '春季／秋季' %>
+            <%= form.select :season, ['春季', '秋季'],
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :event, '大会' %>
+            <%= form.select :event, ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', 'トーナメント'],
+                            {include_blank: '選択してください'}, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="award_players">
+    <% unless edit_flag %>
+      <%= form.fields_for :award_players do |award_player| %>
+        <%= render 'award_player_fields', f: award_player %>
+      <% end %>
+      <div id="links" class="padding-bottom10">
+        <%= link_to_add_association '選手追加', form, :award_players, class: 'btn btn-default' %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

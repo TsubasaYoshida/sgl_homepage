@@ -1,27 +1,15 @@
-<div class="nested-fields well well-compact">
-
-  <table class="table table-bordered table-sm text-center">
-    <tr>
-      <th>賞名</th>
-      <th>選手名</th>
-      <th>所属チーム</th>
-      <th>学年</th>
-      <th>特記事項</th>
-      <th></th>
-    </tr>
-    <tr>
-      <td><%= f.text_field :award, class: 'form-control' %></td>
-      <td><%= f.text_field :player, class: 'form-control' %></td>
-      <td>
-        <%= f.collection_select :team, Team.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>
-      </td>
-      <td>
-        <%= f.select :grade, ['4年', '3年', '2年', '1年'],
-                     {include_blank: '---'}, class: 'form-control' %>
-      </td>
-      <td><%= f.text_area :remarks, rows: "1", class: 'form-control' %></td>
-      <td><%= link_to_remove_association '削除', f, class: 'btn btn-default' %></td>
-    </tr>
-  </table>
-
-</div>
+<table class="table table-bordered table-sm text-center mb-0" width="100%">
+  <tr class="nested-fields well well-compact">
+    <td width="20%"><%= f.text_field :award, class: 'form-control' %></td>
+    <td width="20%"><%= f.text_field :player, class: 'form-control' %></td>
+    <td width="20%">
+      <%= f.collection_select :team, Team.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>
+    </td>
+    <td width="7%">
+      <%= f.select :grade, ['4年', '3年', '2年', '1年'],
+                   {include_blank: '---'}, class: 'form-control' %>
+    </td>
+    <td width="26%"><%= f.text_area :remarks, rows: "1", class: 'form-control' %></td>
+    <td width="7%"><%= link_to_remove_association '削除', f, class: 'btn btn-default' %></td>
+  </tr>
+</table>

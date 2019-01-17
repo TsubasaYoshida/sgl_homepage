@@ -1,5 +1,6 @@
 class AwardInfosController < ApplicationController
   before_action :set_award_info, only: [:show, :edit, :update, :destroy]
+  layout 'admin_sp_block'
 
   # GET /award_infos
   # GET /award_infos.json

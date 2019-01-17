@@ -40,17 +40,44 @@
   </div>
 
   <div id="award_players">
-    <% unless edit_flag %>
+
+    <table class="table table-bordered table-sm text-center mb-0" width="100%">
+      <thead>
+      <tr>
+        <th width="20%">賞名</th>
+        <th width="20%">選手名</th>
+        <th width="20%">所属チーム</th>
+        <th width="7%">学年</th>
+        <th width="26%">特記事項</th>
+        <th width="7%"></th>
+      </tr>
+      </thead>
+      <tbody id="award_players">
       <%= form.fields_for :award_players do |award_player| %>
         <%= render 'award_player_fields', f: award_player %>
       <% end %>
-      <div id="links" class="padding-bottom10">
-        <%= link_to_add_association '選手追加', form, :award_players, class: 'btn btn-default' %>
-      </div>
-    <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="py-2"></div>
+
+  <div class="text-center">
+    <div id="links" class="padding-bottom10">
+      <%= link_to_add_association '＋', form, :award_players,
+                                  data: {
+                                      association_insertion_node: '#award_players',
+                                      association_insertion_method: 'append'
+                                  },
+                                  class: 'btn btn-default' %>
+    </div>
+  </div>
+
+  <div class="float-right">
     <div class="form-group">
       <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
     </div>
   </div>
 
 <% end %>
+<%# unless edit_flag %><%# end %>

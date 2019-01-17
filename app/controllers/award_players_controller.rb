@@ -1,5 +1,6 @@
 class AwardPlayersController < ApplicationController
   before_action :set_award_player, only: [:show, :edit, :update, :destroy]
+  layout 'admin_sp_block'
 
   # GET /award_players
   # GET /award_players.json

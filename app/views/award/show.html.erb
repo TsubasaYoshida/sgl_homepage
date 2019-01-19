@@ -5,7 +5,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-3">
       <div class="form-group">
-        <%= select_tag :key_year, options_for_select(Constants.get_year_list_from_2007, @selected_year), class: 'form-control' %>
+        <%= select_tag :key_year, options_for_select(Constants.get_year_set_from_2007, @selected_year), class: 'form-control' %>
       </div>
     </div>
     <div class="col-sm-3">
@@ -31,33 +31,48 @@
 
   <div class="py-2"></div>
 
+  <h3 class="text-center font-weight-bold" style="font-size: 20px">
+    <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
+
   <div class="row">
 
     <div class="col-2"></div>
 
-    <div class="col-8">
-
-      <h3 class="text-center font-weight-bold" style="font-size: 20px">2018年度秋季1部リーグ戦 表彰選手</h3>
+    <div class="col-9">
 
       <div class="py-2"></div>
 
-      <table>
-        <tr>
-          <td width="60%">
-            <span class="font-weight-bold" style="font-size: 18px">最高殊勲選手賞</span>
-          </td>
-          <td width="40%">
-            <span class="font-weight-bold" style="font-size: 30px">渕上 佳輝</span>
-            <span style="font-size: 15px">（星槎道都大学3年）</span>
-            <br>
-            <div class="pl-3">防御率：1.59</div>
-          </td>
-        </tr>
-      </table>
+      <% if @error_msg %>
+
+        <div class="text-center"><%= @error_msg %></div>
+
+      <% else %>
+
+        <table>
+
+          <% @award_players.each do |award_player| %>
+
+            <tr>
+              <td width="50%">
+                <span class="font-weight-bold" style="font-size: 18px"><%= award_player.award %></span>
+              </td>
+              <td width="50%" class="py-3">
+                <span class="font-weight-bold" style="font-size: 30px"><%= award_player.player %></span>
+                <span style="font-size: 15px">（<%= award_player.team %><%= award_player.grade %>）</span>
+                <br>
+                <div class="pl-3"><%= award_player.remarks %></div>
+              </td>
+            </tr>
+
+          <% end %>
+
+        </table>
+
+      <% end %>
 
     </div>
 
-    <div class="col-2"></div>
+    <div class="col-1"></div>
 
   </div>
 
@@ -66,20 +81,37 @@
 <!--sp-->
 <div class="d-sm-none d-block">
 
-  <h3 class="font-weight-bold">2018年度秋季1部リーグ戦 表彰選手</h3>
+  <h3 class="font-weight-bold">
+    <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
 
-  <table>
-    <tr>
-      <td class="font-weight-bold pl-2">最高殊勲選手賞</td>
-    </tr>
-    <tr>
-      <td class="pl-4">
-        <span class="font-weight-bold" style="font-size: 25px">渕上 佳輝</span>
-        <span style="font-size: 15px">（星槎道都大学3年）</span>
-        <br>
-        <span class="pl-3">防御率：1.59</span>
-      </td>
-    </tr>
-  </table>
+  <% if @error_msg %>
+
+    <div class="text-center"><%= @error_msg %></div>
+
+  <% else %>
+
+    <table>
+
+      <% @award_players.each do |award_player| %>
+
+        <tr>
+          <td class="font-weight-bold pl-2 pt-2"><%= award_player.award %></td>
+        </tr>
+        <tr>
+          <td class="pl-3">
+            <span class="font-weight-bold" style="font-size: 20px"><%= award_player.player %></span>
+            <span style="font-size: 12px">（<%= award_player.team %><%= award_player.grade %>）</span>
+            <% unless award_player.remarks.blank? %>
+              <br>
+              <span class="pl-3"><%= award_player.remarks %></span>
+            <% end %>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+
+  <% end %>
 
 </div>

@@ -1,2 +1,85 @@
-<h1>Award#show</h1>
-<p>Find me in app/views/award/show.html.erb</p>
+<h2>表彰選手</h2>
+
+<%= form_tag({controller: :award, action: :find}, method: :get) do %>
+  <div class="row" style="padding-left: 5px; padding-right: 5px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_year, options_for_select(Constants.get_year_list_from_2007, @selected_year), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_event,
+                       options_for_select(['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', 'トーナメント'], @selected_event),
+                       class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <%= submit_tag '表示', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+
+<!--pc-->
+<div class="d-none d-sm-block">
+
+  <div class="py-2"></div>
+
+  <div class="row">
+
+    <div class="col-2"></div>
+
+    <div class="col-8">
+
+      <h3 class="text-center font-weight-bold" style="font-size: 20px">2018年度秋季1部リーグ戦 表彰選手</h3>
+
+      <div class="py-2"></div>
+
+      <table>
+        <tr>
+          <td width="60%">
+            <span class="font-weight-bold" style="font-size: 18px">最高殊勲選手賞</span>
+          </td>
+          <td width="40%">
+            <span class="font-weight-bold" style="font-size: 30px">渕上 佳輝</span>
+            <span style="font-size: 15px">（星槎道都大学3年）</span>
+            <br>
+            <div class="pl-3">防御率：1.59</div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="col-2"></div>
+
+  </div>
+
+</div>
+
+<!--sp-->
+<div class="d-sm-none d-block">
+
+  <h3 class="font-weight-bold">2018年度秋季1部リーグ戦 表彰選手</h3>
+
+  <table>
+    <tr>
+      <td class="font-weight-bold pl-2">最高殊勲選手賞</td>
+    </tr>
+    <tr>
+      <td class="pl-4">
+        <span class="font-weight-bold" style="font-size: 25px">渕上 佳輝</span>
+        <span style="font-size: 15px">（星槎道都大学3年）</span>
+        <br>
+        <span class="pl-3">防御率：1.59</span>
+      </td>
+    </tr>
+  </table>
+
+</div>

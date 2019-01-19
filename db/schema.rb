@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_104004) do
+ActiveRecord::Schema.define(version: 2019_01_19_103558) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_104004) do
     t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order"
     t.index ["award_info_id"], name: "index_award_players_on_award_info_id"
   end
 

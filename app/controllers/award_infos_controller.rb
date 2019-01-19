@@ -75,7 +75,7 @@ class AwardInfosController < ApplicationController
         :year, :season, :event,
         award_players_attributes: [
             :id, :award_info_id,
-            :award, :player, :team, :grade, :remarks,
+            :award, :player, :team, :grade, :remarks, :order,
             :_destroy]
     )
   end

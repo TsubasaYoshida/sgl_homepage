@@ -34,19 +34,23 @@
   <h3 class="text-center font-weight-bold" style="font-size: 20px">
     <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
 
-  <div class="row">
+  <div class="py-2"></div>
 
-    <div class="col-2"></div>
+  <% if @error_msg %>
 
-    <div class="col-9">
+    <div class="text-center"><%= @error_msg %></div>
 
-      <div class="py-2"></div>
+  <% else %>
 
-      <% if @error_msg %>
+    <h4 class="text-center font-weight-bold" style="font-size: 18px">各賞</h4>
 
-        <div class="text-center"><%= @error_msg %></div>
+    <div class="row">
 
-      <% else %>
+      <div class="col-2"></div>
+
+      <div class="col-9">
+
+        <div class="py-2"></div>
 
         <table>
 
@@ -68,27 +72,69 @@
 
         </table>
 
-      <% end %>
+      </div>
+
+      <div class="col-1"></div>
 
     </div>
 
-    <div class="col-1"></div>
+    <!--ベストナイン-->
+    <div class="py-4"></div>
 
-  </div>
+    <h4 class="text-center font-weight-bold" style="font-size: 18px">ベストナイン</h4>
+
+    <div class="row">
+
+      <div class="col-2"></div>
+
+      <div class="col-9">
+
+        <div class="py-2"></div>
+
+        <table>
+
+          <% @bestnine_players.each do |bestnine_player| %>
+
+            <tr>
+              <td width="50%">
+                <span class="font-weight-bold" style="font-size: 18px"><%= bestnine_player.get_position %></span>
+              </td>
+              <td width="50%" class="py-3">
+                <span class="font-weight-bold" style="font-size: 30px"><%= bestnine_player.player %></span>
+                <span style="font-size: 15px">（<%= bestnine_player.team %><%= bestnine_player.grade %>）</span>
+                <br>
+                <div class="pl-3"><%= bestnine_player.remarks %></div>
+              </td>
+            </tr>
+
+          <% end %>
+
+        </table>
+
+      </div>
+
+      <div class="col-1"></div>
+
+    </div>
+  <% end %>
 
 </div>
 
 <!--sp-->
 <div class="d-sm-none d-block">
 
-  <h3 class="font-weight-bold">
+  <h3 class="text-center font-weight-bold" style="font-size: 16px">
     <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
+
+  <div class="py-2"></div>
 
   <% if @error_msg %>
 
     <div class="text-center"><%= @error_msg %></div>
 
   <% else %>
+
+    <h4 class="text-center font-weight-bold" style="font-size: 14px">各賞</h4>
 
     <table>
 
@@ -104,6 +150,33 @@
             <% unless award_player.remarks.blank? %>
               <br>
               <span class="pl-3"><%= award_player.remarks %></span>
+            <% end %>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+
+    <!--ベストナイン-->
+    <div class="py-4"></div>
+
+    <h4 class="text-center font-weight-bold" style="font-size: 14px">ベストナイン</h4>
+
+    <table>
+
+      <% @bestnine_players.each do |bestnine_player| %>
+
+        <tr>
+          <td class="font-weight-bold pl-2 pt-2"><%= bestnine_player.get_position %></td>
+        </tr>
+        <tr>
+          <td class="pl-3">
+            <span class="font-weight-bold" style="font-size: 20px"><%= bestnine_player.player %></span>
+            <span style="font-size: 12px">（<%= bestnine_player.team %><%= bestnine_player.grade %>）</span>
+            <% unless bestnine_player.remarks.blank? %>
+              <br>
+              <span class="pl-3"><%= bestnine_player.remarks %></span>
             <% end %>
           </td>
         </tr>

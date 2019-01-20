@@ -12,7 +12,8 @@ class AwardController < ApplicationController
     else
       @award_info = AwardInfo.find_by(year: key_year, season: key_season, event: key_event)
       if @award_info
-        @award_players = @award_info.award_players.order(order: :asc)
+        @award_players = @award_info.award_players.where.not('award LIKE ?', "ベストナイン%").order(order: :asc)
+        @bestnine_players = @award_info.award_players.where('award LIKE ?', "ベストナイン%").order(order: :asc)
       else
         @error_msg = '該当の情報はございません。'
       end
@@ -26,7 +27,8 @@ class AwardController < ApplicationController
 
   private def first
     @award_info = AwardInfo.order(year: :desc, season: :desc, event: :asc).first
-    @award_players = @award_info.award_players.order(order: :asc)
+    @award_players = @award_info.award_players.where.not('award LIKE ?', "ベストナイン%").order(order: :asc)
+    @bestnine_players = @award_info.award_players.where('award LIKE ?', "ベストナイン%").order(order: :asc)
 
     @selected_year = @award_info.year
     @selected_season = @award_info.season

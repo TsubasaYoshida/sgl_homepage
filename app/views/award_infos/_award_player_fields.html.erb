@@ -1,7 +1,9 @@
 <table class="table table-bordered table-sm text-center mb-0" width="100%">
   <tr class="nested-fields well well-compact">
     <td width="7%"><%= f.text_field :order, class: 'form-control', placeholder: '例：1' %></td>
-    <td width="18%"><%= f.text_field :award, class: 'form-control' %></td>
+    <td width="18%">
+      <%= f.collection_select :award, Award.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>
+    </td>
     <td width="18%"><%= f.text_field :player, class: 'form-control' %></td>
     <td width="18%">
       <%= f.collection_select :team, Team.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>

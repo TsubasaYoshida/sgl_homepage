@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_20_053251) do
+ActiveRecord::Schema.define(version: 2019_01_22_112109) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_053251) do
     t.string "three_letter_name"
     t.string "two_letter_name"
     t.string "one_letter_name"
+    t.string "hp_team"
+    t.string "hp_college"
     t.index ["league_id"], name: "index_teams_on_league_id"
   end
 

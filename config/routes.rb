@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'top#show'
+  get 'team/show'
   get 'top/show'
   get 'admin/top'
   get 'award/show'
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'nittei/find'
   get 'standing/show'
   get 'standing/find'
+  root to: 'top#show'
 
   resources :award_players do
     member do

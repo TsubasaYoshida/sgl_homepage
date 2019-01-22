@@ -44,6 +44,7 @@
                 <%= link_to '順位表', '/standing/show', class: 'nav-link' %>
                 <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
                 <%= link_to '表彰選手', '/award/show', class: 'nav-link' %>
+                <%= link_to '加盟大学', '/team/show', class: 'nav-link' %>
               </nav>
             </div>
           </div>
@@ -82,9 +83,14 @@
                     <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
                   </li>
                 </div>
-                <div class="border-top border-bottom">
+                <div class="border-top">
                   <li class="nav-item">
                     <%= link_to '表彰選手', '/award/show', class: 'nav-link' %>
+                  </li>
+                </div>
+                <div class="border-top border-bottom">
+                  <li class="nav-item">
+                    <%= link_to '加盟大学', '/team/show', class: 'nav-link' %>
                   </li>
                 </div>
               </ul>

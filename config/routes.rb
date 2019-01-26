@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'recruit_umpire/show'
   get 'team/show'
   get 'top/show'
   get 'admin/top'

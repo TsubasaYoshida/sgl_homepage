@@ -127,10 +127,11 @@
             </small>
           </div>
           <div class="col-sm-3 banner">
-            <%= image_tag 'recruit-new-referee.png', alt: '審判員募集', class: 'img-fluid' %>
+            <%= link_to '/recruit_umpire/show' do %>
+              <%= image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid' %>
+            <% end %>
           </div>
           <div class="col-sm-3 banner">
-            ※バナー表示部分②
           </div>
         </div>
         <div class="text-center">

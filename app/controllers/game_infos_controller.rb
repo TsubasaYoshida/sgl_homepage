@@ -1,11 +1,32 @@
 class GameInfosController < ApplicationController
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
-  layout 'admin', :except => [:index, :show]
+  layout 'admin', :except => [:index, :show, :narrow]
 
   # GET /game_infos
   # GET /game_infos.json
   def index
     @game_infos = GameInfo.all.order(disp_date: :desc, gameset_flag: :asc, number: :desc)
+  end
+
+  def narrow
+    key_year = params[:key_year]
+    key_season = params[:key_season]
+    key_event = params[:key_event]
+    if key_year.nil? || key_season.nil? || key_event.nil?
+      @error_msg = '該当の情報はございません。'
+    else
+      @game_infos = GameInfo
+                        .where(season: key_season, event: key_event)
+                        .where('disp_date LIKE ?', "#{key_year}%")
+                        .order(disp_date: :desc, created_at: :desc)
+      if @game_infos.length == 0
+        @error_msg = '該当の情報はございません。'
+      end
+      @selected_year = key_year
+      @selected_season = key_season
+      @selected_event = key_event
+    end
+    render 'game_infos/index'
   end
 
   # GET /game_infos/1

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :game_infos do
     collection do
       get :management
+      get :narrow
     end
 
     member do

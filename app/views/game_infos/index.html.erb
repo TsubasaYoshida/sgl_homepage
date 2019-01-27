@@ -1,2 +1,37 @@
 <h2>試合速報</h2>
-<%= render 'index', game_infos: @game_infos %>
+
+<%= form_tag({controller: :game_infos, action: :narrow}, method: :get) do %>
+  <div class="row" style="padding-left: 5px; padding-right: 5px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_year, options_for_select(Constants.get_year_list, @selected_year), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= select_tag :key_event,
+                       options_for_select(['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'], @selected_event),
+                       class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <%= submit_tag '表示', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="py-3"></div>
+
+<% if @error_msg %>
+  <div class="text-center"><%= @error_msg %></div>
+<% else %>
+
+  <%= render 'index', game_infos: @game_infos %>
+
+<% end %>

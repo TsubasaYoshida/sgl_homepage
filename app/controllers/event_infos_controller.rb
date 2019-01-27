@@ -77,7 +77,7 @@ class EventInfosController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_info_params
     params.require(:event_info).permit(
-        :year, :season, :league,
+        :year, :season, :league, :oc_date, :oc_time,
         event_one_days_attributes: [
             :id, :event_info_id, :disp_date, :stadium,
             :round_1, :top_team_1, :bottom_team_1, :start_time_1, :message_1,

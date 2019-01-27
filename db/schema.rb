@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_112109) do
+ActiveRecord::Schema.define(version: 2019_01_27_040123) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_01_22_112109) do
     t.string "league"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "oc_date"
+    t.time "oc_time"
   end
 
   create_table "event_one_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

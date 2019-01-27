@@ -20,6 +20,8 @@ class NitteiController < ApplicationController
       @selected_year = key_year
       @selected_season = key_season
       @selected_event = key_event
+      @oc_date = event_info.oc_date
+      @oc_time = event_info.oc_time
       render 'nittei/show'
     end
   end
@@ -30,6 +32,8 @@ class NitteiController < ApplicationController
     @selected_year = event_info.year
     @selected_season = event_info.season
     @selected_event = event_info.league
+    @oc_date = event_info.oc_date
+    @oc_time = event_info.oc_time
 
     event_info = EventInfo.find_by(year: @selected_year, season: @selected_season, league: @selected_event)
 

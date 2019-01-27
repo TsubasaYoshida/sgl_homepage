@@ -38,6 +38,12 @@
       最終更新：<%= EventOneDay.order(updated_at: :desc).first.updated_at.strftime("%Y-%-m-%-d %H:%M") %>
     </div>
 
+    <% if @oc_date %>
+      <div class="py-2" style="margin-left: 5px;">
+        開会式：
+        <%= @oc_date.strftime("%-m月%-d日") %><%= "(#{Constants::JAPANESE_WDAY[@oc_date.wday]})" %><%= @oc_time.strftime(" %-H時%M分〜") %>
+      </div>
+    <% end %>
 
     <div class="row pt-2" style="padding-left: 5px; padding-right: 5px">
       <div class="col-sm-6">

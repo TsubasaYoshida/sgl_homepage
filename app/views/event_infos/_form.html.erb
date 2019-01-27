@@ -36,6 +36,22 @@
           </div>
         </div>
       </div>
+      <div class="py-2"></div>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :oc_date, '開会式日程' %>
+            <%= form.date_field :oc_date, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <%= form.label :oc_time, '開会式開始時刻' %>
+            <%= form.time_field :oc_time, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
     </div>
   </div>
 

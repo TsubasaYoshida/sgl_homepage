@@ -1,17 +1,19 @@
 <% nittei_infos.each do |nittei_info| %>
 
   <% if nittei_info.rain_date_flag %>
+    <!--予備日の場合-->
 
-    <table class="table" style="margin-bottom: 0">
+    <div class="row mb-1">
+      <div class="col-12 text-left mt-2">
+        <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
+        <%= nittei_info.stadium %>
+        <span class="badge badge-danger">予備日</span>
+      </div>
+    </div>
+
+    <table class="table table-striped">
       <tr>
-        <td style="padding-bottom :0">
-          <div class="row">
-            <div class="col-12 text-left" style="padding-bottom: 5px">
-              <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
-              <%= nittei_info.stadium %>
-              <span class="badge badge-danger">予備日</span>
-            </div>
-          </div>
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               ---
@@ -26,7 +28,7 @@
         </td>
       </tr>
       <tr>
-        <td style="border-top: none; padding-top :0; padding-bottom :0">
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               ---
@@ -41,7 +43,7 @@
         </td>
       </tr>
       <tr>
-        <td style="border-top: none; padding-top :0">
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               ---
@@ -58,16 +60,18 @@
     </table>
 
   <% else %>
+    <!--予備日でない場合-->
 
-    <table class="table" style="margin-bottom: 0">
+    <div class="row mb-1">
+      <div class="col-12 text-left mt-2">
+        <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
+        <%= nittei_info.stadium %>
+      </div>
+    </div>
+
+    <table class="table table-striped">
       <tr>
-        <td style="padding-bottom :0">
-          <div class="row">
-            <div class="col-12 text-left" style="padding-bottom: 5px">
-              <%= nittei_info.disp_date.strftime("%Y-%-m-%-d (%a) ") %>
-              <%= nittei_info.stadium %>
-            </div>
-          </div>
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               <%= Team.get_three_letter(nittei_info.top_team_1) %>
@@ -79,10 +83,13 @@
               <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
             </div>
           </div>
+          <div class="text-center">
+            <%= nittei_info.message_1 %>
+          </div>
         </td>
       </tr>
       <tr>
-        <td style="border-top: none; padding-top :0; padding-bottom :0">
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               <%= Team.get_three_letter(nittei_info.top_team_2) %>
@@ -94,10 +101,13 @@
               <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
             </div>
           </div>
+          <div class="text-center">
+            <%= nittei_info.message_2 %>
+          </div>
         </td>
       </tr>
       <tr>
-        <td style="border-top: none; padding-top :0">
+        <td class="py-0" style="border-top: none">
           <div class="row">
             <div class="col-4 text-right py-1">
               <%= Team.get_three_letter(nittei_info.top_team_3) %>
@@ -108,6 +118,9 @@
             <div class="col-4 text-left py-1">
               <%= Team.get_three_letter(nittei_info.bottom_team_3) %>
             </div>
+          </div>
+          <div class="text-center">
+            <%= nittei_info.message_3 %>
           </div>
         </td>
       </tr>

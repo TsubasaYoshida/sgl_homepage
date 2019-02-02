@@ -13,9 +13,10 @@ class AwardPlayersController < ApplicationController
   def show
   end
 
-  # GET /award_players/new
-  def new
+  # GET /award_players/new_award_player
+  def new_award_player
     @award_player = AwardPlayer.new
+    @award_info_id = params[:id]
   end
 
   # GET /award_players/1/edit
@@ -32,7 +33,7 @@ class AwardPlayersController < ApplicationController
         format.html {redirect_to @award_player, notice: 'Award player was successfully created.'}
         format.json {render :show, status: :created, location: @award_player}
       else
-        format.html {render :new}
+        format.html {render :new_award_player}
         format.json {render json: @award_player.errors, status: :unprocessable_entity}
       end
     end

@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
+<h2 class="float-left">表彰選手管理</h2>
 
-<h1>Award Infos</h1>
+<div class="padding-bottom10 padding-top10 float-right">
+  <%= link_to '新規作成', new_award_info_path, class: 'btn btn-default' %>
+</div>
 
-<table>
-  <thead>
+<table class="table table-bordered text-center">
+  <tr class="bg-green">
+    <th>年度</th>
+    <th>春季／秋季</th>
+    <th>大会名</th>
+    <th>最終更新日</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @award_infos.each do |award_info| %>
     <tr>
-      <th>Year</th>
-      <th>Season</th>
-      <th>Event</th>
-      <th colspan="3"></th>
+      <td style="vertical-align: middle;">
+        <%= award_info.year %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_info.season %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_info.event %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= l award_info.updated_at %>
+      </td>
+      <td>
+        <%= link_to '大会情報編集', edit_award_info_path(award_info), class: 'btn btn-default' %>
+      </td>
+      <td>
+        <%= link_to '選手情報編集', award_players_management_award_info_path(award_info), class: 'btn btn-default' %>
+      </td>
+      <td>
+        <%= link_to '大会ごと削除', award_info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @award_infos.each do |award_info| %>
-      <tr>
-        <td><%= award_info.year %></td>
-        <td><%= award_info.season %></td>
-        <td><%= award_info.event %></td>
-        <td><%= link_to 'Show', award_info %></td>
-        <td><%= link_to 'Edit', edit_award_info_path(award_info) %></td>
-        <td><%= link_to 'Destroy', award_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
-
-<br>
-
-<%= link_to 'New Award Info', new_award_info_path %>

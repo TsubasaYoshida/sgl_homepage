@@ -1,0 +1,45 @@
+<h2 class="float-left">選手情報編集</h2>
+
+<div class="padding-bottom10 padding-top10 float-right">
+  <%= link_to '選手追加', new_award_player_award_player_path(@award_info.id), class: 'btn btn-default' %>
+</div>
+
+<table class="table table-bordered text-center">
+  <tr class="bg-green">
+    <th>賞名</th>
+    <th>選手名</th>
+    <th>所属チーム</th>
+    <th>学年</th>
+    <th>特記事項</th>
+    <th>表示順</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @award_players.each do |award_player| %>
+    <tr>
+      <td style="vertical-align: middle;">
+        <%= award_player.award %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_player.player %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_player.team %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_player.grade %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_player.remarks %>
+      </td>
+      <td style="vertical-align: middle;">
+        <%= award_player.order %>
+      </td>
+      <td>
+        <%= link_to '編集', edit_award_player_path(award_player), class: 'btn btn-default' %>
+      </td>
+      <td>
+        <%= link_to '削除', award_player, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+      </td>
+    </tr>
+  <% end %>
+</table>

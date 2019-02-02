@@ -1,5 +1,5 @@
 class AwardInfosController < ApplicationController
-  before_action :set_award_info, only: [:show, :edit, :update, :destroy]
+  before_action :set_award_info, only: [:show, :edit, :award_players_management, :update, :destroy]
   layout 'admin_sp_block'
 
   # GET /award_infos
@@ -20,6 +20,11 @@ class AwardInfosController < ApplicationController
 
   # GET /award_infos/1/edit
   def edit
+  end
+
+  # GET /award_infos/1/award_players_management
+  def award_players_management
+    @award_players = AwardPlayer.where(award_info_id: @award_info).order(order: :asc)
   end
 
   # POST /award_infos

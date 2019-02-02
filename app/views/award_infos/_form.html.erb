@@ -39,40 +39,42 @@
     </div>
   </div>
 
-  <div id="award_players">
+  <% unless edit_flag %>
+    <div id="award_players">
 
-    <table class="table table-bordered table-sm text-center mb-0" width="100%">
-      <thead>
-      <tr>
-        <th width="7%">表示順</th>
-        <th width="18%">賞名</th>
-        <th width="18%">選手名</th>
-        <th width="18%">所属チーム</th>
-        <th width="7%">学年</th>
-        <th width="25%">特記事項</th>
-        <th width="7%"></th>
-      </tr>
-      </thead>
-      <tbody id="award_players">
-      <%= form.fields_for :award_players do |award_player| %>
-        <%= render 'award_player_fields', f: award_player %>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="py-2"></div>
-
-  <div class="text-center">
-    <div id="links" class="padding-bottom10">
-      <%= link_to_add_association '＋', form, :award_players,
-                                  data: {
-                                      association_insertion_node: '#award_players',
-                                      association_insertion_method: 'append'
-                                  },
-                                  class: 'btn btn-default' %>
+      <table class="table table-bordered table-sm text-center mb-0" width="100%">
+        <thead>
+        <tr>
+          <th width="7%">表示順</th>
+          <th width="18%">賞名</th>
+          <th width="18%">選手名</th>
+          <th width="18%">所属チーム</th>
+          <th width="7%">学年</th>
+          <th width="25%">特記事項</th>
+          <th width="7%"></th>
+        </tr>
+        </thead>
+        <tbody id="award_players">
+        <%= form.fields_for :award_players do |award_player| %>
+          <%= render 'award_player_fields', f: award_player %>
+        <% end %>
+        </tbody>
+      </table>
     </div>
-  </div>
+
+    <div class="py-2"></div>
+
+    <div class="text-center">
+      <div id="links" class="padding-bottom10">
+        <%= link_to_add_association '＋', form, :award_players,
+                                    data: {
+                                        association_insertion_node: '#award_players',
+                                        association_insertion_method: 'append'
+                                    },
+                                    class: 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="float-right">
     <div class="form-group">
@@ -81,4 +83,3 @@
   </div>
 
 <% end %>
-<%# unless edit_flag %><%# end %>

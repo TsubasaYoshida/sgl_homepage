@@ -1,47 +1,53 @@
-<%= form_with(model: award_player, local: true) do |form| %>
+<%= form_with(model: award_player, local: true) do |f| %>
   <% if award_player.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(award_player.errors.count, "error") %> prohibited this award_player from being saved:</h2>
 
       <ul>
-      <% award_player.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% award_player.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :award_info_id %>
-    <%= form.text_field :award_info_id %>
+  <div class="form-group">
+    <%= f.label :order, '表示順' %>
+    <%= f.text_field :order, class: 'form-control', placeholder: '例：1' %>
   </div>
 
-  <div class="field">
-    <%= form.label :award %>
-    <%= form.text_field :award %>
+  <div class="form-group">
+    <%= f.label :award, '賞名' %>
+    <%= f.collection_select :award, Award.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :player %>
-    <%= form.text_field :player %>
+  <div class="form-group">
+    <%= f.label :player, '選手名' %>
+    <%= f.text_field :player, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :team %>
-    <%= form.text_field :team %>
+  <div class="form-group">
+    <%= f.label :team, '所属チーム' %>
+    <%= f.collection_select :team, Team.all, :name, :name, {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :grade %>
-    <%= form.text_field :grade %>
+  <div class="form-group">
+    <%= f.label :grade, '学年' %>
+    <%= f.select :grade, ['4年', '3年', '2年', '1年'],
+                 {include_blank: '---'}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_field :remarks %>
+  <div class="form-group">
+    <%= f.label :remarks, '特記事項' %>
+    <%= f.text_area :remarks, rows: "1", class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= f.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
+
+  <% if new_flag %>
+    <%= f.hidden_field :award_info_id, :value => award_info_id %>
+  <% end %>
+
 <% end %>

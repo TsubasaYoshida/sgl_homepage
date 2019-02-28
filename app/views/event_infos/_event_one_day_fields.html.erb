@@ -56,7 +56,7 @@
             <%= f.grouped_collection_select(:bottom_team_1, League.all, :teams, :name, :name, :name,
                                             {include_blank: '選択してください'}, class: 'form-control') %>
           </td>
-          <td><%= f.time_field :start_time_1, class: 'form-control' %></td>
+          <td><%= f.time_field :start_time_1, class: 'form-control', onchange: 'auto_setting_start_time(this)' %></td>
           <td><%= f.text_field :message_1, class: 'form-control' %></td>
         </tr>
         <tr>

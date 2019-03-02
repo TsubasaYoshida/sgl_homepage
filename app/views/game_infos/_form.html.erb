@@ -25,7 +25,7 @@
 
   <div class="form-group">
     <%= form.label :round, 'ラウンド' %>
-    <%= form.select :round, [['リーグ戦', ['第一節', '第二節']],
+    <%= form.select :round, [['リーグ戦', ['第一節', '第二節', '順位決定戦']],
                              ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
                              ['入替戦', ['第一戦', '第二戦', '第三戦']]],
                     {include_blank: '選択してください'}, class: 'form-control' %>

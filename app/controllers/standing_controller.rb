@@ -31,9 +31,11 @@ class StandingController < ApplicationController
       game_infos = GameInfo.where(event: event, season: @selected_season, gameset_flag: true).where('disp_date LIKE ?', "#{@selected_year}%")
       win_lose_draw_list = []
 
-      # 当時のチーム名一覧を取得（入替で所属リーグが変動するためteamsテーブルからすぐ取れない）
+      # 当時のチーム名一覧を取得（入替で所属リーグが変動するためteamsテーブルからは取得できない）
       teams = []
       team_list = EventInfo.get_team_list(@selected_year, @selected_season, event)
+
+      # チーム情報を取得
       team_list.each do |team|
         teams << Team.find_by(name: team)
       end
@@ -50,32 +52,59 @@ class StandingController < ApplicationController
         team_name = win_lose_draw.team_name
         game_infos.each do |game_info|
           if team_name == game_info.batting_first_team || team_name == game_info.field_first_team
-            result = GameInfo.win_or_lose(game_info, team_name)
 
-            if result == :win
-              win_lose_draw.win += 1
-            elsif result == :lose
-              win_lose_draw.lose += 1
-            elsif result == :draw
-              win_lose_draw.draw += 1
+            if game_info.round != '順位決定戦'
+              result = GameInfo.win_or_lose(game_info, team_name)
+
+              if result == :win
+                win_lose_draw.disp_win += 1
+              elsif result == :lose
+                win_lose_draw.disp_lose += 1
+              elsif result == :draw
+                win_lose_draw.disp_draw += 1
+              end
+
+            else
+              # 順位決定戦だけで勝敗判定メソッド呼び出し
+              result_playoff = GameInfo.win_or_lose(game_info, team_name)
+
+              if result_playoff == :win
+                win_lose_draw.playoff_win += 1
+              elsif result_playoff == :lose
+                win_lose_draw.playoff_lose += 1
+              elsif result_playoff == :draw
+                win_lose_draw.playoff_draw += 1
+              end
+
             end
 
           end
         end
-        win_lose_draw.point = win_lose_draw.win - win_lose_draw.lose
+
+        # 順位決定用のポイント計算
+        win_lose_draw.point = win_lose_draw.disp_win - win_lose_draw.disp_lose
+        win_lose_draw.playoff_point = win_lose_draw.playoff_win - win_lose_draw.playoff_lose
       end
-      rank_infos = win_lose_draw_list.sort {|a, b| b.point <=> a.point}
+
+      # 順位決定ロジック
+      rank_infos = win_lose_draw_list.sort_by do |a|
+        [-a.point, -a.playoff_point]
+      end
       base_point = rank_infos.first.point
+      base_playoff_point = rank_infos.first.playoff_point
       base_rank = 1
       rank_infos.each do |rank_info|
-        if base_point == rank_info.point
+        if base_point == rank_info.point && base_playoff_point == rank_info.playoff_point
           rank_info.rank = base_rank
         else
           rank_info.rank = rank_infos.find_index(rank_info) + 1
           base_rank = rank_info.rank
           base_point = rank_info.point
+          base_playoff_point = rank_info.playoff_point
         end
       end
+
+      # ◯×△（ハイフンと空文字も）の生成
       result_array = []
       rank_infos.each do |rank_info1|
         rank_infos.each do |rank_info2|
@@ -89,10 +118,12 @@ class StandingController < ApplicationController
         end
       end
 
+      # 最終更新日時取得
       first_game_info = game_infos.order(updated_at: :desc).first
       unless first_game_info.nil?
         updated_at = first_game_info.updated_at
       end
+
       result_info = [rank_infos, result_array, updated_at]
       @result_infos << result_info
     end

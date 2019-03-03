@@ -41,11 +41,11 @@
           <div class="col-6">
             <div class="row mt-5 justify-content-end">
               <nav class="nav">
-                <%= link_to '試合速報', game_infos_path, class: 'nav-link' %>
-                <%= link_to '順位表', '/standing/show', class: 'nav-link' %>
-                <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
-                <%= link_to '表彰選手', '/award/show', class: 'nav-link' %>
-                <%= link_to '加盟大学', '/team/show', class: 'nav-link' %>
+                <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right border-left' %>
+                <%= link_to '順位表', '/standing/show', class: 'nav-link border-right' %>
+                <%= link_to '大会日程', '/nittei/show', class: 'nav-link border-right' %>
+                <%= link_to '表彰選手', '/award/show', class: 'nav-link border-right' %>
+                <%= link_to '加盟大学・関連組織', '/team/show', class: 'nav-link border-right' %>
               </nav>
             </div>
           </div>
@@ -71,7 +71,7 @@
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <div class="border-top">
                   <li class="nav-item">
-                    <%= link_to '試合速報', game_infos_path, class: 'nav-link' %>
+                    <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link' %>
                   </li>
                 </div>
                 <div class="border-top">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="border-top border-bottom">
                   <li class="nav-item">
-                    <%= link_to '加盟大学', '/team/show', class: 'nav-link' %>
+                    <%= link_to '加盟大学・関連組織', '/team/show', class: 'nav-link' %>
                   </li>
                 </div>
               </ul>

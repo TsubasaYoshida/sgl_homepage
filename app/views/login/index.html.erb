@@ -31,7 +31,13 @@
 
     <div class="py-2"></div>
 
-    <p style="color: Red"><%= @error %></p>
+    <% if @error %>
+      <p style="color: Red"><%= @error %></p>
+    <% end %>
+
+    <% if notice %>
+      <p style="color: Red"><%= notice %></p>
+    <% end %>
 
     <div class="row">
       <div class="col-sm-4"></div>
@@ -40,20 +46,20 @@
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
 
-              <%= form_tag action: :auth do %>
-                <div class="form-group">
-                  <%= text_field_tag :username, '', size: 20, class: 'form-control', placeholder: 'ユーザー名' %>
-                </div>
-                <div class="form-group">
-                  <%= password_field_tag :password, '', size: 20, class: 'form-control', placeholder: 'パスワード' %>
-                </div>
+            <%= form_tag action: :auth do %>
+              <div class="form-group">
+                <%= text_field_tag :username, '', size: 20, class: 'form-control', placeholder: 'ユーザー名' %>
+              </div>
+              <div class="form-group">
+                <%= password_field_tag :password, '', size: 20, class: 'form-control', placeholder: 'パスワード' %>
+              </div>
 
-                <%= hidden_field_tag :referer, flash[:referer] %>
+              <%= hidden_field_tag :referer, flash[:referer] %>
 
-                <div class="py-2"></div>
+              <div class="py-2"></div>
 
-                <%= submit_tag 'ログイン', class: 'btn btn-default btn-block' %>
-              <% end %>
+              <%= submit_tag 'ログイン', class: 'btn btn-default btn-block' %>
+            <% end %>
 
           </div>
           <div class="col-sm-2"></div>

@@ -43,7 +43,8 @@
                 <%= link_to '試合情報', '/game_infos/management', class: 'nav-link border-right border-left' %>
                 <%= link_to '新着情報', '/infos/management', class: 'nav-link border-right' %>
                 <%= link_to '日程情報', event_infos_path, class: 'nav-link border-right' %>
-                <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right' %>
+                <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right mr-4' %>
+                <%= link_to 'ログアウト', '/logout', method: :post, class: 'nav-link btn btn-default mr-2' %>
               </nav>
             </div>
           </div>
@@ -88,8 +89,13 @@
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
 
-    <div class="col-12 col-12-footer margin-top30">
+    <div class="col-12 col-12-footer margin-top30 border-5px mb-5">
       <footer>
+        <div class="d-sm-none d-block">
+          <div class="py-3"></div>
+          <%= link_to 'ログアウト', '/logout', method: :post, class: 'btn btn-default btn-block' %>
+        </div>
+        <div class="py-3"></div>
         <div class="text-center">
           <p style="margin-bottom: 0">&#169; 2012-2019 Sapporo Gakusei League</p>
         </div>

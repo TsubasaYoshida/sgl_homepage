@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'standing/find'
   get 'login/index'
   post 'login/auth'
+  post 'logout' => 'login#logout'
 
   # ログイン失敗時にリロードされた場合の対策
   get 'login/auth' => 'login#index'

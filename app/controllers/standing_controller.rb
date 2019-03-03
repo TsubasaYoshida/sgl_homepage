@@ -124,7 +124,9 @@ class StandingController < ApplicationController
         updated_at = first_game_info.updated_at
       end
 
-      result_info = [rank_infos, result_array, updated_at]
+      playoff_results = game_infos.where(round: '順位決定戦')
+
+      result_info = [rank_infos, result_array, updated_at, playoff_results]
       @result_infos << result_info
     end
 

@@ -2,6 +2,8 @@ class Constants
 
   JAPANESE_WDAY = %w(日 月 火 水 木 土)
 
+  SPACE_HYPHEN_SPACE = ' - '
+
   def self.get_year_list
     year_list = [
         ['2018年度', 2018]

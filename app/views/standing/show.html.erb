@@ -25,7 +25,9 @@
   <% rank_infos = result_info[0] %>
   <% result_array = result_info[1] %>
   <% updated_at = result_info[2] %>
+  <% playoff_results = result_info[3] %>
 
+  <!--  pc  -->
   <div class="d-none d-sm-block">
     <table class="table table-bordered text-center">
       <tr>
@@ -55,6 +57,39 @@
       <% end %>
     </table>
 
+    <% if playoff_results.size != 0 %>
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+          <h4 style="font-size: 14px">順位決定戦</h4>
+          <table class="table mb-0 border-bottom">
+            <% playoff_results.each do |playoff_result| %>
+              <tr>
+                <td>
+                  <%= link_to playoff_result do %>
+                    <div class="row">
+                      <div class="col-5 text-right px-2">
+                        <%= playoff_result.batting_first_team %>
+                      </div>
+                      <div class="col-2 text-center px-2">
+                        <%= sum_top = playoff_result.get_sum_top %>
+                        <%= Constants::SPACE_HYPHEN_SPACE %>
+                        <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                      </div>
+                      <div class="col-5 text-left px-2">
+                        <%= playoff_result.field_first_team %>
+                      </div>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      <div class="py-2"></div>
+    <% end %>
+
     <% unless updated_at.nil? %>
       <div class="text-right font-size-12 pt-1 pr-2">
         最終更新：<%= updated_at.strftime("%Y-%-m-%-d %H:%M") %>
@@ -65,8 +100,9 @@
 
   </div>
 
+  <!--  sp  -->
   <div class="d-block d-sm-none">
-    <p>
+    <p style="font-size: 15px">
       <%= @selected_year %>年度<%= @selected_season %><%= league_number + 1 %>部リーグ戦
     </p>
     <table class="table table-bordered text-center standing-sp">
@@ -94,6 +130,34 @@
         </tr>
       <% end %>
     </table>
+
+    <% if playoff_results.size != 0 %>
+      <h4 style="font-size: 14px">順位決定戦</h4>
+      <table class="table mb-0 border-bottom">
+        <% playoff_results.each do |playoff_result| %>
+          <tr>
+            <td>
+              <%= link_to playoff_result do %>
+                <div class="row">
+                  <div class="col-5 text-right px-2">
+                    <%= playoff_result.batting_first_team %>
+                  </div>
+                  <div class="col-2 text-center px-2">
+                    <%= sum_top = playoff_result.get_sum_top %>
+                    <%= Constants::SPACE_HYPHEN_SPACE %>
+                    <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                  </div>
+                  <div class="col-5 text-left px-2">
+                    <%= playoff_result.field_first_team %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="py-2"></div>
+    <% end %>
 
     <% unless updated_at.nil? %>
       <div class="text-right font-size-12 pt-1 pr-2">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_052110) do
+ActiveRecord::Schema.define(version: 2019_03_03_074733) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -162,6 +162,13 @@ ActiveRecord::Schema.define(version: 2019_03_03_052110) do
     t.string "hp_team"
     t.string "hp_college"
     t.index ["league_id"], name: "index_teams_on_league_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "award_players", "award_infos"

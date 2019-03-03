@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get 'nittei/find'
   get 'standing/show'
   get 'standing/find'
+  get 'login/index'
+  post 'login/auth'
+
+  # ログイン失敗時にリロードされた場合の対策
+  get 'login/auth' => 'login#index'
+
   root to: 'top#show'
 
   resources :award_players do

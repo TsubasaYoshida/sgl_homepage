@@ -1,4 +1,5 @@
 class InfosController < ApplicationController
+  skip_before_action :check_logined, only: [:index]
   before_action :set_info, only: [:show, :edit, :update, :destroy]
   layout 'admin', :except => [:index, :show]
 

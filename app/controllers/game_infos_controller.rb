@@ -1,4 +1,5 @@
 class GameInfosController < ApplicationController
+  skip_before_action :check_logined, only: [:index, :show, :narrow, :set_game_info]
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
   layout 'admin', :except => [:index, :show, :narrow]
 

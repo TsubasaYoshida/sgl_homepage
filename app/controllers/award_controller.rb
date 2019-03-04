@@ -1,4 +1,6 @@
 class AwardController < ApplicationController
+  skip_before_action :check_logined
+
   def show
     first
   end

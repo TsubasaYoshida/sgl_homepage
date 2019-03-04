@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'nittei/find'
   get 'standing/show'
   get 'standing/find'
-  get 'login/index'
+  get 'login' => 'login#index'
   post 'login/auth'
   post 'logout' => 'login#logout'
 

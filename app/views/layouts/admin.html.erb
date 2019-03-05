@@ -40,10 +40,11 @@
           <div class="col-6">
             <div class="row mt-5 justify-content-end">
               <nav class="nav">
-                <%= link_to '試合情報', '/game_infos/management', class: 'nav-link border-right border-left' %>
+                <%= link_to '一般トップ', '/', class: 'nav-link border-right border-left' %>
+                <%= link_to '試合情報', '/game_infos/management', class: 'nav-link border-right' %>
                 <%= link_to '新着情報', '/infos/management', class: 'nav-link border-right' %>
                 <%= link_to '日程情報', event_infos_path, class: 'nav-link border-right' %>
-                <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right mr-4' %>
+                <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right mr-3' %>
                 <%= link_to 'ログアウト', '/logout', method: :post, class: 'nav-link btn btn-default mr-2' %>
               </nav>
             </div>
@@ -71,9 +72,14 @@
                     <%= link_to '試合情報', '/game_infos/management', class: 'nav-link' %>
                   </li>
                 </div>
-                <div class="border-top border-bottom">
+                <div class="border-top">
                   <li class="nav-item">
                     <%= link_to '新着情報', '/infos/management', class: 'nav-link' %>
+                  </li>
+                </div>
+                <div class="border-top border-bottom">
+                  <li class="nav-item">
+                    <%= link_to '一般トップ', '/', class: 'nav-link' %>
                   </li>
                 </div>
               </ul>

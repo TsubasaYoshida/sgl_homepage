@@ -22,6 +22,6 @@ class LoginController < ApplicationController
 
   def logout
     reset_session
-    redirect_to '/login/index', notice: 'ログアウトしました。'
+    redirect_to '/login', notice: 'ログアウトしました。'
   end
 end

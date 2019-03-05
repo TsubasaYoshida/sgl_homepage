@@ -60,7 +60,7 @@ class GameInfosController < ApplicationController
 
     respond_to do |format|
       if @game_info.save
-        format.html {redirect_to @game_info, notice: '試合情報の作成に成功しました。'}
+        format.html {redirect_to '/game_infos/management', notice: '試合情報の作成に成功しました。'}
         format.json {render :show, status: :created, location: @game_info}
       else
         format.html {render :new}
@@ -74,7 +74,7 @@ class GameInfosController < ApplicationController
   def update
     respond_to do |format|
       if @game_info.update(game_info_params)
-        format.html {redirect_to @game_info, notice: '試合情報の更新に成功しました。'}
+        format.html {redirect_to '/game_infos/management', notice: '試合情報の更新に成功しました。'}
         format.json {render :show, status: :ok, location: @game_info}
       else
         format.html {render :edit}
@@ -88,7 +88,7 @@ class GameInfosController < ApplicationController
   def destroy
     @game_info.destroy
     respond_to do |format|
-      format.html {redirect_to game_infos_url, notice: '試合情報の削除に成功しました。'}
+      format.html {redirect_to '/game_infos/management', notice: '試合情報の削除に成功しました。'}
       format.json {head :no_content}
     end
   end

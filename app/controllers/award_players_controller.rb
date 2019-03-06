@@ -30,7 +30,7 @@ class AwardPlayersController < ApplicationController
 
     respond_to do |format|
       if @award_player.save
-        format.html {redirect_to @award_player, notice: 'Award player was successfully created.'}
+        format.html {redirect_to "/award_infos/#{@award_player.award_info_id}/award_players_management", notice: '表彰選手情報の追加に成功しました。'}
         format.json {render :show, status: :created, location: @award_player}
       else
         format.html {render :new_award_player}
@@ -44,7 +44,7 @@ class AwardPlayersController < ApplicationController
   def update
     respond_to do |format|
       if @award_player.update(award_player_params)
-        format.html {redirect_to @award_player, notice: 'Award player was successfully updated.'}
+        format.html {redirect_to "/award_infos/#{@award_player.award_info_id}/award_players_management", notice: '表彰選手情報の更新に成功しました。'}
         format.json {render :show, status: :ok, location: @award_player}
       else
         format.html {render :edit}
@@ -58,7 +58,7 @@ class AwardPlayersController < ApplicationController
   def destroy
     @award_player.destroy
     respond_to do |format|
-      format.html {redirect_to award_players_url, notice: 'Award player was successfully destroyed.'}
+      format.html {redirect_to "/award_infos/#{@award_player.award_info_id}/award_players_management", notice: '表彰選手情報の削除に成功しました。'}
       format.json {head :no_content}
     end
   end

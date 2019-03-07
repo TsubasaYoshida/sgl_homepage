@@ -10,11 +10,8 @@ Rails.application.routes.draw do
   get 'standing/show'
   get 'standing/find'
   get 'login' => 'login#index'
-  post 'login/auth'
+  post 'login' => 'login#auth'
   post 'logout' => 'login#logout'
-
-  # ログイン失敗時にリロードされた場合の対策
-  get 'login/auth' => 'login#index'
 
   root to: 'top#show'
 

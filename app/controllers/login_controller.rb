@@ -12,9 +12,8 @@ class LoginController < ApplicationController
 
       reset_session
       session[:usr] = usr.id
-      redirect_to params[:referer]
+      redirect_to '/admin/top'
     else
-      flash.now[:referer] = params[:referer]
       @error = '入力値が間違っています。'
       render 'index'
     end

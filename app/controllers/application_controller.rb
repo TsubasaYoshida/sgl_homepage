@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
       end
     end
     unless @usr
-      flash[:referer] = request.fullpath
       redirect_to controller: :login, action: :index
     end
   end

@@ -34,7 +34,7 @@ class EventInfosController < ApplicationController
 
     respond_to do |format|
       if @event_info.save
-        format.html {redirect_to @event_info, notice: 'Event info was successfully created.'}
+        format.html {redirect_to event_infos_url, notice: '大会情報の作成に成功しました。'}
         format.json {render :show, status: :created, location: @event_info}
       else
         format.html {render :new}
@@ -48,7 +48,7 @@ class EventInfosController < ApplicationController
   def update
     respond_to do |format|
       if @event_info.update(event_info_params)
-        format.html {redirect_to @event_info, notice: 'Event info was successfully updated.'}
+        format.html {redirect_to event_infos_url, notice: '大会情報の更新に成功しました。'}
         format.json {render :show, status: :ok, location: @event_info}
       else
         format.html {render :edit}
@@ -62,7 +62,7 @@ class EventInfosController < ApplicationController
   def destroy
     @event_info.destroy
     respond_to do |format|
-      format.html {redirect_to event_infos_url, notice: 'Event info was successfully destroyed.'}
+      format.html {redirect_to event_infos_url, notice: '大会情報の削除に成功しました。'}
       format.json {head :no_content}
     end
   end

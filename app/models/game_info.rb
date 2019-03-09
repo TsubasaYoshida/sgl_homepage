@@ -68,7 +68,7 @@ class GameInfo < ApplicationRecord
 
   def get_team_initial(team)
     team_initial = ''
-    if team == '東海大学北海道C'
+    if team == '東海大学北海道キャンパス'
       team_initial = '東'
     elsif team == '星槎道都大学'
       team_initial = '道'

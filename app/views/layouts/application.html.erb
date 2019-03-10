@@ -42,10 +42,10 @@
             <div class="row mt-5 justify-content-end">
               <nav class="nav">
                 <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right border-left' %>
-                <%= link_to '順位表', '/standing/show', class: 'nav-link border-right' %>
-                <%= link_to '大会日程', '/nittei/show', class: 'nav-link border-right' %>
-                <%= link_to '表彰選手', '/award/show', class: 'nav-link border-right' %>
-                <%= link_to '加盟大学・関連組織', '/team/show', class: 'nav-link border-right' %>
+                <%= link_to '順位表', '/standing', class: 'nav-link border-right' %>
+                <%= link_to '大会日程', '/nittei', class: 'nav-link border-right' %>
+                <%= link_to '表彰選手', '/award', class: 'nav-link border-right' %>
+                <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
               </nav>
             </div>
           </div>
@@ -76,22 +76,22 @@
                 </div>
                 <div class="border-top">
                   <li class="nav-item">
-                    <%= link_to '順位表', '/standing/show', class: 'nav-link' %>
+                    <%= link_to '順位表', '/standing', class: 'nav-link' %>
                   </li>
                 </div>
                 <div class="border-top">
                   <li class="nav-item">
-                    <%= link_to '大会日程', '/nittei/show', class: 'nav-link' %>
+                    <%= link_to '大会日程', '/nittei', class: 'nav-link' %>
                   </li>
                 </div>
                 <div class="border-top">
                   <li class="nav-item">
-                    <%= link_to '表彰選手', '/award/show', class: 'nav-link' %>
+                    <%= link_to '表彰選手', '/award', class: 'nav-link' %>
                   </li>
                 </div>
                 <div class="border-top border-bottom">
                   <li class="nav-item">
-                    <%= link_to '加盟大学・関連組織', '/team/show', class: 'nav-link' %>
+                    <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link' %>
                   </li>
                 </div>
               </ul>
@@ -128,7 +128,7 @@
             </small>
           </div>
           <div class="col-sm-3 banner">
-            <%= link_to '/recruit_umpire/show' do %>
+            <%= link_to '/recruit_umpire' do %>
               <%= image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid' %>
             <% end %>
           </div>

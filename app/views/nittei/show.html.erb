@@ -26,53 +26,62 @@
   </div>
 <% end %>
 
-<div class="py-4"></div>
+<div class="py-3"></div>
 
-<div class="card mb-5">
-  <div class="card-body">
-
-    <div class="font-size-16">
-      <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
-    </div>
-    <div class="text-right font-size-12 pt-2 pr-2">
-      最終更新：<%= EventOneDay.order(updated_at: :desc).first.updated_at.strftime("%Y-%-m-%-d %H:%M") %>
-    </div>
-
-    <% if @oc_date %>
-      <div class="py-2" style="margin-left: 5px;">
-        開会式：
-        <%= @oc_date.strftime("%-m月%-d日") %><%= "(#{Constants::JAPANESE_WDAY[@oc_date.wday]})" %><%= @oc_time.strftime(" %-H時%M分〜") %>
-      </div>
-    <% end %>
-
-    <div class="row pt-2" style="padding-left: 5px; padding-right: 5px">
-      <div class="col-sm-6">
-        <p>第一節</p>
-        <div class="row">
-          <div class="col-4 py-1 pr-1 text-right">
-            <span class="badge badge-primary">三塁側先攻</span>
-          </div>
-          <div class="col-4"></div>
-          <div class="col-4 py-1 pl-1">
-            <span class="badge badge-danger">一塁側後攻</span>
-          </div>
-        </div>
-        <%= render 'show', nittei_infos: @nittei_infos_1 %>
-      </div>
-      <div class="col-sm-6">
-        <p>第二節</p>
-        <div class="row">
-          <div class="col-4 py-1 pr-1 text-right">
-            <span class="badge badge-primary">三塁側先攻</span>
-          </div>
-          <div class="col-4"></div>
-          <div class="col-4 py-1 pl-1">
-            <span class="badge badge-danger">一塁側後攻</span>
-          </div>
-        </div>
-        <%= render 'show', nittei_infos: @nittei_infos_2 %>
-      </div>
-    </div>
-
-  </div>
+<div class="font-size-16">
+  <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
 </div>
+
+<% if @error_msg %>
+
+  <div class="py-2"></div>
+
+  <div class="text-center"><%= @error_msg %></div>
+
+<% else %>
+
+  <% unless @updated_at.nil? %>
+    <div class="text-right font-size-12 pt-2 pr-2">
+      最終更新：<%= @updated_at.strftime("%Y-%-m-%-d %H:%M") %>
+    </div>
+  <% end %>
+
+  <% if @oc_date %>
+    <div class="py-2" style="margin-left: 5px;">
+      開会式：
+      <%= @oc_date.strftime("%-m月%-d日") %><%= "(#{Constants::JAPANESE_WDAY[@oc_date.wday]})" %><%= @oc_time.strftime(" %-H時%M分〜") %>
+    </div>
+  <% end %>
+
+  <div class="row pt-2" style="padding-left: 5px; padding-right: 5px">
+    <div class="col-sm-6">
+      <p>第一節</p>
+      <div class="row">
+        <div class="col-4 py-1 pr-1 text-right">
+          <span class="badge badge-primary">三塁側先攻</span>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4 py-1 pl-1">
+          <span class="badge badge-danger">一塁側後攻</span>
+        </div>
+      </div>
+      <%= render 'show', nittei_infos: @nittei_infos_1 %>
+    </div>
+    <div class="col-sm-6">
+      <p>第二節</p>
+      <div class="row">
+        <div class="col-4 py-1 pr-1 text-right">
+          <span class="badge badge-primary">三塁側先攻</span>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4 py-1 pl-1">
+          <span class="badge badge-danger">一塁側後攻</span>
+        </div>
+      </div>
+      <%= render 'show', nittei_infos: @nittei_infos_2 %>
+    </div>
+  </div>
+
+<% end %>
+
+<div class="mb-5"></div>

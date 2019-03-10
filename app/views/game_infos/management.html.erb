@@ -70,7 +70,7 @@
             <% vs = " - " %>
             <div class="row">
               <div class="col-5 text-right" style="padding: 5px">
-                <%= game_info.batting_first_team %>
+                <%= Team.get_three_letter(game_info.batting_first_team) %>
               </div>
               <div class="col-2 text-center" style="padding: 5px">
                 <%= sum_top = game_info.get_sum_top %>
@@ -78,7 +78,7 @@
                 <%= sum_bottom = game_info.get_sum_bottom %><%= game_info.get_x_index(sum_top, sum_bottom) %>
               </div>
               <div class="col-5 text-left" style="padding: 5px">
-                <%= game_info.field_first_team %>
+                <%= Team.get_three_letter(game_info.field_first_team) %>
               </div>
             </div>
             <div class="row">

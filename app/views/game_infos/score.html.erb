@@ -16,6 +16,17 @@
   <div class="row">
     <div class="col-6">
 
+      <div class="py-2 text-center">
+
+        <div class="d-none d-sm-block">
+          <%= @game_info.batting_first_team %>
+        </div>
+        <div class="d-sm-none d-block">
+          <%= Team.get_three_letter(@game_info.batting_first_team) %>
+        </div>
+
+      </div>
+
       <div class="form-group">
         <%= form.label :top1, '1回オモテ' %>
         <%= form.telephone_field :top1, class: 'form-control' %>
@@ -82,6 +93,17 @@
 
     </div>
     <div class="col-6">
+
+      <div class="py-2 text-center">
+
+        <div class="d-none d-sm-block">
+          <%= @game_info.field_first_team %>
+        </div>
+        <div class="d-sm-none d-block">
+          <%= Team.get_three_letter(@game_info.field_first_team) %>
+        </div>
+
+      </div>
 
       <div class="form-group">
         <%= form.label :bottom1, '1回ウラ' %>

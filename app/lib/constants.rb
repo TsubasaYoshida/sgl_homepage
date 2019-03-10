@@ -44,4 +44,12 @@ class Constants
     return year_list.sort.reverse
   end
 
+  def self.get_english_season(jap_season)
+    if jap_season == '春季'
+      return 'spring'
+    elsif jap_season == '秋季'
+      return 'autumn'
+    end
+  end
+
 end

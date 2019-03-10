@@ -13,7 +13,14 @@ class StandingController < ApplicationController
     else
       @selected_year = key_year
       @selected_season = key_season
-      describe
+
+      if @selected_year.to_i <= 2018
+        english_season = Constants.get_english_season(@selected_season)
+        file_name = @selected_year.to_s + '_' + english_season
+        render "standing/#{file_name}"
+      else
+        describe
+      end
     end
   end
 
@@ -22,7 +29,14 @@ class StandingController < ApplicationController
   def first
     @selected_year = GameInfo.order(disp_date: :desc).first.disp_date.year
     @selected_season = GameInfo.order(disp_date: :desc).first.season
-    describe
+
+    if @selected_year.to_i <= 2018
+      english_season = Constants.get_english_season(@selected_season)
+      file_name = @selected_year.to_s + '_' + english_season
+      render "standing/#{file_name}"
+    else
+      describe
+    end
   end
 
   def describe

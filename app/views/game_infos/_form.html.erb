@@ -1,8 +1,7 @@
 <%= form_with(model: game_info, local: true) do |form| %>
-  <% if game_info.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(game_info.errors.count, "error") %> prohibited this game_info from being saved:</h2>
 
+  <% if game_info.errors.any? %>
+    <div style="color: red">
       <ul>
         <% game_info.errors.full_messages.each do |message| %>
           <li><%= message %></li>

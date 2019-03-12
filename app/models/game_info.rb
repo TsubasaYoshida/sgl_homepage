@@ -1,4 +1,8 @@
 class GameInfo < ApplicationRecord
+
+  validates :batting_first_team, :field_first_team, :disp_date,
+            presence: true
+
   def get_sum_top
     sum_top = 0
     15.times {|n|

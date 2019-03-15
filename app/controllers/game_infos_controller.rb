@@ -70,12 +70,10 @@ class GameInfosController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_game_info
     @game_info = GameInfo.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def game_info_params
     params.require(:game_info).permit(:season, :event, :round, :disp_date,
                                       :batting_first_team, :field_first_team,

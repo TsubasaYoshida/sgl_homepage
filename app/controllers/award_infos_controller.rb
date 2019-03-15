@@ -2,86 +2,61 @@ class AwardInfosController < ApplicationController
   before_action :set_award_info, only: [:show, :edit, :award_players_management, :update, :destroy]
   layout 'admin_sp_block'
 
-  # GET /award_infos
-  # GET /award_infos.json
   def index
     @award_infos = AwardInfo.all
   end
 
-  # GET /award_infos/1
-  # GET /award_infos/1.json
   def show
   end
 
-  # GET /award_infos/new
   def new
     @award_info = AwardInfo.new
   end
 
-  # GET /award_infos/1/edit
   def edit
   end
 
-  # GET /award_infos/1/award_players_management
   def award_players_management
     @award_players = AwardPlayer.where(award_info_id: @award_info).order(order: :asc)
   end
 
-  # POST /award_infos
-  # POST /award_infos.json
   def create
     @award_info = AwardInfo.new(award_info_params)
 
-    respond_to do |format|
-      if @award_info.save
-        format.html {redirect_to award_infos_url, notice: '表彰情報の作成に成功しました。'}
-        format.json {render :show, status: :created, location: @award_info}
-      else
-        format.html {render :new}
-        format.json {render json: @award_info.errors, status: :unprocessable_entity}
-      end
+    if @award_info.save
+      redirect_to award_infos_url, notice: '表彰情報の作成に成功しました。'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /award_infos/1
-  # PATCH/PUT /award_infos/1.json
   def update
-    respond_to do |format|
-      if @award_info.update(award_info_params)
-        format.html {redirect_to award_infos_url, notice: '表彰情報の更新に成功しました。'}
-        format.json {render :show, status: :ok, location: @award_info}
-      else
-        format.html {render :edit}
-        format.json {render json: @award_info.errors, status: :unprocessable_entity}
-      end
+    if @award_info.update(award_info_params)
+      redirect_to award_infos_url, notice: '表彰情報の更新に成功しました。'
+    else
+      render :edit
     end
   end
 
-  # DELETE /award_infos/1
-  # DELETE /award_infos/1.json
   def destroy
     @award_info.destroy
-    respond_to do |format|
-      format.html {redirect_to award_infos_url, notice: '表彰情報の削除に成功しました。'}
-      format.json {head :no_content}
-    end
+    redirect_to award_infos_url, notice: '表彰情報の削除に成功しました。'
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_award_info
     @award_info = AwardInfo.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def award_info_params
     params.require(:award_info).permit(
         :year, :season, :event,
         award_players_attributes: [
             :id, :award_info_id,
             :award, :player, :team, :grade, :remarks, :order,
-            :_destroy]
+            :_destroy
+        ]
     )
   end
 end

@@ -1,7 +1,7 @@
 # 札幌学生野球連盟公式サイト<br>リニューアルプロジェクト
 
 ## URL
-http://satsu6.com
+**<a href="http://satsu6.com" target="_blank" rel="noopener">satsu6.com</a>**
 
 ## リリース日
 - 2019-03-09(Sat)

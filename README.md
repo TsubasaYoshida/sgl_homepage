@@ -1,25 +1,22 @@
-# Sapporo Gakusei League Homepage Renewal Project
+# 札幌学生野球連盟公式サイト<br>リニューアルプロジェクト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
+http://satsu6.com
 
-Things you may want to cover:
+## リリース日
+- 2019-03-09(Sat)
 
-* Ruby version
-    * ruby 2.5.1
+## 主な使用技術
+- Ruby 2.5.1
+- Rails 5.2.1
+- MySQL 8.0.12
+- Bootstrap4
 
-* System dependencies
+## 本番環境構成
+- ConoHa VPS
+- CentOS
+- Nginx
+- Unicorn
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## デプロイ
+- Capistraro

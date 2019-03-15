@@ -17,7 +17,7 @@ class AwardInfosController < ApplicationController
   end
 
   def award_players_management
-    @award_players = AwardPlayer.where(award_info_id: @award_info).order(order: :asc)
+    @award_players = AwardPlayer.where(award_info_id: @award_info).order(disp_id: :asc)
   end
 
   def create
@@ -54,7 +54,7 @@ class AwardInfosController < ApplicationController
         :year, :season, :event,
         award_players_attributes: [
             :id, :award_info_id,
-            :award, :player, :team, :grade, :remarks, :order,
+            :award, :player, :team, :grade, :remarks, :disp_id,
             :_destroy
         ]
     )

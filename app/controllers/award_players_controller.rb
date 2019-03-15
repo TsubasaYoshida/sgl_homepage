@@ -47,6 +47,6 @@ class AwardPlayersController < ApplicationController
   end
 
   def award_player_params
-    params.require(:award_player).permit(:award_info_id, :award, :player, :team, :grade, :remarks, :order)
+    params.require(:award_player).permit(:award_info_id, :award, :player, :team, :grade, :remarks, :disp_id)
   end
 end

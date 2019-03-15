@@ -24,4 +24,4 @@
 /config/database.yml
 
 # 2019-03-16
-/.idea/
+/.idea/*

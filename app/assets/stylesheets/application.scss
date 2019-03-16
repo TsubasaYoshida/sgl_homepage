@@ -149,3 +149,8 @@ a:link {
   background-color: #666666;
   border-color: #CCCCCC;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #666666;
+}

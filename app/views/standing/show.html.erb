@@ -1,172 +1,225 @@
 <h2>順位表</h2>
 
 <%= form_tag({controller: :standing, action: :find}, method: :get) do %>
-  <div class="row" style="padding-left: 5px; padding-right: 5px">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <%= select_tag :key_year, options_for_select(Constants.get_year_list, @selected_year), class: 'form-control' %>
+  <div class="d-none d-sm-block">
+    <div class="row" style="padding-left: 5px; padding-right: 5px">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= select_tag :key_year, options_for_select(Constants.get_year_list, @selected_year), class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <%= submit_tag '表示', class: 'btn btn-default' %>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+  </div>
+
+  <div class="d-sm-none d-block">
+    <nav class="navbar navbar-expand-lg navbar-light pt-2">
+      <button type="button" class="navbar-toggler btn-block text-center"
+              data-toggle="collapse" data-target="#search"
+              aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションバー">
+        他の大会をみる
+      </button>
+      <div class="collapse navbar-collapse" id="search">
+        <div class="py-2"></div>
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <%= select_tag :key_year, options_for_select(Constants.get_year_list, @selected_year), class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <%= submit_tag '表示', class: 'btn btn-default' %>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <%= submit_tag '表示', class: 'btn btn-default' %>
-    </div>
+    </nav>
   </div>
 <% end %>
 
-<div class="py-4"></div>
+<div class="py-sm-2"></div>
 
-<% @result_infos.each_with_index do |result_info, league_number| %>
-  <% rank_infos = result_info[0] %>
-  <% result_array = result_info[1] %>
-  <% updated_at = result_info[2] %>
-  <% playoff_results = result_info[3] %>
+<div class="py-2">
+  <h3 class="text-center font-weight-bold mt-2" style="font-size: 15px">
+    <%= @selected_year %>年度<%= @selected_season %>リーグ戦</h3>
+</div>
 
-  <!--  pc  -->
-  <div class="d-none d-sm-block">
-    <table class="table table-bordered text-center">
-      <tr>
-        <td colspan="2">
-          <%= @selected_year %>年度<%= @selected_season %><%= league_number + 1 %>部リーグ戦
-        </td>
-        <% rank_infos.each do |rank_info| %>
-          <td colspan="2"><%= rank_info.three_letter_name %></td>
-        <% end %>
-        <td>勝利</td>
-        <td>敗戦</td>
-        <td>引分</td>
-      </tr>
-      <% rank_infos.each_with_index do |rank_info, i| %>
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item border border-right-0 border-bottom-0">
+    <%= link_to '1部', '#tab1', class: 'nav-link active rounded-0', data: {toggle: 'tab'} %>
+  </li>
+  <li class="nav-item border border-right-0 border-bottom-0">
+    <%= link_to '2部', '#tab2', class: 'nav-link rounded-0', data: {toggle: 'tab'} %>
+  </li>
+  <li class="nav-item border border-bottom-0">
+    <%= link_to '3部', '#tab3', class: 'nav-link rounded-0', data: {toggle: 'tab'} %>
+  </li>
+</ul>
+
+<div class="tab-content">
+
+  <% @result_infos.each_with_index do |result_info, league_number| %>
+    <% rank_infos = result_info[0] %>
+    <% result_array = result_info[1] %>
+    <% updated_at = result_info[2] %>
+    <% playoff_results = result_info[3] %>
+
+    <%= '<div id="tab1" class="tab-pane active">'.html_safe if league_number == 0 %>
+    <%= '<div id="tab2" class="tab-pane">'.html_safe if league_number == 1 %>
+    <%= '<div id="tab3" class="tab-pane">'.html_safe if league_number == 2 %>
+
+    <!--  pc  -->
+    <div class="d-none d-sm-block">
+      <table class="table table-bordered text-center">
         <tr>
-          <td><%= rank_info.rank.to_s + '位' %></td>
-          <td class="rank-team-name"><%= rank_info.team_name %></td>
-
-          <% (12 * i..11 + 12 * i).each do |index| %>
-            <td><%= result_array[index] %></td>
+          <td colspan="2"></td>
+          <% rank_infos.each do |rank_info| %>
+            <td colspan="2"><%= rank_info.three_letter_name %></td>
           <% end %>
-
-          <td><%= rank_info.disp_win %></td>
-          <td><%= rank_info.disp_lose %></td>
-          <td><%= rank_info.disp_draw %></td>
+          <td>勝利</td>
+          <td>敗戦</td>
+          <td>引分</td>
         </tr>
-      <% end %>
-    </table>
-
-    <% if playoff_results.size != 0 %>
-      <div class="row">
-        <div class="col-6"></div>
-        <div class="col-6">
-          <h4 style="font-size: 14px">順位決定戦</h4>
-          <table class="table mb-0 border-bottom">
-            <% playoff_results.each do |playoff_result| %>
-              <tr>
-                <td>
-                  <%= link_to playoff_result do %>
-                    <div class="row">
-                      <div class="col-5 text-right px-2">
-                        <%= playoff_result.batting_first_team %>
-                      </div>
-                      <div class="col-2 text-center px-2">
-                        <%= sum_top = playoff_result.get_sum_top %>
-                        <%= Constants::SPACE_HYPHEN_SPACE %>
-                        <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
-                      </div>
-                      <div class="col-5 text-left px-2">
-                        <%= playoff_result.field_first_team %>
-                      </div>
-                    </div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </table>
-        </div>
-      </div>
-      <div class="py-2"></div>
-    <% end %>
-
-    <% unless updated_at.nil? %>
-      <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：<%= updated_at.strftime("%Y-%-m-%-d %H:%M") %>
-      </div>
-    <% end %>
-
-    <div class="py-4"></div>
-
-  </div>
-
-  <!--  sp  -->
-  <div class="d-block d-sm-none">
-    <p style="font-size: 15px">
-      <%= @selected_year %>年度<%= @selected_season %><%= league_number + 1 %>部リーグ戦
-    </p>
-    <table class="table table-bordered text-center standing-sp">
-      <tr>
-        <td colspan="2"></td>
-        <% rank_infos.each do |rank_info| %>
-          <td colspan="2"><%= rank_info.two_letter_name %></td>
-        <% end %>
-        <td>勝</td>
-        <td>敗</td>
-        <td>分</td>
-      </tr>
-      <% rank_infos.each_with_index do |rank_info, i| %>
-        <tr>
-          <td><%= rank_info.rank %></td>
-          <td><%= rank_info.two_letter_name %></td>
-
-          <% (12 * i..11 + 12 * i).each do |index| %>
-            <td><%= result_array[index] %></td>
-          <% end %>
-
-          <td><%= rank_info.disp_win %></td>
-          <td><%= rank_info.disp_lose %></td>
-          <td><%= rank_info.disp_draw %></td>
-        </tr>
-      <% end %>
-    </table>
-
-    <% if playoff_results.size != 0 %>
-      <h4 style="font-size: 14px">順位決定戦</h4>
-      <table class="table mb-0 border-bottom">
-        <% playoff_results.each do |playoff_result| %>
+        <% rank_infos.each_with_index do |rank_info, i| %>
           <tr>
-            <td>
-              <%= link_to playoff_result do %>
-                <div class="row">
-                  <div class="col-5 text-right px-2">
-                    <%= Team.get_three_letter(playoff_result.batting_first_team) %>
-                  </div>
-                  <div class="col-2 text-center px-2">
-                    <%= sum_top = playoff_result.get_sum_top %>
-                    <%= Constants::SPACE_HYPHEN_SPACE %>
-                    <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
-                  </div>
-                  <div class="col-5 text-left px-2">
-                    <%= Team.get_three_letter(playoff_result.field_first_team) %>
-                  </div>
-                </div>
-              <% end %>
-            </td>
+            <td><%= rank_info.rank.to_s + '位' %></td>
+            <td class="rank-team-name"><%= rank_info.team_name %></td>
+
+            <% (12 * i..11 + 12 * i).each do |index| %>
+              <td><%= result_array[index] %></td>
+            <% end %>
+
+            <td><%= rank_info.disp_win %></td>
+            <td><%= rank_info.disp_lose %></td>
+            <td><%= rank_info.disp_draw %></td>
           </tr>
         <% end %>
       </table>
-      <div class="py-2"></div>
-    <% end %>
 
-    <% unless updated_at.nil? %>
-      <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：<%= updated_at.strftime("%Y-%-m-%-d %H:%M") %>
-      </div>
-    <% end %>
+      <% if playoff_results.size != 0 %>
+        <div class="row">
+          <div class="col-6"></div>
+          <div class="col-6">
+            <h4 style="font-size: 14px">順位決定戦</h4>
+            <table class="table mb-0 border-bottom">
+              <% playoff_results.each do |playoff_result| %>
+                <tr>
+                  <td>
+                    <%= link_to playoff_result do %>
+                      <div class="row">
+                        <div class="col-5 text-right px-2">
+                          <%= playoff_result.batting_first_team %>
+                        </div>
+                        <div class="col-2 text-center px-2">
+                          <%= sum_top = playoff_result.get_sum_top %>
+                          <%= Constants::SPACE_HYPHEN_SPACE %>
+                          <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                        </div>
+                        <div class="col-5 text-left px-2">
+                          <%= playoff_result.field_first_team %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+        <div class="py-2"></div>
+      <% end %>
 
-    <div class="py-4"></div>
+      <% unless updated_at.nil? %>
+        <div class="text-right font-size-12 pt-1 pr-2">
+          最終更新：<%= updated_at.strftime("%Y-%-m-%-d %H:%M") %>
+        </div>
+      <% end %>
 
-  </div>
+      <div class="py-4"></div>
 
-<% end %>
+    </div>
+
+    <!--  sp  -->
+    <div class="d-block d-sm-none">
+      <table class="table table-bordered text-center standing-sp">
+        <tr>
+          <td colspan="2"></td>
+          <% rank_infos.each do |rank_info| %>
+            <td colspan="2"><%= rank_info.two_letter_name %></td>
+          <% end %>
+          <td>勝</td>
+          <td>敗</td>
+          <td>分</td>
+        </tr>
+        <% rank_infos.each_with_index do |rank_info, i| %>
+          <tr>
+            <td><%= rank_info.rank %></td>
+            <td><%= rank_info.two_letter_name %></td>
+
+            <% (12 * i..11 + 12 * i).each do |index| %>
+              <td><%= result_array[index] %></td>
+            <% end %>
+
+            <td><%= rank_info.disp_win %></td>
+            <td><%= rank_info.disp_lose %></td>
+            <td><%= rank_info.disp_draw %></td>
+          </tr>
+        <% end %>
+      </table>
+
+      <% if playoff_results.size != 0 %>
+        <h4 style="font-size: 14px">順位決定戦</h4>
+        <table class="table mb-0 border-bottom">
+          <% playoff_results.each do |playoff_result| %>
+            <tr>
+              <td>
+                <%= link_to playoff_result do %>
+                  <div class="row">
+                    <div class="col-5 text-right px-2">
+                      <%= Team.get_three_letter(playoff_result.batting_first_team) %>
+                    </div>
+                    <div class="col-2 text-center px-2">
+                      <%= sum_top = playoff_result.get_sum_top %>
+                      <%= Constants::SPACE_HYPHEN_SPACE %>
+                      <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                    </div>
+                    <div class="col-5 text-left px-2">
+                      <%= Team.get_three_letter(playoff_result.field_first_team) %>
+                    </div>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <div class="py-2"></div>
+      <% end %>
+
+      <% unless updated_at.nil? %>
+        <div class="text-right font-size-12 pt-1 pr-2">
+          最終更新：<%= updated_at.strftime("%Y-%-m-%-d %H:%M") %>
+        </div>
+      <% end %>
+
+      <div class="py-4"></div>
+
+    </div>
+
+    <%= '</div>'.html_safe %>
+
+  <% end %>
+
+</div>

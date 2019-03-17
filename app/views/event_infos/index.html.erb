@@ -37,8 +37,17 @@
         <%= link_to '日程情報編集', one_days_management_event_info_path(event_info), class: 'btn btn-default' %>
       </td>
       <td>
-        <%= link_to '大会ごと削除', event_info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
+        <%= link_to '大会ごと削除', event_info, method: :delete, data: {confirm: '削除すると順位表ページが表示できなくなりますが、削除してよろしいですか？'}, class: 'btn btn-default' %>
       </td>
     </tr>
   <% end %>
 </table>
+
+<div class="alert alert-warning my-4" role="alert">
+  <h5 class="alert-heading">使用上の注意</h5>
+  <p class="mb-0">
+    日程情報は順位表ページの表示と関連しています。<br>
+    そのため、大会終了後も日程情報は削除しないでください。<br>
+    （誤入力などで誤ったデータを作成してしまった場合は削除をお願いします）
+  </p>
+</div>

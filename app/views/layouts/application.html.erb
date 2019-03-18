@@ -31,40 +31,29 @@
 
 <body>
 
+<!--  pc  -->
+<div class="d-none d-sm-block">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h1 class="mr-md-auto">
+      <%= link_to '/' do %>
+        <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', style: 'width:300px' %>
+      <% end %>
+    </h1>
+    <nav class="nav my-2 my-md-0 mr-md-3">
+      <%= link_to 'トップページ', '/', class: 'nav-link border-right border-left' %>
+      <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right' %>
+      <%= link_to '順位表', '/standing', class: 'nav-link border-right' %>
+      <%= link_to '大会日程', '/nittei', class: 'nav-link border-right' %>
+      <%= link_to '表彰選手', '/award', class: 'nav-link border-right' %>
+      <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
+    </nav>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-12">
 
-      <div class="d-none d-sm-block">
-
-        <div class="row">
-          <div class="col-4">
-            <h1 class="page-header mt-4">
-              <%= link_to '/' do %>
-                <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', class: 'img-fluid float-left' %>
-              <% end %>
-            </h1>
-          </div>
-
-          <div class="col-2"></div>
-
-          <div class="col-6">
-            <div class="row mt-5 justify-content-end">
-              <nav class="nav">
-                <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right border-left' %>
-                <%= link_to '順位表', '/standing', class: 'nav-link border-right' %>
-                <%= link_to '大会日程', '/nittei', class: 'nav-link border-right' %>
-                <%= link_to '表彰選手', '/award', class: 'nav-link border-right' %>
-                <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
+    <!--  sp  -->
     <div class="d-sm-none d-block">
       <div class="col-12 mt-3">
         <header>
@@ -79,6 +68,11 @@
             </button>
             <div class="collapse navbar-collapse" id="Navber">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <div class="border-top">
+                  <li class="nav-item">
+                    <%= link_to 'トップページ', '/', class: 'nav-link' %>
+                  </li>
+                </div>
                 <div class="border-top">
                   <li class="nav-item">
                     <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link' %>
@@ -111,13 +105,18 @@
       </div>
     </div>
 
-    <div class="d-none d-sm-block col-12 margin-top30 border-5px mt-3"></div>
-
     <div class="col-12">
       <%= yield %>
     </div>
 
-    <div class="col-12 col-12-footer border-5px">
+  </div>
+</div>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
       <footer class="p-footer mb-5 mt-3">
         <div class="admin">札幌学生野球連盟事務局</div>
         <div class="row">
@@ -142,8 +141,7 @@
               <%= image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid' %>
             <% end %>
           </div>
-          <div class="col-sm-3 banner">
-          </div>
+          <div class="col-sm-3"></div>
         </div>
         <div class="text-center">
           <p>

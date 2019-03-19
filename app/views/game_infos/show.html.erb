@@ -39,7 +39,7 @@
     <% if @game_info.top12 %>
       <td>12</td>
     <% end %>
-    <td style="border: 2px solid">R</td>
+    <td class="font-weight-bold" style="border: 2px solid">R</td>
   </tr>
 
   <tr>
@@ -62,7 +62,7 @@
     <% if @game_info.top12 %>
       <td><%= @game_info.top12 %></td>
     <% end %>
-    <td style="border: 2px solid"><%= sum_top.to_s %></td>
+    <td class="font-weight-bold" style="border: 2px solid"><%= sum_top.to_s %></td>
   </tr>
 
   <tr>
@@ -166,7 +166,7 @@
       <% end %>
     <% end %>
 
-    <td style="border: 2px solid"><%= sum_bottom.to_s %></td>
+    <td class="font-weight-bold" style="border: 2px solid"><%= sum_bottom.to_s %></td>
   </tr>
   </tfoot>
 </table>

@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'award/find'
   get 'nittei/find'
   get 'standing/find'
   get 'recruit_umpire' => 'recruit_umpire#show'
   get 'team' => 'team#show'
   get 'top' => 'top#show'
-  get 'award' => 'award#show'
   get 'nittei' => 'nittei#show'
   get 'standing' => 'standing#show'
   get 'admin' => 'admin#top'
@@ -21,9 +19,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :award_infos do
+  resources :award_infos, except: [:show] do
     member do
       get :award_players_management
+    end
+
+    collection do
+      get :management
+      get :find
     end
   end
 

@@ -4,7 +4,7 @@ class GameInfosController < ApplicationController
   layout 'admin', :except => [:index, :show, :narrow]
 
   def index
-    @game_infos = GameInfo.all.order(disp_date: :desc, gameset_flag: :asc, number: :desc)
+    @game_infos = GameInfo.all.standard
   end
 
   def narrow
@@ -42,7 +42,7 @@ class GameInfosController < ApplicationController
   end
 
   def management
-    @game_infos = GameInfo.all.order(disp_date: :desc, gameset_flag: :asc, number: :desc)
+    @game_infos = GameInfo.all.standard
   end
 
   def create

@@ -84,14 +84,14 @@
 
   <% unless @updated_at.nil? %>
     <div class="text-right font-size-12 pt-2 pr-2">
-      最終更新：<%= @updated_at.strftime("%Y-%-m-%-d %H:%M") %>
+      最終更新：<%= l @updated_at, format: :english %>
     </div>
   <% end %>
 
   <% if @oc_date %>
     <div class="py-2" style="margin-left: 5px;">
       開会式：
-      <%= @oc_date.strftime("%-m月%-d日") %><%= "(#{Constants::JAPANESE_WDAY[@oc_date.wday]})" %><%= @oc_time.strftime(" %-H時%M分〜") %>
+      <%= l @oc_date, format: :oc_date %><%= " " %><%= l @oc_time, format: :oc_time %>
     </div>
   <% end %>
 

@@ -30,7 +30,7 @@ class StandingController < ApplicationController
     @selected_year = GameInfo.order(disp_date: :desc).first.disp_date.year
     @selected_season = GameInfo.order(disp_date: :desc).first.season
 
-    if @selected_year.to_i <= 2018
+    if @selected_year.to_i <= 2017
       english_season = Constants.get_english_season(@selected_season)
       file_name = @selected_year.to_s + '_' + english_season
       render "standing/#{file_name}"

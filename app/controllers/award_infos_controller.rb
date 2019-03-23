@@ -30,7 +30,7 @@ class AwardInfosController < ApplicationController
   end
 
   def management
-    @award_infos = AwardInfo.all
+    @award_infos = AwardInfo.all.order(year: :desc, season: :desc, event: :asc)
   end
 
   def new

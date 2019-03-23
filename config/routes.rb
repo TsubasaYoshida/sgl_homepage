@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   root to: 'top#show'
 
-  resources :award_players do
+  resources :award_players, except: [:index, :show] do
     member do
       get :new_award_player
     end

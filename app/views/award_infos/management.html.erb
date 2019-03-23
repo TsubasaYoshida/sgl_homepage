@@ -28,7 +28,7 @@
         <%= award_info.event %>
       </td>
       <td style="vertical-align: middle;">
-        <%= l award_info.updated_at %>
+        <%= l award_info.updated_at, format: :standard %>
       </td>
       <td>
         <%= link_to '大会情報編集', edit_award_info_path(award_info), class: 'btn btn-default' %>

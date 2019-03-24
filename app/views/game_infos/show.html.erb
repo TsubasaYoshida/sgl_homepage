@@ -1,6 +1,6 @@
 <div class="padding-top10" id="notice"><%= notice %></div>
 
-<h2>
+<h2 class="my-2">
   <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
   <br>
   <small>
@@ -9,6 +9,15 @@
     <%= @game_info.get_disp_event %> <%= @game_info.round %>
   </small>
 </h2>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+   class="twitter-share-button"
+   data-show-count="false"
+   data-text="<%= @game_info.disp_date %>
+<%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
+#盛り上がれ札六
+">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <%
   team_top = @game_info.get_team_initial(@game_info.batting_first_team)

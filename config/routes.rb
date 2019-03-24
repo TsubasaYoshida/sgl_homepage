@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :infos do
+  resources :infos, except: [:show] do
     collection do
       get :management
     end

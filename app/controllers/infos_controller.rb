@@ -1,13 +1,10 @@
 class InfosController < ApplicationController
   skip_before_action :check_logined, only: [:index]
-  before_action :set_info, only: [:show, :edit, :update, :destroy]
-  layout 'admin', :except => [:index, :show]
+  before_action :set_info, only: [:edit, :update, :destroy]
+  layout 'admin', :except => [:index]
 
   def index
     @infos = Info.all.order(disp_date: :desc)
-  end
-
-  def show
   end
 
   def new

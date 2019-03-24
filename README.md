@@ -1,5 +1,7 @@
 # 札幌学生野球連盟公式サイト<br>リニューアルプロジェクト
 
+![札幌学生野球連盟](app/assets/images/ogp_image.jpg)
+
 ## URL
 **<a href="http://satsu6.com" target="_blank" rel="noopener">satsu6.com</a>**
 

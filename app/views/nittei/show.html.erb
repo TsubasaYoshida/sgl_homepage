@@ -1,4 +1,4 @@
-<h2>大会日程</h2>
+<h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">大会日程</h2>
 
 <!--  pc  -->
 <div class="d-none d-sm-block">
@@ -70,9 +70,9 @@
 
 <div class="py-2"></div>
 
-<div class="font-size-16">
+<h3 class="text-center font-weight-bold" style="font-size: 20px">
   <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
-</div>
+</h3>
 
 <% if @error_msg %>
 
@@ -82,22 +82,16 @@
 
 <% else %>
 
-  <% unless @updated_at.nil? %>
-    <div class="text-right font-size-12 pt-2 pr-2">
-      最終更新：<%= l @updated_at, format: :english %>
-    </div>
-  <% end %>
-
   <% if @oc_date %>
-    <div class="py-2" style="margin-left: 5px;">
+    <div class="text-center font-weight-bold py-2">
       開会式：
       <%= l @oc_date, format: :oc_date %><%= " " %><%= l @oc_time, format: :oc_time %>
     </div>
   <% end %>
 
-  <div class="row pt-2" style="padding-left: 5px; padding-right: 5px">
-    <div class="col-sm-6">
-      <p>第一節</p>
+  <div class="row" style="padding-left: 5px; padding-right: 5px">
+    <div class="col-sm-6 pt-3">
+      <p class="text-center font-weight-bold" style="font-size: 16px">第一節</p>
       <div class="row">
         <div class="col-4 py-1 pr-1 text-right">
           <span class="badge badge-primary">三塁側先攻</span>
@@ -109,8 +103,8 @@
       </div>
       <%= render 'show', nittei_infos: @nittei_infos_1 %>
     </div>
-    <div class="col-sm-6">
-      <p>第二節</p>
+    <div class="col-sm-6 pt-3">
+      <p class="text-center font-weight-bold" style="font-size: 16px">第二節</p>
       <div class="row">
         <div class="col-4 py-1 pr-1 text-right">
           <span class="badge badge-primary">三塁側先攻</span>
@@ -123,6 +117,12 @@
       <%= render 'show', nittei_infos: @nittei_infos_2 %>
     </div>
   </div>
+
+  <% unless @updated_at.nil? %>
+    <div class="text-right font-size-12 pt-2 pr-2">
+      最終更新：<%= l @updated_at, format: :english %>
+    </div>
+  <% end %>
 
 <% end %>
 

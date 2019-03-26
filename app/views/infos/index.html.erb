@@ -1,5 +1,26 @@
-<%= render 'info', infos: @infos %>
+<h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">新着情報</h2>
 
-<div class="padding-bottom10 padding-top10 float-right" >
-  <%= link_to 'もどる', :back, class: 'btn btn-default' %>
+<!--  pc  -->
+<div class="d-none d-sm-block">
+  <div style="margin-left: 15rem; margin-right: 15rem;">
+
+    <%= render 'info', infos: @infos %>
+
+    <div class="padding-bottom10 padding-top10 float-right">
+      <%= link_to 'もどる', :back, class: 'btn btn-default' %>
+    </div>
+
+  </div>
+</div>
+
+<!--  sp  -->
+<div class="d-sm-none d-block">
+
+  <div class="py-2"></div>
+
+  <%= render 'info', infos: @infos %>
+
+  <div class="padding-bottom10 padding-top10 float-right">
+    <%= link_to 'もどる', :back, class: 'btn btn-default' %>
+  </div>
 </div>

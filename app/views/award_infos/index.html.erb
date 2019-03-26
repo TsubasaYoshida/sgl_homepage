@@ -1,4 +1,4 @@
-<h2>表彰選手</h2>
+<h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">表彰選手</h2>
 
 <!--  pc  -->
 <div class="d-none d-sm-block">
@@ -28,13 +28,14 @@
   <% end %>
 </div>
 
+<div class="py-2"></div>
+
+<h3 class="text-center font-weight-bold mb-2 mb-sm-3 mt-0 mt-sm-3" style="font-size: 20px">
+  <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+</h3>
+
 <!--pc-->
 <div class="d-none d-sm-block">
-
-  <div class="py-2"></div>
-
-  <h3 class="text-center font-weight-bold" style="font-size: 20px">
-    <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
 
   <div class="py-2"></div>
 
@@ -127,9 +128,6 @@
 <!--sp-->
 <div class="d-sm-none d-block">
 
-  <h3 class="text-center font-weight-bold" style="font-size: 16px">
-    <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %> 表彰選手</h3>
-
   <div class="py-2"></div>
 
   <% if @error_msg %>
@@ -138,7 +136,7 @@
 
   <% else %>
 
-    <h4 class="text-center font-weight-bold" style="font-size: 14px">各賞</h4>
+    <h4 class="text-center font-weight-bold" style="font-size: 18px">各賞</h4>
 
     <table>
 
@@ -166,7 +164,7 @@
     <div class="py-4"></div>
 
     <% if @bestnine_players.size != 0 %>
-      <h4 class="text-center font-weight-bold" style="font-size: 14px">ベストナイン</h4>
+      <h4 class="text-center font-weight-bold" style="font-size: 18px">ベストナイン</h4>
 
       <table>
 

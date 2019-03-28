@@ -4,15 +4,32 @@
 
     <h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">試合詳細</h2>
 
-    <h3 class="font-weight-bold mb-2 mb-sm-3 mt-4" style="font-size: 20px">
-      <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
-      <br>
-      <small style="font-size: 14px">
-        <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+    <!--  pc  -->
+    <div class="d-none d-sm-block">
+      <h3 class="font-weight-bold mb-2 mb-sm-3 mt-4" style="font-size: 20px">
+        <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
         <br>
-        <%= @game_info.get_disp_event %> <%= @game_info.round %>
-      </small>
-    </h3>
+        <small style="font-size: 14px">
+          <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+          <br>
+          <%= @game_info.get_disp_event %> <%= @game_info.round %>
+        </small>
+      </h3>
+    </div>
+
+    <!--  sp  -->
+    <div class="d-sm-none d-block">
+      <h3 class="font-weight-bold mb-2 mb-sm-3 mt-4" style="font-size: 20px">
+        <%= Team.get_three_letter(@game_info.batting_first_team) %>
+        vs <%= Team.get_three_letter(@game_info.field_first_team) %>
+        <br>
+        <small style="font-size: 14px">
+          <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+          <br>
+          <%= @game_info.get_disp_event %> <%= @game_info.round %>
+        </small>
+      </h3>
+    </div>
 
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
        class="twitter-share-button"

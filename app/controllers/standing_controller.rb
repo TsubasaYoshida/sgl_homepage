@@ -15,9 +15,64 @@ class StandingController < ApplicationController
       @selected_season = key_season
 
       if @selected_year.to_i <= 2018
-        english_season = Constants.get_english_season(@selected_season)
-        file_name = @selected_year.to_s + '_' + english_season
-        render "standing/#{file_name}"
+
+        if @selected_year.to_i == 2018 && @selected_season == '秋季'
+          render "standing/2018_autumn"
+
+        elsif @selected_year.to_i == 2018 && @selected_season == '春季'
+          render "standing/2018_spring"
+
+        else
+          @result_infos = []
+          tmp_event_list = ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦']
+          tmp_event_list.each do |event|
+
+            standings = Standing.where(year: @selected_year.to_i, event: event, season: @selected_season).order(rank: :asc)
+
+            # チーム情報を取得
+            teams = []
+            standings.each do |standing|
+              teams << Team.find_by(name: standing.team)
+            end
+
+            rank_infos = []
+            teams.each_with_index do |team, i|
+
+              win_lose_draw = WinLoseDraw.new
+              win_lose_draw.team_name = team.name
+              win_lose_draw.three_letter_name = team.three_letter_name
+              win_lose_draw.two_letter_name = team.two_letter_name
+              win_lose_draw.one_letter_name = team.one_letter_name
+              win_lose_draw.rank = standings[i].rank
+              win_lose_draw.disp_win = standings[i].win
+              win_lose_draw.disp_lose = standings[i].lose
+              win_lose_draw.disp_draw = standings[i].draw
+
+              rank_infos.push(win_lose_draw)
+            end
+
+            # ◯×△（ハイフンも）の生成
+            result_array = []
+            standings.each do |standing|
+              result_array << standing.array.gsub(/-|0|1|2/, "-" => "ー", "0" => "◯", "1" => "×", "2" => "△").split(',')
+            end
+            result_array.flatten!
+
+            # 最終更新日時取得
+            first_record = standings.order(updated_at: :desc).first
+            updated_at = first_record.updated_at if first_record
+
+            # view の都合上、空の配列を生成
+            playoff_results = []
+
+            result_info = [rank_infos, result_array, updated_at, playoff_results]
+            @result_infos << result_info
+          end
+
+          render :show
+
+        end
+
       else
         describe
       end
@@ -146,7 +201,7 @@ class StandingController < ApplicationController
       @result_infos << result_info
     end
 
-    render 'standing/show'
+    render :show
   end
 
   def get_disp_result(game_infos, team_1, team_2, round)

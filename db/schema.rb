@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_15_163441) do
+ActiveRecord::Schema.define(version: 2019_03_31_044426) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -147,6 +147,20 @@ ActiveRecord::Schema.define(version: 2019_03_15_163441) do
   create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "standings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "year"
+    t.string "season"
+    t.string "event"
+    t.integer "rank"
+    t.string "team"
+    t.string "array"
+    t.integer "win"
+    t.integer "lose"
+    t.integer "draw"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

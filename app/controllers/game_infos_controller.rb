@@ -3,17 +3,19 @@ class GameInfosController < ApplicationController
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
   layout 'admin', :except => [:index, :show, :narrow, :page]
 
-  PAGE_SIZE = 15
+  PAGE_SIZE = 3
 
   def index
     @game_infos = GameInfo.all.standard.limit(PAGE_SIZE)
     @games_count = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
+    @current_page = 1
   end
 
   def page
     game_infos = GameInfo.all.standard
     @game_infos = page_common(game_infos)
     @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
+    @current_page = params[:id].to_i
     render :index
   end
 
@@ -33,6 +35,7 @@ class GameInfosController < ApplicationController
       end
       @game_infos = page_common(game_infos)
       @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
+      @current_page = params[:id].to_i
       @selected_year = key_year
       @selected_season = key_season
       @selected_event = key_event

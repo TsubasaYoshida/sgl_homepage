@@ -76,4 +76,64 @@
 
   <%= render 'index', game_infos: @game_infos %>
 
+  <div class="py-4"></div>
+
+  <!--  pagination start  -->
+  <nav aria-label="試合情報一覧">
+    <ul class="pagination justify-content-center">
+
+      <% if 3 <= @current_page %>
+        <li class="page-item">
+          <% if controller.action_name == 'narrow' %>
+            <%= link_to '<<', {controller: :game_infos, action: :narrow, id: 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
+          <% else %>
+            <%= link_to '<<', {controller: :game_infos, action: :page, id: 1}, class: 'page-link' %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if 1 != @current_page %>
+        <li class="page-item">
+          <% if controller.action_name == 'narrow' %>
+            <%= link_to '<', {controller: :game_infos, action: :narrow, id: @current_page - 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
+          <% else %>
+            <%= link_to '<', {controller: :game_infos, action: :page, id: @current_page - 1}, class: 'page-link' %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% @games_count.times do |i| %>
+        <li class="page-item<%= ' active' if i + 1 == @current_page %>">
+          <% if controller.action_name == 'narrow' %>
+            <%= link_to i + 1, {controller: :game_infos, action: :narrow, id: i + 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
+          <% else %>
+            <%= link_to i + 1, {controller: :game_infos, action: :page, id: i + 1}, class: 'page-link' %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if @games_count != @current_page %>
+        <li class="page-item">
+          <% if controller.action_name == 'narrow' %>
+            <%= link_to '>', {controller: :game_infos, action: :narrow, id: @current_page + 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
+          <% else %>
+            <%= link_to '>', {controller: :game_infos, action: :page, id: @current_page + 1}, class: 'page-link' %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if @games_count - 2 >= @current_page %>
+        <li class="page-item">
+          <% if controller.action_name == 'narrow' %>
+            <%= link_to '>>', {controller: :game_infos, action: :narrow, id: @games_count, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
+          <% else %>
+            <%= link_to '>>', {controller: :game_infos, action: :page, id: @games_count}, class: 'page-link' %>
+          <% end %>
+        </li>
+      <% end %>
+
+    </ul>
+  </nav>
+  <!--  pagination end  -->
+
 <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'game_infos/page(/:id)' => 'game_infos#page'
   get 'nittei/find'
   get 'standing/find'
   get 'recruit_umpire' => 'recruit_umpire#show'

@@ -3,7 +3,7 @@ class GameInfosController < ApplicationController
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
   layout 'admin', :except => [:index, :show, :narrow, :page]
 
-  PAGE_SIZE = 3
+  PAGE_SIZE = 15
 
   def index
     @game_infos = GameInfo.all.standard.limit(PAGE_SIZE)
@@ -13,9 +13,7 @@ class GameInfosController < ApplicationController
 
   def page
     game_infos = GameInfo.all.standard
-    @game_infos = page_common(game_infos)
-    @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
-    @current_page = params[:id].to_i
+    page_common(game_infos)
     render :index
   end
 
@@ -33,9 +31,7 @@ class GameInfosController < ApplicationController
       if game_infos.length == 0
         @error_msg = '該当の情報はございません。'
       end
-      @game_infos = page_common(game_infos)
-      @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
-      @current_page = params[:id].to_i
+      page_common(game_infos)
       @selected_year = key_year
       @selected_season = key_season
       @selected_event = key_event
@@ -87,7 +83,9 @@ class GameInfosController < ApplicationController
 
   def page_common(game_infos)
     page_num = params[:id] == nil ? 0 : params[:id].to_i - 1
-    game_infos.limit(PAGE_SIZE).offset(PAGE_SIZE * page_num)
+    @game_infos = game_infos.limit(PAGE_SIZE).offset(PAGE_SIZE * page_num)
+    @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
+    @current_page = params[:id] == nil ? 1 : params[:id].to_i
   end
 
   def set_game_info

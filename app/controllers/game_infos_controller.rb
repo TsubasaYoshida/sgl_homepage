@@ -7,8 +7,17 @@ class GameInfosController < ApplicationController
 
   def index
     @game_infos = GameInfo.all.standard.limit(PAGE_SIZE)
-    @games_count = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
-    @current_page = 1
+    @count = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
+    @current = 1
+    if @current + 2 >= @count
+      @disp_numbers = [@count - 2, @count - 1, @count]
+      delete_list = [0, -1]
+      @disp_numbers.delete_if do |i|
+        delete_list.include?(i)
+      end
+    else
+      @disp_numbers = [@current, @current + 1, @current + 2]
+    end
   end
 
   def page
@@ -84,8 +93,17 @@ class GameInfosController < ApplicationController
   def page_common(game_infos)
     page_num = params[:id] == nil ? 0 : params[:id].to_i - 1
     @game_infos = game_infos.limit(PAGE_SIZE).offset(PAGE_SIZE * page_num)
-    @games_count = (game_infos.size.to_f / PAGE_SIZE).ceil
-    @current_page = params[:id] == nil ? 1 : params[:id].to_i
+    @count = (game_infos.size.to_f / PAGE_SIZE).ceil
+    @current = params[:id] == nil ? 1 : params[:id].to_i
+    if @current + 2 >= @count
+      @disp_numbers = [@count - 2, @count - 1, @count]
+      delete_list = [0, -1]
+      @disp_numbers.delete_if do |i|
+        delete_list.include?(i)
+      end
+    else
+      @disp_numbers = [@current, @current + 1, @current + 2]
+    end
   end
 
   def set_game_info

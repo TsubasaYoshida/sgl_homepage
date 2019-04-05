@@ -5,23 +5,19 @@
   <div style="margin-left: 15rem; margin-right: 15rem;">
     <%= render 'info', infos: @infos %>
   </div>
-  <div class="float-right mt-4">
-    <%= link_to 'もどる', :back, class: 'btn btn-default' %>
-  </div>
 </div>
 
 <!--  sp  -->
 <div class="d-sm-none d-block">
   <div class="py-2"></div>
   <%= render 'info', infos: @infos %>
-  <div class="float-right mt-4">
-    <%= link_to 'もどる', :back, class: 'btn btn-default' %>
-  </div>
 </div>
+
+<div class="py-3"></div>
 
 <!--  pagination start  -->
 <nav aria-label="新着情報一覧">
-  <ul class="pagination mr-auto mt-4">
+  <ul class="pagination justify-content-center">
 
     <% if 3 <= @current %>
       <li class="page-item">
@@ -35,9 +31,9 @@
       </li>
     <% end %>
 
-    <% @count.times do |i| %>
-      <li class="page-item<%= ' active' if i + 1 == @current %>">
-        <%= link_to i + 1, {controller: :infos, action: :page, id: i + 1}, class: 'page-link' %>
+    <% @disp_numbers.each do |i| %>
+      <li class="page-item<%= ' active' if i == @current %>">
+        <%= link_to i, {controller: :infos, action: :page, id: i}, class: 'page-link' %>
       </li>
     <% end %>
 

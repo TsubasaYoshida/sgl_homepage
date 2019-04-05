@@ -1,10 +1,26 @@
 class InfosController < ApplicationController
   skip_before_action :check_logined, only: [:index]
   before_action :set_info, only: [:edit, :update, :destroy]
-  layout 'admin', :except => [:index]
+  layout 'admin', :except => [:index, :page]
+
+  PAGE_SIZE = 10
 
   def index
-    @infos = Info.all.order(disp_date: :desc)
+    @infos = Info.all.order(disp_date: :desc).limit(PAGE_SIZE)
+    @count = (Info.all.order(disp_date: :desc).size.to_f / PAGE_SIZE).ceil
+    @current = 1
+    if @current + 2 >= @count
+      @disp_numbers = [@count - 2, @count - 1, @count]
+      @disp_numbers.delete(0)
+    else
+      @disp_numbers = [@current, @current + 1, @current + 2]
+    end
+  end
+
+  def page
+    infos = Info.all.order(disp_date: :desc)
+    page_common(infos)
+    render :index
   end
 
   def new
@@ -42,6 +58,19 @@ class InfosController < ApplicationController
   end
 
   private
+
+  def page_common(infos)
+    page_num = params[:id] == nil ? 0 : params[:id].to_i - 1
+    @infos = infos.limit(PAGE_SIZE).offset(PAGE_SIZE * page_num)
+    @count = (infos.size.to_f / PAGE_SIZE).ceil
+    @current = params[:id] == nil ? 1 : params[:id].to_i
+    if @current + 2 >= @count
+      @disp_numbers = [@count - 2, @count - 1, @count]
+      @disp_numbers.delete(0)
+    else
+      @disp_numbers = [@current, @current + 1, @current + 2]
+    end
+  end
 
   def set_info
     @info = Info.find(params[:id])

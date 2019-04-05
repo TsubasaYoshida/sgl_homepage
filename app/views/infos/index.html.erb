@@ -3,24 +3,52 @@
 <!--  pc  -->
 <div class="d-none d-sm-block">
   <div style="margin-left: 15rem; margin-right: 15rem;">
-
     <%= render 'info', infos: @infos %>
-
-    <div class="padding-bottom10 padding-top10 float-right">
-      <%= link_to 'もどる', :back, class: 'btn btn-default' %>
-    </div>
-
   </div>
 </div>
 
 <!--  sp  -->
 <div class="d-sm-none d-block">
-
   <div class="py-2"></div>
-
   <%= render 'info', infos: @infos %>
-
-  <div class="padding-bottom10 padding-top10 float-right">
-    <%= link_to 'もどる', :back, class: 'btn btn-default' %>
-  </div>
 </div>
+
+<div class="py-3"></div>
+
+<!--  pagination start  -->
+<nav aria-label="新着情報一覧">
+  <ul class="pagination justify-content-center">
+
+    <% if 3 <= @current %>
+      <li class="page-item">
+        <%= link_to '≪', {controller: :infos, action: :page, id: 1}, class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% if 1 != @current %>
+      <li class="page-item">
+        <%= link_to '<', {controller: :infos, action: :page, id: @current - 1}, class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% @disp_numbers.each do |i| %>
+      <li class="page-item<%= ' active' if i == @current %>">
+        <%= link_to i, {controller: :infos, action: :page, id: i}, class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% if @count != @current %>
+      <li class="page-item">
+        <%= link_to '>', {controller: :infos, action: :page, id: @current + 1}, class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% if @count - 2 >= @current %>
+      <li class="page-item">
+        <%= link_to '≫', {controller: :infos, action: :page, id: @count}, class: 'page-link' %>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>
+<!--  pagination end  -->

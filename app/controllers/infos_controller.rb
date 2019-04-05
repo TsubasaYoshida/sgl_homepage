@@ -11,7 +11,10 @@ class InfosController < ApplicationController
     @current = 1
     if @current + 2 >= @count
       @disp_numbers = [@count - 2, @count - 1, @count]
-      @disp_numbers.delete(0)
+      delete_list = [0, -1]
+      @disp_numbers.delete_if do |i|
+        delete_list.include?(i)
+      end
     else
       @disp_numbers = [@current, @current + 1, @current + 2]
     end
@@ -66,7 +69,10 @@ class InfosController < ApplicationController
     @current = params[:id] == nil ? 1 : params[:id].to_i
     if @current + 2 >= @count
       @disp_numbers = [@count - 2, @count - 1, @count]
-      @disp_numbers.delete(0)
+      delete_list = [0, -1]
+      @disp_numbers.delete_if do |i|
+        delete_list.include?(i)
+      end
     else
       @disp_numbers = [@current, @current + 1, @current + 2]
     end

@@ -12,7 +12,7 @@ class LoginController < ApplicationController
 
       reset_session
       session[:usr] = usr.id
-      redirect_to '/admin/top'
+      redirect_to '/admin'
     else
       @error = '入力値が間違っています。'
       render 'index'

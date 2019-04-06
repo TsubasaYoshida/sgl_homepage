@@ -1,5 +1,5 @@
 class InfosController < ApplicationController
-  skip_before_action :check_logined, only: [:index,:page]
+  skip_before_action :check_logined, only: [:index, :page]
   before_action :set_info, only: [:edit, :update, :destroy]
   layout 'admin', :except => [:index, :page]
 
@@ -41,7 +41,7 @@ class InfosController < ApplicationController
     @info = Info.new(info_params)
 
     if @info.save
-      redirect_to action: :management, notice: '新着情報の作成に成功しました。'
+      redirect_to management_infos_url, notice: '新着情報の作成に成功しました。'
     else
       render :new
     end
@@ -49,7 +49,7 @@ class InfosController < ApplicationController
 
   def update
     if @info.update(info_params)
-      redirect_to action: :management, notice: '新着情報の更新に成功しました。'
+      redirect_to management_infos_url, notice: '新着情報の更新に成功しました。'
     else
       render :edit
     end
@@ -57,7 +57,7 @@ class InfosController < ApplicationController
 
   def destroy
     @info.destroy
-    redirect_to action: :management, notice: '新着情報の削除に成功しました。'
+    redirect_to management_infos_url, notice: '新着情報の削除に成功しました。'
   end
 
   private

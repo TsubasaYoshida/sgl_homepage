@@ -69,7 +69,7 @@ class GameInfosController < ApplicationController
     @game_info = GameInfo.new(game_info_params)
 
     if @game_info.save
-      redirect_to({action: :management}, notice: '試合情報の作成に成功しました。')
+      redirect_to management_game_infos_url, notice: '試合情報の作成に成功しました。'
     else
       render :new
     end
@@ -77,7 +77,7 @@ class GameInfosController < ApplicationController
 
   def update
     if @game_info.update(game_info_params)
-      redirect_to({action: :management}, notice: '試合情報の更新に成功しました。')
+      redirect_to management_game_infos_url, notice: '試合情報の更新に成功しました。'
     else
       render :edit
     end
@@ -85,7 +85,7 @@ class GameInfosController < ApplicationController
 
   def destroy
     @game_info.destroy
-    redirect_to({action: :management}, notice: '試合情報の削除に成功しました。')
+    redirect_to management_game_infos_url, notice: '試合情報の削除に成功しました。'
   end
 
   private

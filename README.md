@@ -21,7 +21,7 @@
 - Unicorn
 
 ## デプロイ
-- Capistraro
+- Capistrano
 
 ## 主な機能
 - CRUD

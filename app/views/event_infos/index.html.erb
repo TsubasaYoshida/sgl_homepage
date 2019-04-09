@@ -28,7 +28,7 @@
         <%= event_info.league %>
       </td>
       <td style="vertical-align: middle;">
-        <%= l event_info.updated_at %>
+        <%= l event_info.updated_at, format: :standard %>
       </td>
       <td>
         <%= link_to '大会情報編集', edit_event_info_path(event_info), class: 'btn btn-default' %>

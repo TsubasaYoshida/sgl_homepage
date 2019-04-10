@@ -2,8 +2,12 @@ ja:
   activerecord:
     models:
       game_info: 試合情報
+      info: 新着情報
     attributes:
       game_info:
         batting_first_team: 「先攻チーム」
         field_first_team: 「後攻チーム」
         disp_date: 「試合日」
+      info:
+        disp_date: 「日付」
+        article: 「記事内容」

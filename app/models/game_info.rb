@@ -2,7 +2,7 @@ class GameInfo < ApplicationRecord
 
   scope :standard, -> {order(gameset_flag: :asc, disp_date: :desc, number: :desc)}
 
-  validates :batting_first_team, :field_first_team, :disp_date,
+  validates :season, :event, :round, :disp_date, :batting_first_team, :field_first_team, :stadium, :number,
             presence: true
 
   def get_sum_top

@@ -8,6 +8,11 @@ ja:
         batting_first_team: 「先攻チーム」
         field_first_team: 「後攻チーム」
         disp_date: 「試合日」
+        event: 「大会」
+        round: 「ラウンド」
+        stadium: 「球場」
+        number: 「試合順」
+        season: 「春季／秋季」
       info:
         disp_date: 「日付」
         article: 「記事内容」

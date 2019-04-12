@@ -10,7 +10,10 @@
         <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
         <br>
         <small style="font-size: 14px">
-          <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+          <%= l @game_info.disp_date, format: :long %>
+          <%= l @game_info.start_time, format: :game %><%= '~' if @game_info.start_time %><%= l @game_info.end_time, format: :game %>
+          <br>
+          <%= @game_info.stadium %> <%= @game_info.get_game_number %>
           <br>
           <%= @game_info.get_disp_event %> <%= @game_info.round %>
         </small>
@@ -24,7 +27,10 @@
         vs <%= Team.get_three_letter(@game_info.field_first_team) %>
         <br>
         <small style="font-size: 14px">
-          <%= @game_info.disp_date %> <%= @game_info.stadium %> <%= @game_info.get_game_number %>
+          <%= l @game_info.disp_date, format: :long %>
+          <%= l @game_info.start_time, format: :game %><%= '~' if @game_info.start_time %><%= l @game_info.end_time, format: :game %>
+          <br>
+          <%= @game_info.stadium %> <%= @game_info.get_game_number %>
           <br>
           <%= @game_info.get_disp_event %> <%= @game_info.round %>
         </small>

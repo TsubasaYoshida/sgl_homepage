@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'game_infos/page(/:id)' => 'game_infos#page'
   get 'infos/page(/:id)' => 'infos#page'
   get 'nittei/find'
   get 'standing/find'
@@ -53,7 +52,6 @@ Rails.application.routes.draw do
   resources :game_infos do
     collection do
       get :management
-      get :narrow
     end
 
     member do

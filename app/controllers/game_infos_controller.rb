@@ -1,51 +1,41 @@
 class GameInfosController < ApplicationController
-  skip_before_action :check_logined, only: [:index, :show, :narrow, :set_game_info, :page]
+  skip_before_action :check_logined, only: [:index, :show, :set_game_info, :paging]
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
-  layout 'admin', :except => [:index, :show, :narrow, :page]
-
+  layout 'admin', :except => [:index, :show, :paging]
   PAGE_SIZE = 15
 
   def index
-    @game_infos = GameInfo.all.standard.limit(PAGE_SIZE)
-    @count = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
-    @current = 1
-    if @current + 2 >= @count
-      @disp_numbers = [@count - 2, @count - 1, @count]
-      delete_list = [0, -1]
-      @disp_numbers.delete_if do |i|
-        delete_list.include?(i)
-      end
-    else
-      @disp_numbers = [@current, @current + 1, @current + 2]
-    end
-  end
+    @current = params[:page].nil? ? 1 : params[:page].to_i
 
-  def page
-    game_infos = GameInfo.all.standard
-    page_common(game_infos)
-    render :index
-  end
-
-  def narrow
-    key_year = params[:key_year]
-    key_season = params[:key_season]
-    key_event = params[:key_event]
-    if key_year.nil? || key_season.nil? || key_event.nil?
-      @error_msg = '該当の情報はございません。'
+    unless @narrowed = params[:narrowed]
+      @game_infos = GameInfo.all.standard.limit(PAGE_SIZE).offset(PAGE_SIZE * (@current - 1))
+      @max_page = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
     else
-      game_infos = GameInfo
-                       .where(season: key_season, event: key_event)
-                       .where('disp_date LIKE ?', "#{key_year}%")
-                       .order(disp_date: :desc, created_at: :desc)
-      if game_infos.length == 0
+      key_year = params[:key_year]
+      key_season = params[:key_season]
+      key_event = params[:key_event]
+      if key_year.nil? || key_season.nil? || key_event.nil?
         @error_msg = '該当の情報はございません。'
+      else
+        narrowed_games = GameInfo
+                          .where(season: key_season, event: key_event)
+                          .where('disp_date LIKE ?', "#{key_year}%")
+                          .order(disp_date: :desc, number: :desc)
+        @game_infos = narrowed_games
+                          .limit(PAGE_SIZE)
+                          .offset(PAGE_SIZE * (@current - 1))
+        @max_page = (narrowed_games.size.to_f / PAGE_SIZE).ceil
+        if @game_infos.length == 0
+          @error_msg = '該当の情報はございません。'
+        end
+        @selected_year = key_year
+        @selected_season = key_season
+        @selected_event = key_event
       end
-      page_common(game_infos)
-      @selected_year = key_year
-      @selected_season = key_season
-      @selected_event = key_event
     end
-    render :index
+
+    paging unless @error_msg
+
   end
 
   def show
@@ -90,20 +80,33 @@ class GameInfosController < ApplicationController
 
   private
 
-  def page_common(game_infos)
-    page_num = params[:id] == nil ? 0 : params[:id].to_i - 1
-    @game_infos = game_infos.limit(PAGE_SIZE).offset(PAGE_SIZE * page_num)
-    @count = (game_infos.size.to_f / PAGE_SIZE).ceil
-    @current = params[:id] == nil ? 1 : params[:id].to_i
-    if @current + 2 >= @count
-      @disp_numbers = [@count - 2, @count - 1, @count]
+  def paging
+
+    @pagination = {}
+    if 3 <= @current
+      @pagination['≪'] = 1
+    end
+    if 1 != @current
+      @pagination['<'] = @current - 1
+    end
+
+    if @current + 2 >= @max_page
+      @pagination.merge!({@max_page - 2 => @max_page - 2, @max_page - 1 => @max_page - 1, @max_page => @max_page})
       delete_list = [0, -1]
-      @disp_numbers.delete_if do |i|
-        delete_list.include?(i)
+      @pagination.delete_if do |key, value|
+        delete_list.include?(value)
       end
     else
-      @disp_numbers = [@current, @current + 1, @current + 2]
+      @pagination.merge!({@current => @current, @current + 1 => @current + 1, @current + 2 => @current + 2})
     end
+
+    if @max_page != @current
+      @pagination['>'] = @current + 1
+    end
+    if @max_page - 2 >= @current
+      @pagination['≫'] = @max_page
+    end
+
   end
 
   def set_game_info

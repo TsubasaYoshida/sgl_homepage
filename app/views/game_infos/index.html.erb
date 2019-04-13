@@ -2,7 +2,8 @@
 
 <!--  pc  -->
 <div class="d-none d-sm-block">
-  <%= form_tag({controller: :game_infos, action: :narrow}, method: :get) do %>
+  <%= form_tag(game_infos_path, method: :get) do %>
+    <%= hidden_field_tag :narrowed, true %>
     <div class="row" style="padding-left: 5px; padding-right: 5px">
       <div class="col-sm-1"></div>
       <div class="col-sm-3">
@@ -31,7 +32,8 @@
 
 <!--  sp  -->
 <div class="d-sm-none d-block">
-  <%= form_tag({controller: :game_infos, action: :narrow}, method: :get) do %>
+  <%= form_tag(game_infos_path, method: :get) do %>
+    <%= hidden_field_tag :narrowed, true %>
     <nav class="navbar navbar-expand-lg navbar-light pt-2">
       <button type="button" class="navbar-toggler btn-block text-center"
               data-toggle="collapse" data-target="#search"
@@ -82,53 +84,9 @@
   <nav aria-label="試合情報一覧">
     <ul class="pagination justify-content-center">
 
-      <% if 3 <= @current %>
-        <li class="page-item">
-          <% if controller.action_name == 'narrow' %>
-            <%= link_to '≪', {controller: :game_infos, action: :narrow, id: 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
-          <% else %>
-            <%= link_to '≪', {controller: :game_infos, action: :page, id: 1}, class: 'page-link' %>
-          <% end %>
-        </li>
-      <% end %>
-
-      <% if 1 != @current %>
-        <li class="page-item">
-          <% if controller.action_name == 'narrow' %>
-            <%= link_to '<', {controller: :game_infos, action: :narrow, id: @current - 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
-          <% else %>
-            <%= link_to '<', {controller: :game_infos, action: :page, id: @current - 1}, class: 'page-link' %>
-          <% end %>
-        </li>
-      <% end %>
-
-      <% @disp_numbers.each do |i| %>
-        <li class="page-item<%= ' active' if i == @current %>">
-          <% if controller.action_name == 'narrow' %>
-            <%= link_to i, {controller: :game_infos, action: :narrow, id: i, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
-          <% else %>
-            <%= link_to i, {controller: :game_infos, action: :page, id: i}, class: 'page-link' %>
-          <% end %>
-        </li>
-      <% end %>
-
-      <% if @count != @current %>
-        <li class="page-item">
-          <% if controller.action_name == 'narrow' %>
-            <%= link_to '>', {controller: :game_infos, action: :narrow, id: @current + 1, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
-          <% else %>
-            <%= link_to '>', {controller: :game_infos, action: :page, id: @current + 1}, class: 'page-link' %>
-          <% end %>
-        </li>
-      <% end %>
-
-      <% if @count - 2 >= @current %>
-        <li class="page-item">
-          <% if controller.action_name == 'narrow' %>
-            <%= link_to '≫', {controller: :game_infos, action: :narrow, id: @count, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event}, class: 'page-link' %>
-          <% else %>
-            <%= link_to '≫', {controller: :game_infos, action: :page, id: @count}, class: 'page-link' %>
-          <% end %>
+      <% @pagination.each do |key, value| %>
+        <li class="page-item<%= ' active' if value == @current %>">
+          <%= link_to key, game_infos_path(page: value, narrowed: @narrowed, key_year: @selected_year, key_season: @selected_season, key_event: @selected_event), class: 'page-link' %>
         </li>
       <% end %>
 

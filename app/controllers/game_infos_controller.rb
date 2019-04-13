@@ -2,7 +2,7 @@ class GameInfosController < ApplicationController
   skip_before_action :check_logined, only: [:index, :show, :set_game_info, :paging]
   before_action :set_game_info, only: [:show, :edit, :score, :update, :destroy]
   layout 'admin', :except => [:index, :show, :paging]
-  PAGE_SIZE = 2
+  PAGE_SIZE = 15
 
   def index
     @current = params[:page].nil? ? 1 : params[:page].to_i

@@ -50,6 +50,7 @@
           <th>後攻チーム</th>
           <th>試合開始時刻</th>
           <th>特記事項</th>
+          <th>雨天中止</th>
         </tr>
         <tr>
           <th style="vertical-align: middle;">第1試合</th>
@@ -69,6 +70,7 @@
           </td>
           <td><%= f.time_field :start_time_1, class: 'form-control', onchange: 'auto_setting_start_time(this)' %></td>
           <td><%= f.text_field :message_1, class: 'form-control' %></td>
+          <td style="vertical-align:middle;" onclick="getElementById('no_game_1').click();"><%= f.check_box :no_game_1, id: 'no_game_1', class: 'checkbox', onclick: 'this.click()' %></td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">第2試合</th>
@@ -88,6 +90,7 @@
           </td>
           <td><%= f.time_field :start_time_2, class: 'form-control' %></td>
           <td><%= f.text_field :message_2, class: 'form-control' %></td>
+          <td style="vertical-align:middle;" onclick="getElementById('no_game_2').click();"><%= f.check_box :no_game_2, id: 'no_game_2', class: 'checkbox', onclick: 'this.click()' %></td>
         </tr>
         <tr>
           <th style="vertical-align: middle;">第3試合</th>
@@ -107,6 +110,7 @@
           </td>
           <td><%= f.time_field :start_time_3, class: 'form-control' %></td>
           <td><%= f.text_field :message_3, class: 'form-control' %></td>
+          <td style="vertical-align:middle;" onclick="getElementById('no_game_3').click();"><%= f.check_box :no_game_3, id: 'no_game_3', class: 'checkbox', onclick: 'this.click()' %></td>
         </tr>
       </table>
 

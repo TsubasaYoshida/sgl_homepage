@@ -77,7 +77,11 @@
               <%= Team.get_three_letter(nittei_info.top_team_1) %>
             </div>
             <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_1, format: :game %>
+              <% if nittei_info.no_game_1 %>
+                雨天中止
+              <% else %>
+                <%= l nittei_info.start_time_1, format: :game %>
+              <% end %>
             </div>
             <div class="col-4 text-left py-1">
               <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
@@ -95,7 +99,11 @@
               <%= Team.get_three_letter(nittei_info.top_team_2) %>
             </div>
             <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_2, format: :game %>
+              <% if nittei_info.no_game_2 %>
+                雨天中止
+              <% else %>
+                <%= l nittei_info.start_time_2, format: :game %>
+              <% end %>
             </div>
             <div class="col-4 text-left py-1">
               <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
@@ -113,7 +121,11 @@
               <%= Team.get_three_letter(nittei_info.top_team_3) %>
             </div>
             <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_3, format: :game %>
+              <% if nittei_info.no_game_3 %>
+                雨天中止
+              <% else %>
+                <%= l nittei_info.start_time_3, format: :game %>
+              <% end %>
             </div>
             <div class="col-4 text-left py-1">
               <%= Team.get_three_letter(nittei_info.bottom_team_3) %>

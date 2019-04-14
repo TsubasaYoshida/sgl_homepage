@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_044426) do
+ActiveRecord::Schema.define(version: 2019_04_14_050921) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 2019_03_31_044426) do
     t.boolean "rain_date_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "no_game_1"
+    t.boolean "no_game_2"
+    t.boolean "no_game_3"
     t.index ["event_info_id"], name: "index_event_one_days_on_event_info_id"
   end
 

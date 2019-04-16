@@ -129,9 +129,9 @@
                           <%= playoff_result.batting_first_team %>
                         </div>
                         <div class="col-2 text-center px-2">
-                          <%= sum_top = playoff_result.get_sum_top %>
+                          <%= playoff_result.get_sum_top %>
                           <%= Constants::SPACE_HYPHEN_SPACE %>
-                          <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                          <%= playoff_result.get_sum_bottom %><%= playoff_result.get_x %>
                         </div>
                         <div class="col-5 text-left px-2">
                           <%= playoff_result.field_first_team %>
@@ -197,9 +197,9 @@
                       <%= Team.get_three_letter(playoff_result.batting_first_team) %>
                     </div>
                     <div class="col-2 text-center px-2">
-                      <%= sum_top = playoff_result.get_sum_top %>
+                      <%= playoff_result.get_sum_top %>
                       <%= Constants::SPACE_HYPHEN_SPACE %>
-                      <%= sum_bottom = playoff_result.get_sum_bottom %><%= playoff_result.get_x_index(sum_top, sum_bottom) %>
+                      <%= playoff_result.get_sum_bottom %><%= playoff_result.get_x %>
                     </div>
                     <div class="col-5 text-left px-2">
                       <%= Team.get_three_letter(playoff_result.field_first_team) %>

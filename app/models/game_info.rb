@@ -23,49 +23,41 @@ class GameInfo < ApplicationRecord
     sum_bottom
   end
 
-  def get_x_index(sum_top, sum_bottom)
-    x = ""
-    if (self.bottom9.to_i > 0 || self.bottom10.to_i > 0 || self.bottom11.to_i > 0 || self.bottom12.to_i > 0) && self.gameset_flag && sum_bottom > sum_top
-      x = "x"
-    elsif ((self.bottom5.to_i > 0 && !self.top6) || (self.bottom6.to_i > 0 && !self.top7) || (self.bottom7.to_i > 0 && !self.top8) || (self.bottom8.to_i > 0 && !self.top9)) && self.gameset_flag && sum_bottom > sum_top
-      x = "x"
+  def get_x
+    if self.gameset_flag && get_sum_bottom > get_sum_top
+      if self.bottom9.to_i > 0 || self.bottom10.to_i > 0 || self.bottom11.to_i > 0 || self.bottom12.to_i > 0 || (self.bottom5.to_i > 0 && !self.top6) || (self.bottom6.to_i > 0 && !self.top7) || (self.bottom7.to_i > 0 && !self.top8) || (self.bottom8.to_i > 0 && !self.top9)
+        "x"
+      end
     end
-    return x
   end
 
   def get_gameset_msg
     self.gameset_flag ? "試合終了" : "試合中"
   end
 
-  def get_gameset_msg_show(sum_top, sum_bottom)
-    gameset_msg = ""
+  def get_gameset_msg_show
     if self.gameset_flag
-      if !self.top6
-        gameset_msg = "（5回コールド）"
+      if get_sum_top == get_sum_bottom
+        "（引き分け）"
+      elsif !self.top6
+        "（5回コールド）"
       elsif !self.top7
-        gameset_msg = "（6回コールド）"
+        "（6回コールド）"
       elsif !self.top8
-        gameset_msg = "（7回コールド）"
+        "（7回コールド）"
       elsif !self.top9
-        gameset_msg = "（8回コールド）"
-      elsif sum_top == sum_bottom
-        gameset_msg = "（引き分け）"
+        "（8回コールド）"
       end
     end
-    return gameset_msg
   end
 
   def get_disp_event
-    if self.event == '入替戦'
-      disp_event = self.disp_date.year.to_s + '年度' + self.season + 'リーグ戦入替戦'
-    else
-      disp_event = self.disp_date.year.to_s + '年度' + self.season + self.event
-    end
-    return disp_event
+    disp_event = self.disp_date.year.to_s + '年度' + self.season
+    self.event == '入替戦' ? disp_event + 'リーグ戦入替戦' : disp_event + self.event
   end
 
   def get_game_number
-    return '第' + self.number.to_s + '試合'
+    '第' + self.number.to_s + '試合'
   end
 
   def get_team_initial(team)

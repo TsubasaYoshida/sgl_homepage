@@ -1,1 +1,2 @@
 /public/* linguist-documentation=false
+/app/views/*/*.erb ruby

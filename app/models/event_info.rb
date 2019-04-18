@@ -3,7 +3,7 @@ class EventInfo < ApplicationRecord
   accepts_nested_attributes_for :event_one_days, allow_destroy: true
 
   # 順位表表示のときのチーム名取得に使う
-  def self.get_team_list(year, season, league)
+  def self.get_team_name_list(year, season, league)
     event_info = EventInfo.find_by(year: year, season: season, league: league)
     team_list = []
     event_info.event_one_days.each do |event_one_day|

@@ -100,26 +100,23 @@ class StandingController < ApplicationController
     tmp_event_list.each do |event|
 
       game_infos = GameInfo.where(event: event, season: @selected_season, gameset_flag: true).where('disp_date LIKE ?', "#{@selected_year}%")
-      win_lose_draw_list = []
 
       # 当時のチーム名一覧を取得（入替で所属リーグが変動するためteamsテーブルからは取得できない）
-      teams = []
-      team_list = EventInfo.get_team_list(@selected_year, @selected_season, event)
+      team_name_list = EventInfo.get_team_name_list(@selected_year, @selected_season, event)
 
-      # チーム情報を取得
-      team_list.each do |team|
-        teams << Team.find_by(name: team)
+      # チーム情報を設定
+      record_list = []
+      team_name_list.each do |team_name|
+        team = Team.find_by(name: team_name)
+        record = WinLoseDraw.new
+        record.team_name = team.name
+        record.three_letter_name = team.three_letter_name
+        record.two_letter_name = team.two_letter_name
+        record.one_letter_name = team.one_letter_name
+        record_list << record
       end
 
-      teams.each do |team|
-        win_lose_draw = WinLoseDraw.new
-        win_lose_draw.team_name = team.name
-        win_lose_draw.three_letter_name = team.three_letter_name
-        win_lose_draw.two_letter_name = team.two_letter_name
-        win_lose_draw.one_letter_name = team.one_letter_name
-        win_lose_draw_list.push(win_lose_draw)
-      end
-      win_lose_draw_list.each do |win_lose_draw|
+      record_list.each do |win_lose_draw|
         team_name = win_lose_draw.team_name
         game_infos.each do |game_info|
           if team_name == game_info.batting_first_team || team_name == game_info.field_first_team
@@ -158,7 +155,7 @@ class StandingController < ApplicationController
       end
 
       # 順位決定ロジック
-      rank_infos = win_lose_draw_list.sort_by do |a|
+      rank_infos = record_list.sort_by do |a|
         [-a.point, -a.playoff_point]
       end
       base_point = rank_infos.first.point

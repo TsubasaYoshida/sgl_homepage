@@ -187,16 +187,14 @@ class StandingController < ApplicationController
 
   def get_disp_result(game_infos, team_1, team_2, round)
     game_info = game_infos.find_by(batting_first_team: team_1, field_first_team: team_2, round: round)
-    if game_info.nil?
-      game_info = game_infos.find_by(batting_first_team: team_2, field_first_team: team_1, round: round)
-    end
+    game_info ||= game_infos.find_by(batting_first_team: team_2, field_first_team: team_1, round: round)
     if game_info
       result = GameInfo.win_or_lose(game_info, team_1)
       return '◯' if result == :win
       return '×' if result == :lose
       return '△' if result == :draw
     else
-      return ''
+      ''
     end
   end
 

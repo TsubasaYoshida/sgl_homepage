@@ -118,13 +118,13 @@ class StandingController < ApplicationController
           if team_name == game_info.batting_first_team || team_name == game_info.field_first_team
 
             if game_info.round != '順位決定戦'
-              result = GameInfo.win_or_lose(game_info, team_name)
+              result = game_info.win_or_lose(team_name)
               record.disp_win += 1 if result == :win
               record.disp_lose += 1 if result == :lose
               record.disp_draw += 1 if result == :draw
             else
               # 順位決定戦だけで勝敗判定メソッド呼び出し
-              result_playoff = GameInfo.win_or_lose(game_info, team_name)
+              result_playoff = game_info.win_or_lose(team_name)
               record.playoff_win += 1 if result_playoff == :win
               record.playoff_lose += 1 if result_playoff == :lose
               record.playoff_draw += 1 if result_playoff == :draw
@@ -165,8 +165,12 @@ class StandingController < ApplicationController
             result_array << 'ー'
             result_array << 'ー'
           else
-            result_array << get_disp_result(game_infos, record_1.team_name, record_2.team_name, '第一節')
-            result_array << get_disp_result(game_infos, record_1.team_name, record_2.team_name, '第二節')
+            game_info_round1 = game_infos.find_by(batting_first_team: record_1.team_name, field_first_team: record_2.team_name, round: '第一節')
+            game_info_round1 ||= game_infos.find_by(batting_first_team: record_2.team_name, field_first_team: record_1.team_name, round: '第一節')
+            result_array << (game_info_round1.blank? ? '' : game_info_round1.get_disp_result(record_1.team_name))
+            game_info_round2 = game_infos.find_by(batting_first_team: record_1.team_name, field_first_team: record_2.team_name, round: '第二節')
+            game_info_round2 ||= game_infos.find_by(batting_first_team: record_2.team_name, field_first_team: record_1.team_name, round: '第二節')
+            result_array << (game_info_round2.blank? ? '' : game_info_round2.get_disp_result(record_1.team_name))
           end
         end
       end
@@ -183,19 +187,6 @@ class StandingController < ApplicationController
     end
 
     render :show
-  end
-
-  def get_disp_result(game_infos, team_1, team_2, round)
-    game_info = game_infos.find_by(batting_first_team: team_1, field_first_team: team_2, round: round)
-    game_info ||= game_infos.find_by(batting_first_team: team_2, field_first_team: team_1, round: round)
-    if game_info
-      result = GameInfo.win_or_lose(game_info, team_1)
-      return '◯' if result == :win
-      return '×' if result == :lose
-      return '△' if result == :draw
-    else
-      ''
-    end
   end
 
 end

@@ -102,19 +102,6 @@ class GameInfo < ApplicationRecord
     return team_initial
   end
 
-  def self.win_or_lose(game_info, team_name)
-    sum_top = game_info.get_sum_top
-    sum_bottom = game_info.get_sum_bottom
-    return :draw if sum_top == sum_bottom
-    if game_info.batting_first_team == team_name
-      return :win if sum_top > sum_bottom
-      return :lose if sum_bottom > sum_top
-    elsif game_info.field_first_team == team_name
-      return :win if sum_bottom > sum_top
-      return :lose if sum_top > sum_bottom
-    end
-  end
-
   def get_inputed_inning
     unless self.top1
       return "得点未入力"
@@ -137,6 +124,30 @@ class GameInfo < ApplicationRecord
     }
 
     return "15回ウラ入力済"
+  end
+
+  def win_or_lose(team_name)
+    sum_top = get_sum_top
+    sum_bottom = get_sum_bottom
+    return :draw if sum_top == sum_bottom
+    if self.batting_first_team == team_name
+      return :win if sum_top > sum_bottom
+      return :lose if sum_bottom > sum_top
+    elsif self.field_first_team == team_name
+      return :win if sum_bottom > sum_top
+      return :lose if sum_top > sum_bottom
+    end
+  end
+
+  def get_disp_result(team)
+    case win_or_lose(team)
+    when :win
+      '◯'
+    when :lose
+      '×'
+    when :draw
+      '△'
+    end
   end
 
 end

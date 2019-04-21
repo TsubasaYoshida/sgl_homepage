@@ -107,8 +107,7 @@ class StandingController < ApplicationController
     tmp_event_list.each_with_index do |event, i|
 
       game_infos = GameInfo.where(event: event, season: @selected_season, gameset_flag: true).where('disp_date LIKE ?', "#{@selected_year}%")
-      puts game_infos.nil?
-      puts game_infos.class
+
       if game_infos.size > 0
 
         @first_view_active = i + 1 unless @first_view_active

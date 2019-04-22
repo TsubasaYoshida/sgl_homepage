@@ -1,14 +1,10 @@
-class StandingController < ApplicationController
+class StandingsController < ApplicationController
   skip_before_action :check_logined
 
-  def show
-    first
-  end
-
-  def find
+  def index
     key_year = params[:key_year]
     key_season = params[:key_season]
-    if key_year.nil? || key_season.nil?
+    if key_year.blank? || key_season.blank?
       first
     else
       @selected_year = key_year
@@ -17,10 +13,10 @@ class StandingController < ApplicationController
       if @selected_year.to_i <= 2018
 
         if @selected_year.to_i == 2018 && @selected_season == '秋季'
-          render "standing/2018_autumn"
+          render "standings/2018_autumn"
 
         elsif @selected_year.to_i == 2018 && @selected_season == '春季'
-          render "standing/2018_spring"
+          render "standings/2018_spring"
 
         else
           @result_infos = []
@@ -76,7 +72,7 @@ class StandingController < ApplicationController
           end
 
           @first_view_active = 1
-          render :show
+          render :index
 
         end
 
@@ -95,7 +91,7 @@ class StandingController < ApplicationController
     if @selected_year.to_i <= 2018
       english_season = Constants.get_english_season(@selected_season)
       file_name = @selected_year.to_s + '_' + english_season
-      render "standing/#{file_name}"
+      render "standings/#{file_name}"
     else
       describe
     end
@@ -140,7 +136,7 @@ class StandingController < ApplicationController
     end
 
     @first_view_active = 1 unless @first_view_active
-    render :show
+    render :index
   end
 
   def make_record_list(team_name_list, game_infos)

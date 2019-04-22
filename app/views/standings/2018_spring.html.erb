@@ -2,7 +2,7 @@
 
 <!--  pc  -->
 <div class="d-none d-sm-block">
-  <%= form_tag({controller: :standing, action: :find}, method: :get) do %>
+  <%= form_tag(standings_path, method: :get) do %>
     <div class="row" style="padding-left: 5px; padding-right: 5px">
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
@@ -24,7 +24,7 @@
 
 <!--  sp  -->
 <div class="d-sm-none d-block">
-  <%= form_tag({controller: :standing, action: :find}, method: :get) do %>
+  <%= form_tag(standings_path, method: :get) do %>
     <nav class="navbar navbar-expand-lg navbar-light pt-2">
       <button type="button" class="navbar-toggler btn-block text-center"
               data-toggle="collapse" data-target="#search"
@@ -57,50 +57,53 @@
 <div class="py-2"></div>
 
 <h3 class="text-center font-weight-bold mb-2 mb-sm-3 mt-0 mt-sm-3" style="font-size: 20px">
-  2018年度秋季リーグ戦
+  2018年度春季リーグ戦
 </h3>
 
 <div class="pt-2"></div>
 
 <ul class="nav nav-pills nav-justified">
   <li class="nav-item border border-right-0 border-bottom-0">
-    <%= link_to '1部', '#tab1', class: 'nav-link active rounded-0', data: {toggle: 'tab'} %>
+    <a class="nav-link active rounded-0" data-toggle="tab" href="#tab1">1部</a>
   </li>
   <li class="nav-item border border-right-0 border-bottom-0">
-    <%= link_to '2部', '#tab2', class: 'nav-link rounded-0', data: {toggle: 'tab'} %>
+    <a class="nav-link rounded-0" data-toggle="tab" href="#tab2">2部</a>
   </li>
   <li class="nav-item border border-bottom-0">
-    <%= link_to '3部', '#tab3', class: 'nav-link rounded-0', data: {toggle: 'tab'} %>
+    <a class="nav-link rounded-0" data-toggle="tab" href="#tab3">3部</a>
   </li>
 </ul>
 
 <div class="tab-content">
+
+
   <div id="tab1" class="tab-pane active">
+
 
     <!--  pc  -->
     <div class="d-none d-sm-block">
       <table class="table table-bordered text-center">
         <tr>
           <td colspan="2"></td>
-          <td colspan="2">道都大</td>
           <td colspan="2">東海大</td>
           <td colspan="2">北翔大</td>
+          <td colspan="2">道都大</td>
+          <td colspan="2">北　大</td>
           <td colspan="2">札幌大</td>
           <td colspan="2">学園大</td>
-          <td colspan="2">北　大</td>
           <td>勝利</td>
           <td>敗戦</td>
           <td>引分</td>
         </tr>
         <tr>
           <td>1位</td>
-          <td class="rank-team-name">星槎道都大学</td>
+          <td class="rank-team-name">東海大学札幌キャンパス</td>
 
           <td>ー</td>
           <td>ー</td>
           <td>◯</td>
           <td>×</td>
-          <td>×</td>
+          <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
@@ -109,407 +112,120 @@
           <td>◯</td>
           <td>◯</td>
 
-          <td>8</td>
-          <td>2</td>
+          <td>9</td>
+          <td>1</td>
           <td>0</td>
         </tr>
         <tr>
           <td>2位</td>
-          <td class="rank-team-name">東海大学札幌キャンパス</td>
+          <td class="rank-team-name">北翔大学</td>
 
           <td>×</td>
           <td>◯</td>
           <td>ー</td>
           <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>△</td>
-          <td>◯</td>
-          <td>×</td>
           <td>×</td>
           <td>◯</td>
           <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
 
-          <td>6</td>
+          <td>7</td>
           <td>3</td>
-          <td>1</td>
+          <td>0</td>
         </tr>
         <tr>
           <td>3位</td>
-          <td class="rank-team-name">北翔大学</td>
+          <td class="rank-team-name">星槎道都大学</td>
 
+          <td>×</td>
+          <td>×</td>
           <td>◯</td>
-          <td>×</td>
-          <td>×</td>
           <td>×</td>
           <td>ー</td>
           <td>ー</td>
-          <td>△</td>
+          <td>×</td>
           <td>◯</td>
-          <td>△</td>
+          <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
 
-          <td>5</td>
-          <td>3</td>
-          <td>2</td>
+          <td>6</td>
+          <td>4</td>
+          <td>0</td>
         </tr>
         <tr>
           <td>4位</td>
-          <td class="rank-team-name">札幌大学</td>
-
-          <td>×</td>
-          <td>×</td>
-          <td>△</td>
-          <td>×</td>
-          <td>△</td>
-          <td>×</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>4</td>
-          <td>4</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>5位</td>
-          <td class="rank-team-name">北海学園大学</td>
-
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>△</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>3</td>
-          <td>6</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>6位</td>
           <td class="rank-team-name">北海道大学</td>
 
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
           <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>1</td>
-          <td>9</td>
-          <td>0</td>
-        </tr>
-      </table>
-
-      <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2019-3-3 02:06
-      </div>
-
-      <div class="py-4"></div>
-
-    </div>
-
-    <!--  sp  -->
-    <div class="d-block d-sm-none">
-      <table class="table table-bordered text-center standing-sp">
-        <tr>
-          <td colspan="2"></td>
-          <td colspan="2">道都</td>
-          <td colspan="2">東海</td>
-          <td colspan="2">北翔</td>
-          <td colspan="2">札大</td>
-          <td colspan="2">学園</td>
-          <td colspan="2">北大</td>
-          <td>勝</td>
-          <td>敗</td>
-          <td>分</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>道都</td>
-
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-
-          <td>8</td>
-          <td>2</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>東海</td>
-
-          <td>×</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>△</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-
-          <td>6</td>
-          <td>3</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>北翔</td>
-
-          <td>◯</td>
-          <td>×</td>
-          <td>×</td>
           <td>×</td>
           <td>ー</td>
           <td>ー</td>
           <td>△</td>
           <td>◯</td>
-          <td>△</td>
-          <td>◯</td>
           <td>◯</td>
           <td>◯</td>
 
-          <td>5</td>
-          <td>3</td>
-          <td>2</td>
-        </tr>
-        <tr>
           <td>4</td>
-          <td>札大</td>
-
-          <td>×</td>
-          <td>×</td>
-          <td>△</td>
-          <td>×</td>
-          <td>△</td>
-          <td>×</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>4</td>
-          <td>4</td>
-          <td>2</td>
-        </tr>
-        <tr>
           <td>5</td>
-          <td>学園</td>
-
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>△</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>3</td>
-          <td>6</td>
           <td>1</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>北大</td>
-
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>1</td>
-          <td>9</td>
-          <td>0</td>
-        </tr>
-      </table>
-
-      <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2019-3-3 02:06
-      </div>
-
-      <div class="py-4"></div>
-
-    </div>
-
-  </div>
-
-  <div id="tab2" class="tab-pane">
-
-    <!--  pc  -->
-    <div class="d-none d-sm-block">
-      <table class="table table-bordered text-center">
-        <tr>
-          <td colspan="2"></td>
-          <td colspan="2">大谷大</td>
-          <td colspan="2">札学院</td>
-          <td colspan="2">国際大</td>
-          <td colspan="2">岩教大</td>
-          <td colspan="2">樽商大</td>
-          <td colspan="2">札教大</td>
-          <td>勝利</td>
-          <td>敗戦</td>
-          <td>引分</td>
-        </tr>
-        <tr>
-          <td>1位</td>
-          <td class="rank-team-name">札幌大谷大学</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>△</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>7</td>
-          <td>2</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>2位</td>
-          <td class="rank-team-name">札幌学院大学</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>7</td>
-          <td>3</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>2位</td>
-          <td class="rank-team-name">札幌国際大学</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>7</td>
-          <td>3</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>4位</td>
-          <td class="rank-team-name">北海道教育大学岩見沢校</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>5</td>
-          <td>5</td>
-          <td>0</td>
         </tr>
         <tr>
           <td>5位</td>
-          <td class="rank-team-name">小樽商科大学</td>
+          <td class="rank-team-name">札幌大学</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
           <td>×</td>
           <td>△</td>
           <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
           <td>ー</td>
           <td>ー</td>
-          <td>×</td>
           <td>◯</td>
+          <td>◯</td>
+
           <td>2</td>
           <td>7</td>
           <td>1</td>
         </tr>
         <tr>
           <td>6位</td>
-          <td class="rank-team-name">北海道教育大学札幌校</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
+          <td class="rank-team-name">北海学園大学</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>◯</td>
           <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
           <td>ー</td>
           <td>ー</td>
+
           <td>1</td>
           <td>9</td>
           <td>0</td>
         </tr>
       </table>
 
+
       <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2018-11-17 01:40
+        最終更新：2019-3-31 09:00
       </div>
 
       <div class="py-4"></div>
@@ -521,126 +237,138 @@
       <table class="table table-bordered text-center standing-sp">
         <tr>
           <td colspan="2"></td>
-          <td colspan="2">大谷</td>
-          <td colspan="2">学院</td>
-          <td colspan="2">国際</td>
-          <td colspan="2">岩教</td>
-          <td colspan="2">樽商</td>
-          <td colspan="2">札教</td>
+          <td colspan="2">東海</td>
+          <td colspan="2">北翔</td>
+          <td colspan="2">道都</td>
+          <td colspan="2">北大</td>
+          <td colspan="2">札大</td>
+          <td colspan="2">学園</td>
           <td>勝</td>
           <td>敗</td>
           <td>分</td>
         </tr>
         <tr>
           <td>1</td>
-          <td>大谷</td>
+          <td>東海</td>
+
           <td>ー</td>
           <td>ー</td>
+          <td>◯</td>
           <td>×</td>
           <td>◯</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>△</td>
           <td>◯</td>
           <td>◯</td>
-          <td>7</td>
-          <td>2</td>
+          <td>◯</td>
+
+          <td>9</td>
           <td>1</td>
+          <td>0</td>
         </tr>
         <tr>
           <td>2</td>
-          <td>学院</td>
-          <td>◯</td>
+          <td>北翔</td>
+
           <td>×</td>
+          <td>◯</td>
           <td>ー</td>
           <td>ー</td>
           <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
           <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
+
           <td>7</td>
           <td>3</td>
           <td>0</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>国際</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>7</td>
           <td>3</td>
+          <td>道都</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>6</td>
+          <td>4</td>
           <td>0</td>
         </tr>
         <tr>
           <td>4</td>
-          <td>岩教</td>
+          <td>北大</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>◯</td>
-          <td>◯</td>
+          <td>×</td>
           <td>ー</td>
           <td>ー</td>
+          <td>△</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
+
+          <td>4</td>
           <td>5</td>
-          <td>5</td>
-          <td>0</td>
+          <td>1</td>
         </tr>
         <tr>
           <td>5</td>
-          <td>樽商</td>
+          <td>札大</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
           <td>×</td>
           <td>△</td>
           <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
           <td>ー</td>
           <td>ー</td>
-          <td>×</td>
           <td>◯</td>
+          <td>◯</td>
+
           <td>2</td>
           <td>7</td>
           <td>1</td>
         </tr>
         <tr>
           <td>6</td>
-          <td>札教</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
+          <td>学園</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>◯</td>
           <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
           <td>ー</td>
           <td>ー</td>
+
           <td>1</td>
           <td>9</td>
           <td>0</td>
@@ -649,7 +377,7 @@
 
 
       <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2018-11-17 01:40
+        最終更新：2019-3-31 09:00
       </div>
 
       <div class="py-4"></div>
@@ -657,6 +385,317 @@
     </div>
 
   </div>
+
+
+  <div id="tab2" class="tab-pane">
+
+
+    <!--  pc  -->
+    <div class="d-none d-sm-block">
+      <table class="table table-bordered text-center">
+        <tr>
+          <td colspan="2"></td>
+          <td colspan="2">国際大</td>
+          <td colspan="2">樽商大</td>
+          <td colspan="2">学院大</td>
+          <td colspan="2">岩教大</td>
+          <td colspan="2">大谷大</td>
+          <td colspan="2">科学大</td>
+          <td>勝利</td>
+          <td>敗戦</td>
+          <td>引分</td>
+        </tr>
+        <tr>
+          <td>1位</td>
+          <td class="rank-team-name">札幌国際大学</td>
+
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>7</td>
+          <td>3</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>2位</td>
+          <td class="rank-team-name">小樽商科大学</td>
+
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>6</td>
+          <td>4</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3位</td>
+          <td class="rank-team-name">札幌学院大学</td>
+
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3位</td>
+          <td class="rank-team-name">北海道教育大学岩見沢校</td>
+
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3位</td>
+          <td class="rank-team-name">札幌大谷大学</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>6位</td>
+          <td class="rank-team-name">北海道科学大学</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+
+          <td>2</td>
+          <td>8</td>
+          <td>0</td>
+        </tr>
+      </table>
+
+
+      <div class="text-right font-size-12 pt-1 pr-2">
+        最終更新：2019-3-31 09:00
+      </div>
+
+      <div class="py-4"></div>
+
+    </div>
+
+    <!--  sp  -->
+    <div class="d-block d-sm-none">
+      <table class="table table-bordered text-center standing-sp">
+        <tr>
+          <td colspan="2"></td>
+          <td colspan="2">国際</td>
+          <td colspan="2">樽商</td>
+          <td colspan="2">学院</td>
+          <td colspan="2">岩教</td>
+          <td colspan="2">大谷</td>
+          <td colspan="2">科学</td>
+          <td>勝</td>
+          <td>敗</td>
+          <td>分</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>国際</td>
+
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>7</td>
+          <td>3</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>樽商</td>
+
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>6</td>
+          <td>4</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>学院</td>
+
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>岩教</td>
+
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>大谷</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>ー</td>
+          <td>ー</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>科学</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+
+          <td>2</td>
+          <td>8</td>
+          <td>0</td>
+        </tr>
+      </table>
+
+
+      <div class="text-right font-size-12 pt-1 pr-2">
+        最終更新：2019-3-31 09:00
+      </div>
+
+      <div class="py-4"></div>
+
+    </div>
+
+  </div>
+
 
   <div id="tab3" class="tab-pane">
 
@@ -665,19 +704,20 @@
       <table class="table table-bordered text-center">
         <tr>
           <td colspan="2"></td>
+          <td colspan="2">札教大</td>
           <td colspan="2">北星大</td>
-          <td colspan="2">北科大</td>
-          <td colspan="2">文教大</td>
           <td colspan="2">酪農大</td>
-          <td colspan="2">医療大</td>
+          <td colspan="2">文教大</td>
           <td colspan="2">情報大</td>
+          <td colspan="2">医療大</td>
           <td>勝利</td>
           <td>敗戦</td>
           <td>引分</td>
         </tr>
         <tr>
           <td>1位</td>
-          <td class="rank-team-name">北星学園大学</td>
+          <td class="rank-team-name">北海道教育大学札幌校</td>
+
           <td>ー</td>
           <td>ー</td>
           <td>◯</td>
@@ -686,57 +726,40 @@
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>8</td>
-          <td>2</td>
+          <td>◯</td>
+
+          <td>9</td>
+          <td>1</td>
           <td>0</td>
         </tr>
         <tr>
           <td>2位</td>
-          <td class="rank-team-name">北海道科学大学</td>
+          <td class="rank-team-name">北星学園大学</td>
+
           <td>×</td>
           <td>◯</td>
           <td>ー</td>
           <td>ー</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>8</td>
-          <td>2</td>
+          <td>◯</td>
+
+          <td>9</td>
+          <td>1</td>
           <td>0</td>
         </tr>
         <tr>
           <td>3位</td>
-          <td class="rank-team-name">北海道文教大学</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>6</td>
-          <td>4</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>4位</td>
           <td class="rank-team-name">酪農学園大学</td>
-          <td>×</td>
-          <td>×</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
@@ -745,16 +768,41 @@
           <td>ー</td>
           <td>◯</td>
           <td>◯</td>
+          <td>×</td>
           <td>◯</td>
           <td>◯</td>
-          <td>4</td>
-          <td>6</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
           <td>0</td>
         </tr>
         <tr>
           <td>4位</td>
-          <td class="rank-team-name">北海道医療大学</td>
+          <td class="rank-team-name">北海道文教大学</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
           <td>◯</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>◯</td>
+
+          <td>3</td>
+          <td>7</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>4位</td>
+          <td class="rank-team-name">北海道情報大学</td>
+
+          <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
@@ -766,27 +814,30 @@
           <td>ー</td>
           <td>◯</td>
           <td>◯</td>
-          <td>4</td>
-          <td>6</td>
+
+          <td>3</td>
+          <td>7</td>
           <td>0</td>
         </tr>
         <tr>
           <td>6位</td>
-          <td class="rank-team-name">北海道情報大学</td>
+          <td class="rank-team-name">北海道医療大学</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
-          <td>×</td>
+          <td>◯</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>ー</td>
           <td>ー</td>
-          <td>0</td>
-          <td>10</td>
+
+          <td>1</td>
+          <td>9</td>
           <td>0</td>
         </tr>
       </table>
@@ -800,7 +851,7 @@
               <td>
                 <div class="row">
                   <div class="col-5 text-right px-2">
-                    北海道科学大学
+                    北星学園大学
                   </div>
                   <div class="col-2 text-center px-2">
                     3
@@ -808,7 +859,7 @@
                     10
                   </div>
                   <div class="col-5 text-left px-2">
-                    北星学園大学
+                    北海道教育大学札幌校
                   </div>
                 </div>
               </td>
@@ -819,7 +870,7 @@
       <div class="py-2"></div>
 
       <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2019-3-6 00:16
+        最終更新：2019-3-31 09:00
       </div>
 
       <div class="py-4"></div>
@@ -831,19 +882,20 @@
       <table class="table table-bordered text-center standing-sp">
         <tr>
           <td colspan="2"></td>
+          <td colspan="2">札教</td>
           <td colspan="2">北星</td>
-          <td colspan="2">科学</td>
-          <td colspan="2">文教</td>
           <td colspan="2">酪農</td>
-          <td colspan="2">医療</td>
+          <td colspan="2">文教</td>
           <td colspan="2">情報</td>
+          <td colspan="2">医療</td>
           <td>勝</td>
           <td>敗</td>
           <td>分</td>
         </tr>
         <tr>
           <td>1</td>
-          <td>北星</td>
+          <td>札教</td>
+
           <td>ー</td>
           <td>ー</td>
           <td>◯</td>
@@ -852,57 +904,40 @@
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>8</td>
-          <td>2</td>
+          <td>◯</td>
+
+          <td>9</td>
+          <td>1</td>
           <td>0</td>
         </tr>
         <tr>
           <td>2</td>
-          <td>科学</td>
+          <td>北星</td>
+
           <td>×</td>
           <td>◯</td>
           <td>ー</td>
           <td>ー</td>
           <td>◯</td>
-          <td>×</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
           <td>◯</td>
-          <td>8</td>
-          <td>2</td>
+          <td>◯</td>
+
+          <td>9</td>
+          <td>1</td>
           <td>0</td>
         </tr>
         <tr>
           <td>3</td>
-          <td>文教</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>ー</td>
-          <td>ー</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>×</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>◯</td>
-          <td>6</td>
-          <td>4</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>4</td>
           <td>酪農</td>
-          <td>×</td>
-          <td>×</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
@@ -911,20 +946,22 @@
           <td>ー</td>
           <td>◯</td>
           <td>◯</td>
+          <td>×</td>
           <td>◯</td>
           <td>◯</td>
-          <td>4</td>
-          <td>6</td>
+          <td>◯</td>
+
+          <td>5</td>
+          <td>5</td>
           <td>0</td>
         </tr>
         <tr>
           <td>4</td>
-          <td>医療</td>
-          <td>◯</td>
+          <td>文教</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
-          <td>◯</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
@@ -932,27 +969,53 @@
           <td>ー</td>
           <td>◯</td>
           <td>◯</td>
-          <td>4</td>
-          <td>6</td>
+          <td>×</td>
+          <td>◯</td>
+
+          <td>3</td>
+          <td>7</td>
           <td>0</td>
         </tr>
         <tr>
-          <td>6</td>
+          <td>4</td>
           <td>情報</td>
+
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
-          <td>×</td>
-          <td>×</td>
-          <td>×</td>
+          <td>◯</td>
           <td>×</td>
           <td>×</td>
           <td>×</td>
           <td>ー</td>
           <td>ー</td>
+          <td>◯</td>
+          <td>◯</td>
+
+          <td>3</td>
+          <td>7</td>
           <td>0</td>
-          <td>10</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>医療</td>
+
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>ー</td>
+          <td>ー</td>
+
+          <td>1</td>
+          <td>9</td>
           <td>0</td>
         </tr>
       </table>
@@ -963,7 +1026,7 @@
           <td>
             <div class="row">
               <div class="col-5 text-right px-2">
-                北科大
+                北星大
               </div>
               <div class="col-2 text-center px-2">
                 3
@@ -971,7 +1034,7 @@
                 10
               </div>
               <div class="col-5 text-left px-2">
-                北星大
+                札教大
               </div>
             </div>
           </td>
@@ -980,7 +1043,7 @@
       <div class="py-2"></div>
 
       <div class="text-right font-size-12 pt-1 pr-2">
-        最終更新：2019-3-6 00:16
+        最終更新：2019-3-31 09:00
       </div>
 
       <div class="py-4"></div>

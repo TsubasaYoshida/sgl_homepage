@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   get 'infos/page(/:id)' => 'infos#page'
   get 'nittei/find'
-  get 'standing/find'
   get 'recruit_umpire' => 'recruit_umpire#show'
   get 'team' => 'team#show'
   get 'top' => 'top#show'
   get 'nittei' => 'nittei#show'
-  get 'standing' => 'standing#show'
+  get 'standings' => 'standings#index'
   get 'admin' => 'admin#top'
   get 'login' => 'login#index'
   post 'login' => 'login#auth'

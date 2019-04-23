@@ -7,11 +7,10 @@ Rails.application.routes.draw do
   get 'nittei' => 'nittei#show'
   get 'standings' => 'standings#index'
   get 'admin' => 'admin#top'
+
   get 'login' => 'login#index'
   post 'login' => 'login#auth'
   post 'logout' => 'login#logout'
-
-  root to: 'top#show'
 
   resources :award_players, except: [:index, :show] do
     member do
@@ -57,5 +56,7 @@ Rails.application.routes.draw do
       get :score
     end
   end
+
+  root to: 'top#show'
 
 end

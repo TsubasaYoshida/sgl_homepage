@@ -4,11 +4,11 @@ class Constants
 
   def self.get_year_list
     year_list = [
-        ['2018年度', 2018]
+        ['2019年度', 2019]
     ]
-    loop_times = Date.today.year - 2018
+    loop_times = Date.today.year - 2019
     loop_times.times do |n|
-      tmp_year = 2018 + (n + 1)
+      tmp_year = 2019 + (n + 1)
       year_list << [tmp_year.to_s + '年度', tmp_year]
     end
     return year_list.sort.reverse
@@ -27,6 +27,18 @@ class Constants
     loop_times = Date.today.year - 2007
     loop_times.times do |n|
       tmp_year = 2007 + (n + 1)
+      year_list << [tmp_year.to_s + '年度', tmp_year]
+    end
+    return year_list.sort.reverse
+  end
+
+  def self.get_year_set_from_2018
+    year_list = [
+        ['2018年度', 2018]
+    ]
+    loop_times = Date.today.year - 2018
+    loop_times.times do |n|
+      tmp_year = 2018 + (n + 1)
       year_list << [tmp_year.to_s + '年度', tmp_year]
     end
     return year_list.sort.reverse

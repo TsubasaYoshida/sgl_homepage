@@ -26,4 +26,13 @@ describe GameInfosController, type: :controller do
 
   end
 
+  describe '#show' do
+
+    it "正常にレスポンスを返すこと" do
+      game = create(:game)
+      get :show, params: {id: game.id}
+      expect(response).to be_successful
+    end
+
+  end
 end

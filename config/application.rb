@@ -25,6 +25,9 @@ module SglHomepage
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
 
+    # time型のカラムの値でorder句を書いた場合に、JSTの値に変換してからソートするようにする
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+
     # エラーメッセージ日本語化
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end

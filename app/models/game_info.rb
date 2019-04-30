@@ -1,6 +1,6 @@
 class GameInfo < ApplicationRecord
 
-  scope :standard, -> {order(gameset_flag: :asc, disp_date: :desc, number: :desc)}
+  scope :standard, -> {order(gameset_flag: :asc, disp_date: :desc, number: :desc, start_time: :desc)}
 
   validates :season, :event, :round, :disp_date, :batting_first_team, :field_first_team, :stadium, :number,
             presence: true

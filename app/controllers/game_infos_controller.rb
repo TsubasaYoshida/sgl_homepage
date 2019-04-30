@@ -18,9 +18,9 @@ class GameInfosController < ApplicationController
         @error_msg = '該当の情報はございません。'
       else
         narrowed_games = GameInfo
-                          .where(season: key_season, event: key_event)
-                          .where('disp_date LIKE ?', "#{key_year}%")
-                          .order(disp_date: :desc, number: :desc)
+                             .where(season: key_season, event: key_event)
+                             .where('disp_date LIKE ?', "#{key_year}%")
+                             .order(gameset_flag: :asc, disp_date: :desc, number: :desc, start_time: :desc)
         @game_infos = narrowed_games
                           .limit(PAGE_SIZE)
                           .offset(PAGE_SIZE * (@current - 1))

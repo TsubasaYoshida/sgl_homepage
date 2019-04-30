@@ -12,51 +12,57 @@
     </div>
 
     <table class="table table-striped">
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              ---
+      <% if nittei_info.start_time_1.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                ---
+              </div>
+              <div class="col-4 text-center py-1">
+                <%= l nittei_info.start_time_1, format: :game %>
+              </div>
+              <div class="col-4 text-left py-1">
+                ---
+              </div>
             </div>
-            <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_1, format: :game %>
+          </td>
+        </tr>
+      <% end %>
+      <% if nittei_info.start_time_2.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                ---
+              </div>
+              <div class="col-4 text-center py-1">
+                <%= l nittei_info.start_time_2, format: :game %>
+              </div>
+              <div class="col-4 text-left py-1">
+                ---
+              </div>
             </div>
-            <div class="col-4 text-left py-1">
-              ---
+          </td>
+        </tr>
+      <% end %>
+      <% if nittei_info.start_time_3.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                ---
+              </div>
+              <div class="col-4 text-center py-1">
+                <%= l nittei_info.start_time_3, format: :game %>
+              </div>
+              <div class="col-4 text-left py-1">
+                ---
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              ---
-            </div>
-            <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_2, format: :game %>
-            </div>
-            <div class="col-4 text-left py-1">
-              ---
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              ---
-            </div>
-            <div class="col-4 text-center py-1">
-              <%= l nittei_info.start_time_3, format: :game %>
-            </div>
-            <div class="col-4 text-left py-1">
-              ---
-            </div>
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      <% end %>
     </table>
 
   <% else %>
@@ -70,72 +76,78 @@
     </div>
 
     <table class="table table-striped">
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              <%= Team.get_three_letter(nittei_info.top_team_1) %>
+      <% if nittei_info.top_team_1.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                <%= Team.get_three_letter(nittei_info.top_team_1) %>
+              </div>
+              <div class="col-4 text-center py-1">
+                <% if nittei_info.no_game_1 %>
+                  雨天中止
+                <% else %>
+                  <%= l nittei_info.start_time_1, format: :game %>
+                <% end %>
+              </div>
+              <div class="col-4 text-left py-1">
+                <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
+              </div>
             </div>
-            <div class="col-4 text-center py-1">
-              <% if nittei_info.no_game_1 %>
-                雨天中止
-              <% else %>
-                <%= l nittei_info.start_time_1, format: :game %>
-              <% end %>
+            <div class="text-center">
+              <%= nittei_info.message_1 %>
             </div>
-            <div class="col-4 text-left py-1">
-              <%= Team.get_three_letter(nittei_info.bottom_team_1) %>
+          </td>
+        </tr>
+      <% end %>
+      <% if nittei_info.top_team_2.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                <%= Team.get_three_letter(nittei_info.top_team_2) %>
+              </div>
+              <div class="col-4 text-center py-1">
+                <% if nittei_info.no_game_2 %>
+                  雨天中止
+                <% else %>
+                  <%= l nittei_info.start_time_2, format: :game %>
+                <% end %>
+              </div>
+              <div class="col-4 text-left py-1">
+                <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
+              </div>
             </div>
-          </div>
-          <div class="text-center">
-            <%= nittei_info.message_1 %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              <%= Team.get_three_letter(nittei_info.top_team_2) %>
+            <div class="text-center">
+              <%= nittei_info.message_2 %>
             </div>
-            <div class="col-4 text-center py-1">
-              <% if nittei_info.no_game_2 %>
-                雨天中止
-              <% else %>
-                <%= l nittei_info.start_time_2, format: :game %>
-              <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <% if nittei_info.top_team_3.present? %>
+        <tr>
+          <td class="py-0" style="border-top: none">
+            <div class="row">
+              <div class="col-4 text-right py-1">
+                <%= Team.get_three_letter(nittei_info.top_team_3) %>
+              </div>
+              <div class="col-4 text-center py-1">
+                <% if nittei_info.no_game_3 %>
+                  雨天中止
+                <% else %>
+                  <%= l nittei_info.start_time_3, format: :game %>
+                <% end %>
+              </div>
+              <div class="col-4 text-left py-1">
+                <%= Team.get_three_letter(nittei_info.bottom_team_3) %>
+              </div>
             </div>
-            <div class="col-4 text-left py-1">
-              <%= Team.get_three_letter(nittei_info.bottom_team_2) %>
+            <div class="text-center">
+              <%= nittei_info.message_3 %>
             </div>
-          </div>
-          <div class="text-center">
-            <%= nittei_info.message_2 %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="py-0" style="border-top: none">
-          <div class="row">
-            <div class="col-4 text-right py-1">
-              <%= Team.get_three_letter(nittei_info.top_team_3) %>
-            </div>
-            <div class="col-4 text-center py-1">
-              <% if nittei_info.no_game_3 %>
-                雨天中止
-              <% else %>
-                <%= l nittei_info.start_time_3, format: :game %>
-              <% end %>
-            </div>
-            <div class="col-4 text-left py-1">
-              <%= Team.get_three_letter(nittei_info.bottom_team_3) %>
-            </div>
-          </div>
-          <div class="text-center">
-            <%= nittei_info.message_3 %>
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      <% end %>
     </table>
   <% end %>
 <% end %>

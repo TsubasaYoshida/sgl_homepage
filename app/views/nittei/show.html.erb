@@ -89,6 +89,13 @@
     </div>
   <% end %>
 
+  <% if @selected_event == '入替戦' %>
+    <div class="text-center font-weight-bold">
+      ※二戦先取制
+    </div>
+  <% end %>
+
+  <!--  tweet button start  -->
   <div class="text-center mt-3">
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
        class="twitter-share-button"
@@ -99,37 +106,76 @@
 ">Tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
+  <!--  tweet button end  -->
 
   <div class="row" style="padding-left: 5px; padding-right: 5px">
-    <div class="col-sm-6 pt-3">
-      <p class="text-center font-weight-bold" style="font-size: 16px">第一節</p>
-      <div class="row">
-        <div class="col-4 py-1 pr-1 text-right">
-          <span class="badge badge-primary">三塁側先攻</span>
+
+    <% if @selected_event.include?('リーグ戦') %>
+
+      <div class="col-sm-6 pt-3">
+        <p class="text-center font-weight-bold" style="font-size: 16px">第一節</p>
+        <div class="row">
+          <div class="col-4 py-1 pr-1 text-right">
+            <span class="badge badge-primary">三塁側先攻</span>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4 py-1 pl-1">
+            <span class="badge badge-danger">一塁側後攻</span>
+          </div>
         </div>
-        <div class="col-4"></div>
-        <div class="col-4 py-1 pl-1">
-          <span class="badge badge-danger">一塁側後攻</span>
+        <%= render 'show', nittei_infos: @nittei_infos_1 %>
+      </div>
+      <div class="col-sm-6 pt-3">
+        <p class="text-center font-weight-bold" style="font-size: 16px">第二節</p>
+        <div class="row">
+          <div class="col-4 py-1 pr-1 text-right">
+            <span class="badge badge-primary">三塁側先攻</span>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4 py-1 pl-1">
+            <span class="badge badge-danger">一塁側後攻</span>
+          </div>
+        </div>
+        <%= render 'show', nittei_infos: @nittei_infos_2 %>
+      </div>
+
+    <% elsif @selected_event == '入替戦' %>
+
+      <div class="col-12 pt-3">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-4 py-1 pr-1 text-right">
+                <span class="badge badge-primary">三塁側先攻</span>
+              </div>
+              <div class="col-4"></div>
+              <div class="col-4 py-1 pl-1">
+                <span class="badge badge-danger">一塁側後攻</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <%= render 'show', nittei_infos: @nittei_infos_irekae %>
+            <% if @updated_at.present? %>
+              <div class="text-right mt-4 mr-2">
+                最終更新：<%= l @updated_at, format: :english %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-sm-2"></div>
         </div>
       </div>
-      <%= render 'show', nittei_infos: @nittei_infos_1 %>
-    </div>
-    <div class="col-sm-6 pt-3">
-      <p class="text-center font-weight-bold" style="font-size: 16px">第二節</p>
-      <div class="row">
-        <div class="col-4 py-1 pr-1 text-right">
-          <span class="badge badge-primary">三塁側先攻</span>
-        </div>
-        <div class="col-4"></div>
-        <div class="col-4 py-1 pl-1">
-          <span class="badge badge-danger">一塁側後攻</span>
-        </div>
-      </div>
-      <%= render 'show', nittei_infos: @nittei_infos_2 %>
-    </div>
+
+    <% end %>
+
   </div>
 
-  <% unless @updated_at.nil? %>
+  <% if @updated_at.present? && @selected_event != '入替戦' %>
     <div class="text-right mt-4 mr-2">
       最終更新：<%= l @updated_at, format: :english %>
     </div>

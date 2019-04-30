@@ -49,12 +49,12 @@
                          {include_blank: '選択してください'}, class: 'form-control', onchange: 'auto_select_round(this)' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:top_team_1, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :top_team_1, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:bottom_team_1, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :bottom_team_1, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td><%= f.time_field :start_time_1, class: 'form-control', onchange: 'auto_setting_start_time(this)' %></td>
           <td><%= f.text_field :message_1, class: 'form-control' %></td>
@@ -68,12 +68,12 @@
                          {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:top_team_2, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :top_team_2, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:bottom_team_2, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :bottom_team_2, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td><%= f.time_field :start_time_2, class: 'form-control' %></td>
           <td><%= f.text_field :message_2, class: 'form-control' %></td>
@@ -87,12 +87,12 @@
                          {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:top_team_3, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :top_team_3, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td>
-            <%= f.grouped_collection_select(:bottom_team_3, League.all, :teams, :name, :name, :name,
-                                            {include_blank: '選択してください'}, class: 'form-control') %>
+            <%= f.select :bottom_team_3, EventOneDay.make_team_select_box,
+                         {include_blank: '選択してください'}, class: 'form-control' %>
           </td>
           <td><%= f.time_field :start_time_3, class: 'form-control' %></td>
           <td><%= f.text_field :message_3, class: 'form-control' %></td>

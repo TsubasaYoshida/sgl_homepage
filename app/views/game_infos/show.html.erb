@@ -1,8 +1,10 @@
-<!--  gem:meta-tags  -->
+<%# gem:meta-tags %>
 <%
-  set_meta_tags title: "#{@game_info.disp_date} #{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}",
-                description: "#{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}の試合情報です。",
-                url: request.original_url
+  set_meta_tags og: {
+      title: "#{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}（#{@game_info.disp_date}）",
+      description: "#{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}の試合情報です。",
+      url: request.original_url
+  }
 %>
 
 <div class="row">
@@ -11,7 +13,7 @@
 
     <h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">試合詳細</h2>
 
-    <!--  pc  -->
+    <%# pc %>
     <div class="d-none d-sm-block">
       <h3 class="font-weight-bold mb-2 mb-sm-3 mt-4" style="font-size: 20px">
         <%= @game_info.batting_first_team %> vs <%= @game_info.field_first_team %>
@@ -27,7 +29,7 @@
       </h3>
     </div>
 
-    <!--  sp  -->
+    <%# sp %>
     <div class="d-sm-none d-block">
       <h3 class="font-weight-bold mb-2 mb-sm-3 mt-4" style="font-size: 20px">
         <%= Team.get_three_letter(@game_info.batting_first_team) %>
@@ -44,7 +46,7 @@
       </h3>
     </div>
 
-    <!--  tweet button start  -->
+    <%# tweet button start %>
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
        class="twitter-share-button"
        data-show-count="false"
@@ -53,7 +55,7 @@
 #盛り上がれ札六
 ">Tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!--  tweet button end  -->
+    <%# tweet button end %>
 
     <%
       team_top = @game_info.get_team_initial(@game_info.batting_first_team)

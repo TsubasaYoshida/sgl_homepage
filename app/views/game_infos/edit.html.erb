@@ -2,5 +2,10 @@
 
 <%= render 'form', game_info: @game_info, edit_flag: true %>
 
+<div class="alert alert-warning my-4" role="alert">
+  <h5 class="alert-heading">入力時の注意</h5>
+  <p class="mb-0">・コールドゲーム時は試合詳細ページに自動的にその旨を示す文言が表示されますので、特記事項欄への入力は不要です。</p>
+</div>
+
 <%= link_to '詳細', @game_info, class: 'btn btn-default' %>
 <%= link_to '試合管理', '/game_infos/management', class: 'btn btn-default' %>

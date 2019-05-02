@@ -12,18 +12,21 @@
 
   <div class="form-group">
     <%= form.label :season, '春季／秋季' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.select :season, ['春季', '秋季'],
                     {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :event, '大会' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.select :event, ['1部リーグ戦', '2部リーグ戦', '3部リーグ戦', '入替戦', 'トーナメント'],
                     {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :round, 'ラウンド' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.select :round, [['リーグ戦', ['第一節', '第二節', '順位決定戦']],
                              ['トーナメント', ['一回戦', '二回戦', '準々決勝', '準決勝', '決勝']],
                              ['入替戦', ['第一戦', '第二戦', '第三戦']]],
@@ -32,28 +35,33 @@
 
   <div class="form-group">
     <%= form.label :disp_date, '試合日' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.date_field :disp_date, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :batting_first_team, '先攻チーム' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.grouped_collection_select(:batting_first_team, League.all, :teams, :name, :name, :name,
                                        {include_blank: '選択してください'}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
     <%= form.label :field_first_team, '後攻チーム' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.grouped_collection_select(:field_first_team, League.all, :teams, :name, :name, :name,
                                        {include_blank: '選択してください'}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
     <%= form.label :stadium, '球場' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.text_field :stadium, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :number, '試合順' %>
+    <span class="badge badge-danger">必須</span>
     <%= form.select :number, [['第1試合', 1], ['第2試合', 2], ['第3試合', 3]],
                     {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
@@ -144,5 +152,5 @@
 <div class="alert alert-warning my-4" role="alert">
   <h5 class="alert-heading">入力時の注意</h5>
   <p>・「試合開始時刻」または「1回表の得点」を入力することで、（試合中）の文言が一般ページ側に表示されます。どちらも入力されていない場合は（試合前）と表示されます。</p>
-  <p class="mb-0">・コールドゲーム時は試合詳細ページに自動的にその旨を示す文言が表示されますので、特記事項欄への入力は不要です。</p>
+  <p class="mb-0">・コールドゲーム時は試合詳細ページに自動的にその旨を示す文言が表示されますので、「特記事項」欄への入力は不要です。</p>
 </div>

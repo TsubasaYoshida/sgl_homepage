@@ -31,8 +31,10 @@ class GameInfo < ApplicationRecord
     end
   end
 
-  def get_gameset_msg
-    self.gameset_flag ? "試合終了" : "試合中"
+  def get_game_status
+    return "試合終了" if self.gameset_flag
+    return "試合前" if self.start_time.blank? && self.top1.blank?
+    "試合中"
   end
 
   def get_gameset_msg_show

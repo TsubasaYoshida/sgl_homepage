@@ -25,7 +25,7 @@
           <%= game_info.disp_date %>
         </td>
         <td style="vertical-align: middle;">
-          <%= game_info.get_gameset_msg %>
+          <%= game_info.get_game_status %>
         </td>
         <td style="vertical-align: middle;">
           <%= game_info.batting_first_team %>
@@ -84,7 +84,7 @@
             </div>
             <div class="row">
               <div class="col-12 text-center">
-                （<%= game_info.get_gameset_msg %>）
+                （<%= game_info.get_game_status %>）
               </div>
             </div>
           <% end %>

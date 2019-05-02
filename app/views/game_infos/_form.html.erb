@@ -140,3 +140,9 @@
     <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
 <% end %>
+
+<div class="alert alert-warning my-4" role="alert">
+  <h5 class="alert-heading">入力時の注意</h5>
+  <p>・「試合開始時刻」または「1回表の得点」を入力することで、（試合中）の文言が一般ページ側に表示されます。どちらも入力されていない場合は（試合前）と表示されます。</p>
+  <p class="mb-0">・コールドゲーム時は試合詳細ページに自動的にその旨を示す文言が表示されますので、特記事項欄への入力は不要です。</p>
+</div>

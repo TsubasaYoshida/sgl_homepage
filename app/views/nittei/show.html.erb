@@ -111,12 +111,11 @@
   <div class="row" style="padding-left: 5px; padding-right: 5px">
 
     <% if @selected_event.include?('リーグ戦') %>
-      <% 2.times do |n| %>
-        <% nittei_infos_i = "@nittei_infos_#{n + 1}" %>
 
+      <% @event_one_days_list.each_with_index do |event_one_days, i| %>
         <div class="col-sm-6 pt-3">
           <p class="text-center font-weight-bold" style="font-size: 16px">
-            <%= n == 0 ? '第一節' : '第二節' %>
+            <%= i == 0 ? '第一節' : '第二節' %>
           </p>
           <div class="row">
             <div class="col-4 py-1 pr-1 text-right">
@@ -127,7 +126,7 @@
               <span class="badge badge-danger">一塁側後攻</span>
             </div>
           </div>
-          <%= render 'show', nittei_infos: instance_variable_get(nittei_infos_i) %>
+          <%= render 'show', event_one_days: event_one_days %>
         </div>
 
       <% end %>
@@ -153,7 +152,7 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <%= render 'show', nittei_infos: @nittei_infos_irekae %>
+            <%= render 'show', event_one_days: @event_one_days_irekae %>
             <% if @updated_at.present? %>
               <div class="text-right mt-4 mr-2">
                 最終更新：<%= l @updated_at, format: :english %>

@@ -38,10 +38,11 @@ class NitteiController < ApplicationController
     @oc_time = event_info.oc_time
     if @selected_event.include?('リーグ戦')
       # 同じ日に異なるラウンドが入った時にどうするか
-      @nittei_infos_1 = event_info.event_one_days.where(round_1: '第一節').order(disp_date: :asc)
-      @nittei_infos_2 = event_info.event_one_days.where(round_1: '第二節').order(disp_date: :asc)
+      @event_one_days_list = []
+      @event_one_days_list << event_info.event_one_days.where(round_1: '第一節').order(disp_date: :asc)
+      @event_one_days_list << event_info.event_one_days.where(round_1: '第二節').order(disp_date: :asc)
     elsif @selected_event == '入替戦'
-      @nittei_infos_irekae = event_info.event_one_days.order(disp_date: :asc)
+      @event_one_days_irekae = event_info.event_one_days.order(disp_date: :asc)
     end
     # 最終更新日時取得
     first_date = event_info.event_one_days.order(updated_at: :desc).first

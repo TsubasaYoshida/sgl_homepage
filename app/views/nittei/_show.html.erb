@@ -1,22 +1,21 @@
-<% nittei_infos.each do |nittei_info| %>
+<% event_one_days.each do |event_one_day| %>
 
   <div class="row mb-1">
     <div class="col-12 text-left mt-2">
-      <%= l nittei_info.disp_date, format: :standard %>
-      <%= nittei_info.stadium %>
-      <% if nittei_info.rain_date_flag %>
+      <%= l event_one_day.disp_date, format: :standard %>
+      <%= event_one_day.stadium %>
+      <% if event_one_day.rain_date_flag %>
         <span class="badge badge-danger">予備日</span>
       <% end %>
     </div>
   </div>
 
-  <% if nittei_info.rain_date_flag %>
+  <% if event_one_day.rain_date_flag %>
     <!--予備日の場合-->
 
     <table class="table table-striped">
       <% 3.times do |n| %>
-        <% start_time_i = "start_time_" << (n + 1).to_s %>
-        <% if nittei_info[start_time_i].present? %>
+        <% if event_one_day["start_time_#{n + 1}"].present? %>
           <tr>
             <td class="py-0" style="border-top: none">
               <div class="row">
@@ -24,7 +23,7 @@
                   ---
                 </div>
                 <div class="col-4 text-center py-1">
-                  <%= l nittei_info[start_time_i], format: :game %>
+                  <%= l event_one_day["start_time_#{n + 1}"], format: :game %>
                 </div>
                 <div class="col-4 text-left py-1">
                   ---
@@ -41,31 +40,26 @@
 
     <table class="table table-striped">
       <% 3.times do |n| %>
-        <% top_team_i = "top_team_" << (n + 1).to_s %>
-        <% no_game_i = "no_game_" << (n + 1).to_s %>
-        <% start_time_i = "start_time_" << (n + 1).to_s %>
-        <% bottom_team_i = "bottom_team_" << (n + 1).to_s %>
-        <% message_i = "message_" << (n + 1).to_s %>
-        <% if nittei_info[top_team_i].present? %>
+        <% if event_one_day["top_team_#{n + 1}"].present? %>
           <tr>
             <td class="py-0" style="border-top: none">
               <div class="row">
                 <div class="col-4 text-right py-1">
-                  <%= Team.get_three_letter(nittei_info[top_team_i]) %>
+                  <%= Team.get_three_letter(event_one_day["top_team_#{n + 1}"]) %>
                 </div>
                 <div class="col-4 text-center py-1">
-                  <% if nittei_info[no_game_i] %>
+                  <% if event_one_day["no_game_#{n + 1}"] %>
                     雨天中止
                   <% else %>
-                    <%= l nittei_info[start_time_i], format: :game %>
+                    <%= l event_one_day["start_time_#{n + 1}"], format: :game %>
                   <% end %>
                 </div>
                 <div class="col-4 text-left py-1">
-                  <%= Team.get_three_letter(nittei_info[bottom_team_i]) %>
+                  <%= Team.get_three_letter(event_one_day["bottom_team_#{n + 1}"]) %>
                 </div>
               </div>
               <div class="text-center">
-                <%= nittei_info[message_i] %>
+                <%= event_one_day["message_#{n + 1}"] %>
               </div>
             </td>
           </tr>

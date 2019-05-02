@@ -1,3 +1,10 @@
+<!--  gem:meta-tags  -->
+<%
+  set_meta_tags title: "#{@game_info.disp_date} #{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}",
+                description: "#{Team.get_three_letter(@game_info.batting_first_team)} vs #{Team.get_three_letter(@game_info.field_first_team)}の試合情報です。",
+                url: request.original_url
+%>
+
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
@@ -37,6 +44,7 @@
       </h3>
     </div>
 
+    <!--  tweet button start  -->
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
        class="twitter-share-button"
        data-show-count="false"
@@ -45,6 +53,7 @@
 #盛り上がれ札六
 ">Tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!--  tweet button end  -->
 
     <%
       team_top = @game_info.get_team_initial(@game_info.batting_first_team)

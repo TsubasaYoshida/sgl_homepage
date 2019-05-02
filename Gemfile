@@ -84,3 +84,6 @@ gem 'cocoon'
 
 # rails-i18n
 gem 'rails-i18n'
+
+# meta-tags
+gem 'meta-tags'

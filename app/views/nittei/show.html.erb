@@ -173,6 +173,104 @@
     </div>
   <% end %>
 
+  <%# sp-only for-screen-shot start %>
+  <div class="d-sm-none d-block">
+
+    <div class="py-3"></div>
+
+    <% if @selected_event.include?('リーグ戦') %>
+
+      <nav class="navbar navbar-expand-lg navbar-light p-0">
+        <button type="button" class="navbar-toggler btn-block text-center"
+                data-toggle="collapse" data-target="#screenshot"
+                aria-controls="Navber" aria-expanded="false" aria-label="スクリーンショット用表示">
+          スクリーンショット用
+        </button>
+        <div class="collapse navbar-collapse" id="screenshot">
+          <div class="py-4"></div>
+
+          <div class="text-center" style="font-size: 10px">
+            <div class="font-weight-bold" style="font-size: 12px">
+              札幌学生野球連盟<%= " " %><%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+              <small>
+                <br>
+                <% if @oc_date %>
+                  開会式：
+                  <%= l @oc_date, format: :oc_date %><%= " " %><%= l @oc_time, format: :oc_time %>
+                <% end %>
+              </small>
+            </div>
+
+            <div class="py-1"></div>
+
+            <ul class="nav nav-pills nav-justified">
+              <% 2.times do |i| %>
+                <li class="nav-item border<%= ' border-right-0' if i < 1 %>">
+                  <%= link_to "第#{i == 0 ? '一' : '二'}節", "#tab#{i + 1}", class: "nav-link rounded-0#{' active' if i == 0 }", data: {toggle: 'tab'} %>
+                </li>
+              <% end %>
+            </ul>
+
+            <div class="mb-2"></div>
+
+            <div class="tab-content">
+
+              <% @event_one_days_list.each_with_index do |event_one_days, i| %>
+
+                <div id="tab<%= i + 1 %>" class="tab-pane<%= ' active' if i == 0 %>">
+
+                  <div class="mb-3">
+                    <% event_one_days.each do |event_one_day| %>
+                      <% if event_one_day.rain_date_flag %>
+                        <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
+                          <tr>
+                            <td class="text-left pl-2">
+                              <%= l event_one_day.disp_date, format: :short %><%= " " %><%= event_one_day.stadium %>
+                              <span class="badge badge-danger">予備日</span>
+                            </td>
+                          </tr>
+                        </table>
+                      <% else %>
+                        <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
+                          <tr>
+                            <td colspan="3" class="text-left pl-2">
+                              <%= l event_one_day.disp_date, format: :short %><%= " " %><%= event_one_day.stadium %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <% 3.times do |n| %>
+                              <td style="vertical-align: middle">
+                                <% if event_one_day["top_team_#{n + 1}"].present? %>
+                                  <%= Team.get_three_letter(event_one_day["top_team_#{n + 1}"]) %>
+                                  <%= Constants::SPACE_HYPHEN_SPACE %>
+                                  <%= Team.get_three_letter(event_one_day["bottom_team_#{n + 1}"]) %>
+                                  <br>
+                                  <% if event_one_day["no_game_#{n + 1}"] %>
+                                    雨天中止
+                                  <% else %>
+                                    <%= l event_one_day["start_time_#{n + 1}"], format: :game %>
+                                  <% end %>
+                                <% end %>
+                              </td>
+                            <% end %>
+                          </tr>
+                        </table>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+  </div>
+  <%# sp-only for-screen-shot end %>
+
 <% end %>
 
-<div class="mb-5"></div>
+<%# pc %>
+<div class="d-none d-sm-block">
+  <div class="mb-5"></div>
+</div>

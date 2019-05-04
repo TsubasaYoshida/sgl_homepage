@@ -219,7 +219,7 @@
 
                 <div id="tab<%= i + 1 %>" class="tab-pane<%= ' active' if i == 0 %>">
 
-                  <div class="mb-3">
+                  <div>
                     <% event_one_days.each do |event_one_day| %>
                       <% if event_one_day.rain_date_flag %>
                         <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
@@ -260,6 +260,9 @@
                   </div>
                 </div>
               <% end %>
+            </div>
+            <div class="text-left pl-2">
+              ※左側チームが三塁側先攻、右側チームが一塁側後攻
             </div>
           </div>
         </div>

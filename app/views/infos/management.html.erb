@@ -8,20 +8,25 @@
   <%= link_to '新規作成', new_info_path, class: 'btn btn-default' %>
 </div>
 
+<%# pc %>
 <div class="d-none d-sm-block">
   <table class="table table-bordered text-center">
     <tr class="bg-green">
       <th>日付</th>
       <th>本文</th>
+      <th>最終更新</th>
       <th colspan="2"></th>
     </tr>
     <% @infos.each do |info| %>
       <tr>
-        <td style="vertical-align: middle;">
+        <td nowrap style="vertical-align: middle;">
           <%= info.disp_date %>
         </td>
         <td style="vertical-align: middle;" class="text-left pl-4">
           <%= info.article %>
+        </td>
+        <td nowrap style="vertical-align: middle;">
+          <%= l info.updated_at, format: :standard %>
         </td>
         <td>
           <%= link_to '編集', edit_info_path(info), class: 'btn btn-default' %>
@@ -34,6 +39,7 @@
   </table>
 </div>
 
+<%# sp %>
 <div class="d-block d-sm-none">
   <% @infos.each do |info| %>
     <table class="table" style="margin-bottom: 0">
@@ -45,14 +51,17 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 pl-4 pt-2">
               <%= info.article %>
             </div>
           </div>
         </td>
       </tr>
     </table>
-    <div class="padding-bottom10" align="right">
+    <div style="float:left;" class="pt-2 pl-2">
+      （<%= l info.updated_at, format: :standard %>）
+    </div>
+    <div class="pb-3" align="right">
       <%= link_to '編集', edit_info_path(info), class: 'btn btn-default' %>
       <%= link_to '削除', info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
     </div>

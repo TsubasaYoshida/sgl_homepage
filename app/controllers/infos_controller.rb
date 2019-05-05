@@ -6,8 +6,8 @@ class InfosController < ApplicationController
   PAGE_SIZE = 10
 
   def index
-    @infos = Info.all.order(disp_date: :desc).limit(PAGE_SIZE)
-    @count = (Info.all.order(disp_date: :desc).size.to_f / PAGE_SIZE).ceil
+    @infos = Info.all.limit(PAGE_SIZE)
+    @count = (Info.all.size.to_f / PAGE_SIZE).ceil
     @current = 1
     if @current + 2 >= @count
       @disp_numbers = [@count - 2, @count - 1, @count]
@@ -21,7 +21,7 @@ class InfosController < ApplicationController
   end
 
   def page
-    infos = Info.all.order(disp_date: :desc)
+    infos = Info.all
     page_common(infos)
     render :index
   end
@@ -34,7 +34,7 @@ class InfosController < ApplicationController
   end
 
   def management
-    @infos = Info.all.order(disp_date: :desc)
+    @infos = Info.all
   end
 
   def create

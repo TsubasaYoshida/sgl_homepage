@@ -62,4 +62,17 @@ class Constants
     end
   end
 
+  def self.get_circle_grade(grade)
+    case grade
+    when '1年'
+      '①'
+    when '2年'
+      '②'
+    when '3年'
+      '③'
+    when '4年'
+      '④'
+    end
+  end
+
 end

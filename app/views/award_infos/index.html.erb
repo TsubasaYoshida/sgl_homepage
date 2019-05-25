@@ -201,8 +201,100 @@
 
     <% end %>
 
+
+
+
+    <%# sp-only for-screen-shot start %>
+
+    <div class="py-3"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-light p-0">
+      <button type="button" class="navbar-toggler btn-block text-center"
+              data-toggle="collapse" data-target="#screenshot"
+              aria-controls="Navber" aria-expanded="false" aria-label="スクリーンショット用表示">
+        スクリーンショット用
+      </button>
+      <div class="collapse navbar-collapse" id="screenshot">
+        <div class="py-4"></div>
+
+        <div class="text-center" style="font-size: 10px">
+          <div class="font-weight-bold" style="font-size: 12px">
+            札幌学生野球連盟<%= " " %><%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+          </div>
+
+          <div class="py-1"></div>
+
+          <div class="mb-2 font-weight-bold">各賞</div>
+
+          <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
+            <% @award_players.each_with_index do |award_player, i| %>
+
+              <% if i % 2 == 0 %>
+                <%= '<tr>'.html_safe %>
+              <% end %>
+
+              <td style="vertical-align: middle">
+                <div class="text-left pl-2">
+                  <%= award_player.award %>
+                </div>
+                <div class="border-top">
+                  <span class="font-weight-bold" style="font-size: 13px"><%= award_player.player %></span>
+                  (<%= Team.get_two_letter(award_player.team) %><%= Constants.get_circle_grade(award_player.grade) %>)
+                </div>
+              </td>
+
+              <% if i % 2 == 1 %>
+                <%= '</tr>'.html_safe %>
+              <% end %>
+
+            <% end %>
+
+            <% if @award_players.size % 2 == 1 %>
+              <%= '</tr>'.html_safe %>
+            <% end %>
+
+          </table>
+
+          <div class="py-2"></div>
+
+          <div class="mb-2 font-weight-bold">ベストナイン</div>
+
+          <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
+            <% @bestnine_players.each_with_index do |bestnine_player, i| %>
+
+              <% if i % 2 == 0 %>
+                <%= '<tr>'.html_safe %>
+              <% end %>
+
+              <td style="vertical-align: middle">
+                <div class="text-left pl-2">
+                  <%= bestnine_player.get_position %>
+                </div>
+                <div class="border-top">
+                  <span class="font-weight-bold" style="font-size: 12px"><%= bestnine_player.player %></span>
+                  <%= "(#{Team.get_two_letter(bestnine_player.team)}#{Constants.get_circle_grade(bestnine_player.grade)})" %>
+                </div>
+              </td>
+
+              <% if i % 2 == 1 %>
+                <%= '</tr>'.html_safe %>
+              <% end %>
+
+            <% end %>
+
+            <% if @bestnine_players.size % 2 == 1 %>
+              <%= '</tr>'.html_safe %>
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+    </nav>
+
+    <%# sp-only for-screen-shot end %>
+
   <% end %>
 
-</div>
+</div><%# sp end %>
 
 <div class="mb-5"></div>

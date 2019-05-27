@@ -257,36 +257,39 @@
 
           <div class="py-2"></div>
 
-          <div class="mb-2 font-weight-bold">ベストナイン</div>
+          <% if @bestnine_players.size > 0 %>
 
-          <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
-            <% @bestnine_players.each_with_index do |bestnine_player, i| %>
+            <div class="mb-2 font-weight-bold">ベストナイン</div>
 
-              <% if i % 2 == 0 %>
-                <%= '<tr>'.html_safe %>
+            <table class="table table-bordered standing-sp mb-2" style="table-layout: fixed; width: 100%;">
+              <% @bestnine_players.each_with_index do |bestnine_player, i| %>
+
+                <% if i % 2 == 0 %>
+                  <%= '<tr>'.html_safe %>
+                <% end %>
+
+                <td style="vertical-align: middle">
+                  <div class="text-left pl-2">
+                    <%= bestnine_player.get_position %>
+                  </div>
+                  <div class="border-top">
+                    <span class="font-weight-bold" style="font-size: 12px"><%= bestnine_player.player %></span>
+                    <%= "(#{Team.get_two_letter(bestnine_player.team)}#{Constants.get_circle_grade(bestnine_player.grade)})" %>
+                  </div>
+                </td>
+
+                <% if i % 2 == 1 %>
+                  <%= '</tr>'.html_safe %>
+                <% end %>
+
               <% end %>
 
-              <td style="vertical-align: middle">
-                <div class="text-left pl-2">
-                  <%= bestnine_player.get_position %>
-                </div>
-                <div class="border-top">
-                  <span class="font-weight-bold" style="font-size: 12px"><%= bestnine_player.player %></span>
-                  <%= "(#{Team.get_two_letter(bestnine_player.team)}#{Constants.get_circle_grade(bestnine_player.grade)})" %>
-                </div>
-              </td>
-
-              <% if i % 2 == 1 %>
+              <% if @bestnine_players.size % 2 == 1 %>
                 <%= '</tr>'.html_safe %>
               <% end %>
 
-            <% end %>
-
-            <% if @bestnine_players.size % 2 == 1 %>
-              <%= '</tr>'.html_safe %>
-            <% end %>
-
-          </table>
+            </table>
+          <% end %>
         </div>
       </div>
     </nav>

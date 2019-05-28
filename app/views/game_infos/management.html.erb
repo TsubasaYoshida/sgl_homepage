@@ -8,6 +8,7 @@
   <%= link_to '新規作成', new_game_info_path, class: 'btn btn-default' %>
 </div>
 
+<!--  pc  -->
 <div class="d-none d-sm-block">
   <table class="table table-bordered text-center">
     <tr class="bg-green">
@@ -56,8 +57,11 @@
       </tr>
     <% end %>
   </table>
+  <div class="py-2"></div>
 </div>
+<!--  pc-end  -->
 
+<!--  sp  -->
 <div class="d-block d-sm-none">
   <% @game_infos.each do |game_info| %>
     <table class="table" style="margin-bottom: 0">
@@ -97,4 +101,20 @@
       <%= link_to '削除', game_info, method: :delete, data: {confirm: '削除してよろしいですか？'}, class: 'btn btn-default' %>
     </div>
   <% end %>
+  <div class="py-4"></div>
 </div>
+<!--  sp-end  -->
+
+<!--  pagination start  -->
+<nav aria-label="試合情報一覧">
+  <ul class="pagination justify-content-center">
+
+    <% @pagination.each do |key, value| %>
+      <li class="page-item<%= ' active' if value == @current %>">
+        <%= link_to key, management_game_infos_path(page: value), class: 'page-link' %>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>
+<!--  pagination end  -->

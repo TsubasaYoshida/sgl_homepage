@@ -52,7 +52,10 @@ class GameInfosController < ApplicationController
   end
 
   def management
-    @game_infos = GameInfo.all.standard
+    @current = params[:page].nil? ? 1 : params[:page].to_i
+    @game_infos = GameInfo.all.standard.limit(PAGE_SIZE).offset(PAGE_SIZE * (@current - 1))
+    @max_page = (GameInfo.all.standard.size.to_f / PAGE_SIZE).ceil
+    paging
   end
 
   def create

@@ -152,7 +152,24 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <%= render 'show', event_one_days: @event_one_days_irekae %>
+            <%= render 'show', event_one_days: @event_one_days %>
+            <% if @updated_at.present? %>
+              <div class="text-right mt-4 mr-2">
+                最終更新：<%= l @updated_at, format: :english %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+
+    <% elsif @selected_event == 'トーナメント' %>
+
+      <div class="col-12 pt-3">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <%= render 'show', event_one_days: @event_one_days %>
             <% if @updated_at.present? %>
               <div class="text-right mt-4 mr-2">
                 最終更新：<%= l @updated_at, format: :english %>
@@ -167,7 +184,7 @@
 
   </div>
 
-  <% if @updated_at.present? && @selected_event != '入替戦' %>
+  <% if @updated_at.present? && @selected_event == 'リーグ戦' %>
     <div class="text-right mt-4 mr-2">
       最終更新：<%= l @updated_at, format: :english %>
     </div>

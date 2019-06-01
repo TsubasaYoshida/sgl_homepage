@@ -25,10 +25,10 @@ class NitteiController < ApplicationController
   private
 
   def first
-    event_info = EventInfo.order(year: :desc, season: :desc).first
-    @selected_year = event_info.year
-    @selected_season = event_info.season
-    @selected_event = event_info.league
+    @selected_year = '2019'
+    @selected_season = '春季'
+    @selected_event = 'トーナメント'
+    event_info = EventInfo.find_by(year: @selected_year, season: @selected_season, league: @selected_event)
     describe event_info
     render :show
   end
@@ -41,8 +41,8 @@ class NitteiController < ApplicationController
       @event_one_days_list = []
       @event_one_days_list << event_info.event_one_days.where(round_1: '第一節').order(disp_date: :asc)
       @event_one_days_list << event_info.event_one_days.where(round_1: '第二節').order(disp_date: :asc)
-    elsif @selected_event == '入替戦'
-      @event_one_days_irekae = event_info.event_one_days.order(disp_date: :asc)
+    elsif @selected_event == '入替戦' || @selected_event == 'トーナメント'
+      @event_one_days = event_info.event_one_days.order(disp_date: :asc)
     end
     # 最終更新日時取得
     first_date = event_info.event_one_days.order(updated_at: :desc).first

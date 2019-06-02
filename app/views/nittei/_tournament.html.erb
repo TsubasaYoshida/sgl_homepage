@@ -1,0 +1,85 @@
+<% event_one_days.each do |event_one_day| %>
+
+  <div class="row mb-1">
+    <div class="col-12 text-left mt-2">
+      <%= l event_one_day.disp_date, format: :standard %>
+      <%= event_one_day.stadium %>
+      <% if event_one_day.rain_date_flag %>
+        <span class="badge badge-danger">予備日</span>
+      <% end %>
+    </div>
+  </div>
+
+  <% if event_one_day.rain_date_flag %>
+    <!--予備日の場合-->
+
+    <table class="table table-bordered">
+      <% 3.times do |n| %>
+        <% if event_one_day["start_time_#{n + 1}"].present? %>
+          <tr>
+            <td class="py-0">
+              <div class="row">
+                <div class="col-4 text-right py-1">
+                  ---
+                </div>
+                <div class="col-4 text-center py-1">
+                  <%= l event_one_day["start_time_#{n + 1}"], format: :game %>
+                </div>
+                <div class="col-4 text-left py-1">
+                  ---
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+
+  <% else %>
+    <!--予備日でない場合-->
+
+    <% previous_round = event_one_day.round_1 %>
+
+    <table class="table table-bordered">
+      <% 3.times do |n| %>
+
+        <% is_same_round = previous_round == event_one_day["round_#{n + 1}"] %>
+        <% previous_round = event_one_day["round_#{n + 1}"] %>
+
+        <% if event_one_day["start_time_#{n + 1}"].present? %>
+
+          <% if n == 0 || !is_same_round %>
+            <tr>
+              <td class="py-0">
+                <%= event_one_day["round_#{n + 1}"] %>
+              </td>
+            </tr>
+          <% end %>
+
+          <tr>
+            <td class="py-0">
+              <div class="row">
+                <div class="col-4 text-right py-1">
+                  <%= Team.get_three_letter(event_one_day["top_team_#{n + 1}"]) %>
+                </div>
+                <div class="col-4 text-center py-1">
+                  <% if event_one_day["no_game_#{n + 1}"] %>
+                    雨天中止
+                  <% else %>
+                    <%= l event_one_day["start_time_#{n + 1}"], format: :game %>
+                  <% end %>
+                </div>
+                <div class="col-4 text-left py-1">
+                  <%= Team.get_three_letter(event_one_day["bottom_team_#{n + 1}"]) %>
+                </div>
+              </div>
+              <div class="text-center">
+                <%= event_one_day["message_#{n + 1}"] %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% end %>
+<% end %>

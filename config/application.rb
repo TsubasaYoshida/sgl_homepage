@@ -16,9 +16,11 @@ module SglHomepage
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # アセットの自動生成を制御
     config.generators do |g|
       g.assets false
+      g.helper false
+      g.jbuilder false
+      g.test_framework false
     end
 
     # タイムゾーン指定

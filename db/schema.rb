@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_050921) do
+ActiveRecord::Schema.define(version: 2019_09_23_055120) do
 
   create_table "award_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "year"
@@ -35,6 +35,86 @@ ActiveRecord::Schema.define(version: 2019_04_14_050921) do
 
   create_table "awards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "championship_awards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "championship_id", null: false
+    t.string "award", null: false
+    t.string "player", null: false
+    t.string "team"
+    t.string "grade"
+    t.string "remarks"
+    t.integer "disp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["championship_id"], name: "index_championship_awards_on_championship_id"
+  end
+
+  create_table "championship_games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "championship_id", null: false
+    t.string "round"
+    t.date "date", null: false
+    t.time "time"
+    t.string "stadium"
+    t.string "top_team"
+    t.string "bottom_team"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "message"
+    t.boolean "rain_date"
+    t.boolean "no_game"
+    t.string "pitcher_top"
+    t.string "pitcher_bottom"
+    t.string "catcher_top"
+    t.string "catcher_bottom"
+    t.string "homerun_top"
+    t.string "homerun_bottom"
+    t.string "threebase_top"
+    t.string "threebase_bottom"
+    t.string "twobase_top"
+    t.string "twobase_bottom"
+    t.boolean "gameset_flag"
+    t.integer "top1"
+    t.integer "bottom1"
+    t.integer "top2"
+    t.integer "bottom2"
+    t.integer "top3"
+    t.integer "bottom3"
+    t.integer "top4"
+    t.integer "bottom4"
+    t.integer "top5"
+    t.integer "bottom5"
+    t.integer "top6"
+    t.integer "bottom6"
+    t.integer "top7"
+    t.integer "bottom7"
+    t.integer "top8"
+    t.integer "bottom8"
+    t.integer "top9"
+    t.integer "bottom9"
+    t.integer "top10"
+    t.integer "bottom10"
+    t.integer "top11"
+    t.integer "bottom11"
+    t.integer "top12"
+    t.integer "bottom12"
+    t.integer "top13"
+    t.integer "bottom13"
+    t.integer "top14"
+    t.integer "bottom14"
+    t.integer "top15"
+    t.integer "bottom15"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["championship_id"], name: "index_championship_games_on_championship_id"
+  end
+
+  create_table "championships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "year", null: false
+    t.date "oc_date"
+    t.time "oc_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -189,6 +269,8 @@ ActiveRecord::Schema.define(version: 2019_04_14_050921) do
   end
 
   add_foreign_key "award_players", "award_infos"
+  add_foreign_key "championship_awards", "championships"
+  add_foreign_key "championship_games", "championships"
   add_foreign_key "event_one_days", "event_infos"
   add_foreign_key "teams", "leagues"
 end

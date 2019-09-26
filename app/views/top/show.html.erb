@@ -1,5 +1,32 @@
 <div class="py-2"></div>
 
+<div class="d-none d-sm-block">
+  <%= link_to championships_path do %>
+    <div class="card border-danger">
+      <div class="card-body">
+        <h2 class="card-title font-weight-bold mt-0">第11回明治神宮野球大会北海道地区代表決定戦</h2>
+        <p class="card-text ml-2">- 特設ページをご用意いたしました。</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-sm-none d-block">
+  <%= link_to championships_path do %>
+    <div class="card border-danger">
+      <div class="card-body p-2">
+        <h2 class="card-title font-weight-bold my-0 text-center">
+          第11回明治神宮野球大会
+          <br>
+          北海道地区代表決定戦
+        </h2>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="py-2"></div>
+
 <div class="row">
   <div class="px-0">
     <%= image_tag '2019_autumn.jpg', alt: '2019年度秋季リーグ戦', class: 'd-block w-100' %>

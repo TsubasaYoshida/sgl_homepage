@@ -14,11 +14,11 @@
 
 <% else %>
 
-  <% if @oc_date %>
+  <% if @championship.oc_date %>
     <div class="text-center font-weight-bold">
-      開会式：
-      <%= l @oc_date, format: :oc_date %><%= " " %><%= l @oc_time, format: :oc_time %>
+      <%= "開会式： #{l @championship.oc_date, format: :oc_date} #{l @championship.oc_time, format: :oc_time}" %>
     </div>
+    <div class="py-2"></div>
   <% end %>
 
   <div class="text-center font-weight-bold">
@@ -48,7 +48,7 @@
             札幌学生野球連盟代表
           </div>
           <div class="font-weight-bold" style="font-size: 20px">
-            <%= "--" %>
+            <%= "東海大学札幌キャンパス" %>
           </div>
 
           <div class="pt-2">
@@ -65,7 +65,7 @@
             <h3 class="font-weight-bold" style="font-size: 18px">
               <%= "第#{championship_game.round}戦" %>
               <% if championship_game.rain_date %>
-                <span class="badge badge-danger mb-2" style="font-size: 12px">予備日</span>
+                <span class="badge badge-danger" style="font-size: 12px">予備日</span>
               <% end %>
             </h3>
 
@@ -90,245 +90,249 @@
 
             <div class="py-1"></div>
 
-            <%
-              team_top = "オ"
-              team_bottom = "道"
-              sum_top = nil
-              sum_bottom = nil
-            %>
+            <% unless championship_game.rain_date %>
 
-            <table class="table table-bordered table-condensed text-center" style="margin-bottom: 5px; table-layout: fixed;">
-              <tfoot>
-              <tr>
-                <td></td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <% if championship_game.top10 %>
-                  <td>10</td>
-                <% end %>
-                <% if championship_game.top11 %>
-                  <td>11</td>
-                <% end %>
-                <% if championship_game.top12 %>
-                  <td>12</td>
-                <% end %>
-                <td class="font-weight-bold" style="border: 2px solid">R</td>
-              </tr>
+              <%
+                team_top = "　"
+                team_bottom = "　"
+                sum_top = nil
+                sum_bottom = nil
+              %>
 
-              <tr>
-                <td><%= team_top %></td>
-                <td><%= championship_game.top1 %></td>
-                <td><%= championship_game.top2 %></td>
-                <td><%= championship_game.top3 %></td>
-                <td><%= championship_game.top4 %></td>
-                <td><%= championship_game.top5 %></td>
-                <td><%= championship_game.top6 %></td>
-                <td><%= championship_game.top7 %></td>
-                <td><%= championship_game.top8 %></td>
-                <td><%= championship_game.top9 %></td>
-                <% if championship_game.top10 %>
-                  <td><%= championship_game.top10 %></td>
-                <% end %>
-                <% if championship_game.top11 %>
-                  <td><%= championship_game.top11 %></td>
-                <% end %>
-                <% if championship_game.top12 %>
-                  <td><%= championship_game.top12 %></td>
-                <% end %>
-                <td class="font-weight-bold" style="border: 2px solid"><%= sum_top.to_s %></td>
-              </tr>
+              <table class="table table-bordered table-condensed text-center" style="margin-bottom: 5px; table-layout: fixed;">
+                <tfoot>
+                <tr>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <% if championship_game.top10 %>
+                    <td>10</td>
+                  <% end %>
+                  <% if championship_game.top11 %>
+                    <td>11</td>
+                  <% end %>
+                  <% if championship_game.top12 %>
+                    <td>12</td>
+                  <% end %>
+                  <td class="font-weight-bold" style="border: 2px solid">R</td>
+                </tr>
 
-              <tr>
-                <td><%= team_bottom %></td>
-                <td><%= championship_game.bottom1 %></td>
-                <td><%= championship_game.bottom2 %></td>
-                <td><%= championship_game.bottom3 %></td>
-                <td><%= championship_game.bottom4 %></td>
+                <tr>
+                  <td><%= team_top %></td>
+                  <td><%= championship_game.top1 %></td>
+                  <td><%= championship_game.top2 %></td>
+                  <td><%= championship_game.top3 %></td>
+                  <td><%= championship_game.top4 %></td>
+                  <td><%= championship_game.top5 %></td>
+                  <td><%= championship_game.top6 %></td>
+                  <td><%= championship_game.top7 %></td>
+                  <td><%= championship_game.top8 %></td>
+                  <td><%= championship_game.top9 %></td>
+                  <% if championship_game.top10 %>
+                    <td><%= championship_game.top10 %></td>
+                  <% end %>
+                  <% if championship_game.top11 %>
+                    <td><%= championship_game.top11 %></td>
+                  <% end %>
+                  <% if championship_game.top12 %>
+                    <td><%= championship_game.top12 %></td>
+                  <% end %>
+                  <td class="font-weight-bold" style="border: 2px solid"><%= sum_top.to_s %></td>
+                </tr>
 
-                <% if !championship_game.bottom5 && championship_game.gameset_flag %>
-                  <td>x</td>
-                <%
-                  elsif championship_game.bottom5.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 10 && !championship_game.top6
-                %>
-                  <td><%= championship_game.bottom5 %>x</td>
-                <% else %>
-                  <td><%= championship_game.bottom5 %></td>
-                <% end %>
+                <tr>
+                  <td><%= team_bottom %></td>
+                  <td><%= championship_game.bottom1 %></td>
+                  <td><%= championship_game.bottom2 %></td>
+                  <td><%= championship_game.bottom3 %></td>
+                  <td><%= championship_game.bottom4 %></td>
 
-                <% if championship_game.top6 %>
-                  <% if !championship_game.bottom6 && championship_game.gameset_flag %>
+                  <% if !championship_game.bottom5 && championship_game.gameset_flag %>
                     <td>x</td>
                   <%
-                    elsif championship_game.bottom6.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 10 && !championship_game.top7
+                    elsif championship_game.bottom5.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 10 && !championship_game.top6
                   %>
-                    <td><%= championship_game.bottom6 %>x</td>
+                    <td><%= championship_game.bottom5 %>x</td>
                   <% else %>
-                    <td><%= championship_game.bottom6 %></td>
+                    <td><%= championship_game.bottom5 %></td>
                   <% end %>
-                <% else %>
-                  <td></td>
-                <% end %>
 
-                <% if championship_game.top7 %>
-                  <% if !championship_game.bottom7 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <%
-                    elsif championship_game.bottom7.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 7 && !championship_game.top8
-                  %>
-                    <td><%= championship_game.bottom7 %>x</td>
+                  <% if championship_game.top6 %>
+                    <% if !championship_game.bottom6 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <%
+                      elsif championship_game.bottom6.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 10 && !championship_game.top7
+                    %>
+                      <td><%= championship_game.bottom6 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom6 %></td>
+                    <% end %>
                   <% else %>
-                    <td><%= championship_game.bottom7 %></td>
+                    <td></td>
                   <% end %>
-                <% else %>
-                  <td></td>
-                <% end %>
 
-                <% if championship_game.top8 %>
-                  <% if !championship_game.bottom8 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <%
-                    elsif championship_game.bottom8.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 7 && !championship_game.top9
-                  %>
-                    <td><%= championship_game.bottom8 %>x</td>
+                  <% if championship_game.top7 %>
+                    <% if !championship_game.bottom7 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <%
+                      elsif championship_game.bottom7.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 7 && !championship_game.top8
+                    %>
+                      <td><%= championship_game.bottom7 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom7 %></td>
+                    <% end %>
                   <% else %>
-                    <td><%= championship_game.bottom8 %></td>
+                    <td></td>
                   <% end %>
-                <% else %>
-                  <td></td>
-                <% end %>
 
-                <% if championship_game.top9 %>
-                  <% if !championship_game.bottom9 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <% elsif championship_game.bottom9.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top10 %>
-                    <td><%= championship_game.bottom9 %>x</td>
+                  <% if championship_game.top8 %>
+                    <% if !championship_game.bottom8 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <%
+                      elsif championship_game.bottom8.to_i > 0 && championship_game.gameset_flag && sum_bottom - sum_top >= 7 && !championship_game.top9
+                    %>
+                      <td><%= championship_game.bottom8 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom8 %></td>
+                    <% end %>
                   <% else %>
-                    <td><%= championship_game.bottom9 %></td>
+                    <td></td>
                   <% end %>
-                <% else %>
-                  <td></td>
-                <% end %>
 
-                <% if championship_game.top10 %>
-                  <% if !championship_game.bottom10 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <% elsif championship_game.bottom10.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top11 %>
-                    <td><%= championship_game.bottom10 %>x</td>
+                  <% if championship_game.top9 %>
+                    <% if !championship_game.bottom9 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom9.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top10 %>
+                      <td><%= championship_game.bottom9 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom9 %></td>
+                    <% end %>
                   <% else %>
-                    <td><%= championship_game.bottom10 %></td>
+                    <td></td>
                   <% end %>
-                <% end %>
 
-                <% if championship_game.top11 %>
-                  <% if !championship_game.bottom11 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <% elsif championship_game.bottom11.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top12 %>
-                    <td><%= championship_game.bottom11 %>x</td>
-                  <% else %>
-                    <td><%= championship_game.bottom11 %></td>
+                  <% if championship_game.top10 %>
+                    <% if !championship_game.bottom10 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom10.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top11 %>
+                      <td><%= championship_game.bottom10 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom10 %></td>
+                    <% end %>
                   <% end %>
-                <% end %>
 
-                <% if championship_game.top12 %>
-                  <% if !championship_game.bottom12 && championship_game.gameset_flag %>
-                    <td>x</td>
-                  <% elsif championship_game.bottom12.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top13 %>
-                    <td><%= championship_game.bottom12 %>x</td>
-                  <% else %>
-                    <td><%= championship_game.bottom12 %></td>
+                  <% if championship_game.top11 %>
+                    <% if !championship_game.bottom11 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom11.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top12 %>
+                      <td><%= championship_game.bottom11 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom11 %></td>
+                    <% end %>
                   <% end %>
-                <% end %>
 
-                <td class="font-weight-bold" style="border: 2px solid"><%= sum_bottom.to_s %></td>
-              </tr>
-              </tfoot>
-            </table>
+                  <% if championship_game.top12 %>
+                    <% if !championship_game.bottom12 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom12.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top13 %>
+                      <td><%= championship_game.bottom12 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom12 %></td>
+                    <% end %>
+                  <% end %>
 
-            <div class="py-1"></div>
+                  <td class="font-weight-bold" style="border: 2px solid"><%= sum_bottom.to_s %></td>
+                </tr>
+                </tfoot>
+              </table>
 
-            <% if championship_game.message.present? %>
+              <div class="py-1"></div>
+
+              <% if championship_game.message.present? %>
+                <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+                  <tbody>
+                  <tr>
+                    <td>特記事項</td>
+                  </tr>
+                  <tr>
+                    <td><%= championship_game.message %></td>
+                  </tr>
+                  </tbody>
+                </table>
+              <% end %>
+
               <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
                 <tbody>
                 <tr>
-                  <td>特記事項</td>
+                  <td colspan="2">バッテリー</td>
                 </tr>
                 <tr>
-                  <td><%= championship_game.message %></td>
+                  <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+                  <td><%= championship_game.pitcher_top %> - <%= championship_game.catcher_top %></td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0;"><%= team_bottom %></td>
+                  <td><%= championship_game.pitcher_bottom %> - <%= championship_game.catcher_bottom %></td>
                 </tr>
                 </tbody>
               </table>
+
+              <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+                <tbody>
+                <tr>
+                  <td colspan="2">本塁打</td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+                  <td><%= championship_game.homerun_top %></td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0;"><%= team_bottom %></td>
+                  <td><%= championship_game.homerun_bottom %></td>
+                </tr>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+                <tbody>
+                <tr>
+                  <td colspan="2">三塁打</td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+                  <td><%= championship_game.threebase_top %></td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0;"><%= team_bottom %></td>
+                  <td><%= championship_game.threebase_bottom %></td>
+                </tr>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
+                <tbody>
+                <tr>
+                  <td colspan="2">二塁打</td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
+                  <td><%= championship_game.twobase_top %></td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0;"><%= team_bottom %></td>
+                  <td><%= championship_game.twobase_bottom %></td>
+                </tr>
+                </tbody>
+              </table>
+
             <% end %>
-
-            <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
-              <tbody>
-              <tr>
-                <td colspan="2">バッテリー</td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
-                <td><%= championship_game.pitcher_top %> - <%= championship_game.catcher_top %></td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0;"><%= team_bottom %></td>
-                <td><%= championship_game.pitcher_bottom %> - <%= championship_game.catcher_bottom %></td>
-              </tr>
-              </tbody>
-            </table>
-
-            <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
-              <tbody>
-              <tr>
-                <td colspan="2">本塁打</td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
-                <td><%= championship_game.homerun_top %></td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0;"><%= team_bottom %></td>
-                <td><%= championship_game.homerun_bottom %></td>
-              </tr>
-              </tbody>
-            </table>
-
-            <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
-              <tbody>
-              <tr>
-                <td colspan="2">三塁打</td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
-                <td><%= championship_game.threebase_top %></td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0;"><%= team_bottom %></td>
-                <td><%= championship_game.threebase_bottom %></td>
-              </tr>
-              </tbody>
-            </table>
-
-            <table class="table table-bordered table-condensed" style="margin-bottom: 5px">
-              <tbody>
-              <tr>
-                <td colspan="2">二塁打</td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0; width: 8.5%;"><%= team_top %></td>
-                <td><%= championship_game.twobase_top %></td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0;"><%= team_bottom %></td>
-                <td><%= championship_game.twobase_bottom %></td>
-              </tr>
-              </tbody>
-            </table>
 
           <% end %>
 

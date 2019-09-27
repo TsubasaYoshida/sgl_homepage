@@ -12,6 +12,26 @@ Rails.application.routes.draw do
   post 'login' => 'login#auth'
   post 'logout' => 'login#logout'
 
+  resources :championships, only: [:index, :new, :edit, :create, :update, :destroy] do
+    collection do
+      get :management
+    end
+    resources :championship_games, only: [:new, :edit, :create, :update, :destroy] do
+      collection do
+        get :management
+      end
+      member do
+        get :edit_game
+        get :score
+      end
+    end
+    resources :championship_awards, only: [:new, :edit, :create, :update, :destroy] do
+      collection do
+        get :management
+      end
+    end
+  end
+
   resources :award_players, except: [:index, :show] do
     member do
       get :new_award_player

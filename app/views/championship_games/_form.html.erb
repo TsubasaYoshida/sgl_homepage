@@ -1,0 +1,133 @@
+<%= form_with(model: [championship, championship_game], local: true) do |form| %>
+  <% if championship_game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(championship_game.errors.count, "error") %> prohibited this championship_game from being
+        saved:</h2>
+
+      <ul>
+        <% championship_game.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :championship_id %>
+    <%= form.text_field :championship_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :round %>
+    <%= form.text_field :round, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date %>
+    <%= form.date_field :date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :time %>
+    <%= form.time_field :time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stadium %>
+    <%= form.text_field :stadium, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :top_team %>
+    <%= form.text_field :top_team, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bottom_team %>
+    <%= form.text_field :bottom_team, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time %>
+    <%= form.time_field :start_time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_time %>
+    <%= form.time_field :end_time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message %>
+    <%= form.text_field :message, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rain_date %>
+    <%= form.check_box :rain_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :no_game %>
+    <%= form.check_box :no_game, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pitcher_top %>
+    <%= form.text_field :pitcher_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pitcher_bottom %>
+    <%= form.text_field :pitcher_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :catcher_top %>
+    <%= form.text_field :catcher_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :catcher_bottom %>
+    <%= form.text_field :catcher_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :homerun_top %>
+    <%= form.text_field :homerun_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :homerun_bottom %>
+    <%= form.text_field :homerun_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :threebase_top %>
+    <%= form.text_field :threebase_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :threebase_bottom %>
+    <%= form.text_field :threebase_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :twobase_top %>
+    <%= form.text_field :twobase_top, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :twobase_bottom %>
+    <%= form.text_field :twobase_bottom, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gameset_flag %>
+    <%= form.check_box :gameset_flag, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+  </div>
+<% end %>

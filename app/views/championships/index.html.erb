@@ -74,7 +74,7 @@
               <% if championship_game.start_time %>
                 <%= "#{l championship_game.start_time, format: :game}~#{l championship_game.end_time, format: :game}" %>
               <% else %>
-                <%= "#{l championship_game.time, format: :game} 開始予定" %>
+                <%= l championship_game.time, format: :game %>
               <% end %>
               <br>
               <%= championship_game.stadium %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Championship Awards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Championship</th>
+      <th>Award</th>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Grade</th>
+      <th>Remarks</th>
+      <th>Disp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @championship_awards.each do |championship_award| %>
+      <tr>
+        <td><%= championship_award.championship %></td>
+        <td><%= championship_award.award %></td>
+        <td><%= championship_award.player %></td>
+        <td><%= championship_award.team %></td>
+        <td><%= championship_award.grade %></td>
+        <td><%= championship_award.remarks %></td>
+        <td><%= championship_award.disp_id %></td>
+        <td><%= link_to 'Show', championship_award %></td>
+        <td><%= link_to 'Edit', edit_championship_award_path(championship_award) %></td>
+        <td><%= link_to 'Destroy', championship_award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Championship Award', new_championship_award_path %>

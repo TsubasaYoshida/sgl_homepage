@@ -1,0 +1,161 @@
+<h2>得点</h2>
+
+<%= form_with(model: [@championship, @championship_game], local: true) do |form| %>
+
+  <div class="row">
+    <div class="col-6">
+
+      <div class="form-group">
+        <%= form.label :top1, '1回オモテ' %>
+        <%= form.telephone_field :top1, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top2, '2回オモテ' %>
+        <%= form.telephone_field :top2, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top3, '3回オモテ' %>
+        <%= form.telephone_field :top3, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top4, '4回オモテ' %>
+        <%= form.telephone_field :top4, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top5, '5回オモテ' %>
+        <%= form.telephone_field :top5, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top6, '6回オモテ' %>
+        <%= form.telephone_field :top6, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top7, '7回オモテ' %>
+        <%= form.telephone_field :top7, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top8, '8回オモテ' %>
+        <%= form.telephone_field :top8, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :top9, '9回オモテ' %>
+        <%= form.telephone_field :top9, class: 'form-control' %>
+      </div>
+
+      <% if @championship_game.top10 || @championship_game.bottom9 && !@championship_game.gameset_flag %>
+
+        <div class="form-group">
+          <%= form.label :top10, '10回オモテ' %>
+          <%= form.telephone_field :top10, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :top11, '11回オモテ' %>
+          <%= form.telephone_field :top11, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :top12, '12回オモテ' %>
+          <%= form.telephone_field :top12, class: 'form-control' %>
+        </div>
+
+      <% end %>
+
+    </div>
+    <div class="col-6">
+
+      <div class="form-group">
+        <%= form.label :bottom1, '1回ウラ' %>
+        <%= form.telephone_field :bottom1, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom2, '2回ウラ' %>
+        <%= form.telephone_field :bottom2, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom3, '3回ウラ' %>
+        <%= form.telephone_field :bottom3, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom4, '4回ウラ' %>
+        <%= form.telephone_field :bottom4, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom5, '5回ウラ' %>
+        <%= form.telephone_field :bottom5, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom6, '6回ウラ' %>
+        <%= form.telephone_field :bottom6, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom7, '7回ウラ' %>
+        <%= form.telephone_field :bottom7, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom8, '8回ウラ' %>
+        <%= form.telephone_field :bottom8, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :bottom9, '9回ウラ' %>
+        <%= form.telephone_field :bottom9, class: 'form-control' %>
+      </div>
+
+      <% if @championship_game.top10 || @championship_game.bottom9 && !@championship_game.gameset_flag %>
+
+        <div class="form-group">
+          <%= form.label :bottom10, '10回ウラ' %>
+          <%= form.telephone_field :bottom10, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :bottom11, '11回ウラ' %>
+          <%= form.telephone_field :bottom11, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :bottom12, '12回ウラ' %>
+          <%= form.telephone_field :bottom12, class: 'form-control' %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <%= form.check_box :gameset_flag, class: 'checkbox' %>
+        試合終了フラグ
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
+  </div>
+
+<% end %>
+
+<div class="alert alert-warning my-4" role="alert">
+  <h5 class="alert-heading">入力時の注意</h5>
+  <p>・後攻チーム勝利時の「x」は入力不要です。</p>
+  <p class="mb-0">・10回～12回の入力欄は、9回ウラに得点入力があり、かつ「試合終了フラグ」が未チェックの場合に表示されます。</p>
+</div>

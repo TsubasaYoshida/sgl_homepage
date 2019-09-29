@@ -23,12 +23,14 @@
 
   <div class="form-group">
     <%= form.label :top_team, '先攻チーム' %>
-    <%= form.text_field :top_team, class: 'form-control' %>
+    <%= form.select :top_team, ['東海大学札幌キャンパス', '東京農業大学北海道オホーツク'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :bottom_team, '後攻チーム' %>
-    <%= form.text_field :bottom_team, class: 'form-control' %>
+    <%= form.select :bottom_team, ['東海大学札幌キャンパス', '東京農業大学北海道オホーツク'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -41,15 +43,6 @@
       <label>
         <%= form.check_box :rain_date, class: 'checkbox' %>
         予備日フラグ
-      </label>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="checkbox">
-      <label>
-        <%= form.check_box :no_game, class: 'checkbox' %>
-        雨天中止フラグ
       </label>
     </div>
   </div>

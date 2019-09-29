@@ -80,23 +80,15 @@
               <%= championship_game.stadium %>
             </div>
 
-            <div>
-              <% if championship_game.no_game %>
-                雨天中止
-                <br>
-                <%= championship_game.message %>
-              <% end %>
-            </div>
-
             <div class="py-1"></div>
 
             <% unless championship_game.rain_date %>
 
               <%
-                team_top = "　"
-                team_bottom = "　"
-                sum_top = nil
-                sum_bottom = nil
+                team_top = championship_game.get_team_initial(true)
+                team_bottom = championship_game.get_team_initial(false)
+                sum_top = championship_game.get_sum_top
+                sum_bottom = championship_game.get_sum_bottom
               %>
 
               <table class="table table-bordered table-condensed text-center" style="margin-bottom: 5px; table-layout: fixed;">
@@ -252,6 +244,12 @@
                 </tr>
                 </tfoot>
               </table>
+
+              <% if championship_game.gameset_flag %>
+                <div class="float-right mb-1" style="color: red">
+                  <%= "(#{championship_game.get_game_status})" %>
+                </div>
+              <% end %>
 
               <div class="py-1"></div>
 

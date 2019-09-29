@@ -1,32 +1,21 @@
 <%= form_with(model: championship, local: true) do |form| %>
-  <% if championship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(championship.errors.count, "error") %> prohibited this championship from being saved:</h2>
-
-      <ul>
-      <% championship.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="form-group">
-    <%= form.label :year %>
-    <%= form.text_field :year, class: 'form-control' %>
+    <%= form.label :year, '年度' %>
+    <%= form.telephone_field :year, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :oc_date %>
+    <%= form.label :oc_date, '開会式日程' %>
     <%= form.date_field :oc_date, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :oc_time %>
+    <%= form.label :oc_time, '開会式開始時刻' %>
     <%= form.time_field :oc_time, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.submit %>
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
 <% end %>

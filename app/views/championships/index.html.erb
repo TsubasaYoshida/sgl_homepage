@@ -113,6 +113,15 @@
                   <% if championship_game.top12 %>
                     <td>12</td>
                   <% end %>
+                  <% if championship_game.top13 %>
+                    <td>13</td>
+                  <% end %>
+                  <% if championship_game.top14 %>
+                    <td>14</td>
+                  <% end %>
+                  <% if championship_game.top15 %>
+                    <td>15</td>
+                  <% end %>
                   <td class="font-weight-bold" style="border: 2px solid">R</td>
                 </tr>
 
@@ -135,6 +144,15 @@
                   <% end %>
                   <% if championship_game.top12 %>
                     <td><%= championship_game.top12 %></td>
+                  <% end %>
+                  <% if championship_game.top13 %>
+                    <td><%= championship_game.top13 %></td>
+                  <% end %>
+                  <% if championship_game.top14 %>
+                    <td><%= championship_game.top14 %></td>
+                  <% end %>
+                  <% if championship_game.top15 %>
+                    <td><%= championship_game.top15 %></td>
                   <% end %>
                   <td class="font-weight-bold" style="border: 2px solid"><%= sum_top.to_s %></td>
                 </tr>
@@ -237,6 +255,36 @@
                       <td><%= championship_game.bottom12 %>x</td>
                     <% else %>
                       <td><%= championship_game.bottom12 %></td>
+                    <% end %>
+                  <% end %>
+
+                  <% if championship_game.top13 %>
+                    <% if !championship_game.bottom13 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom13.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top14 %>
+                      <td><%= championship_game.bottom13 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom13 %></td>
+                    <% end %>
+                  <% end %>
+
+                  <% if championship_game.top14 %>
+                    <% if !championship_game.bottom14 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom14.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top && !championship_game.top15 %>
+                      <td><%= championship_game.bottom14 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom14 %></td>
+                    <% end %>
+                  <% end %>
+
+                  <% if championship_game.top15 %>
+                    <% if !championship_game.bottom15 && championship_game.gameset_flag %>
+                      <td>x</td>
+                    <% elsif championship_game.bottom15.to_i > 0 && championship_game.gameset_flag && sum_bottom > sum_top %>
+                      <td><%= championship_game.bottom15 %>x</td>
+                    <% else %>
+                      <td><%= championship_game.bottom15 %></td>
                     <% end %>
                   <% end %>
 

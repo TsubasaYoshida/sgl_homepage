@@ -25,10 +25,16 @@ class NitteiController < ApplicationController
   private
 
   def first
-    event_info = EventInfo.order(year: :desc, season: :desc, league: :asc).first
-    @selected_year = event_info.year
-    @selected_season = event_info.season
-    @selected_event = event_info.league
+    # event_info = EventInfo.order(year: :desc, season: :desc, league: :asc).first
+    # @selected_year = event_info.year
+    # @selected_season = event_info.season
+    # @selected_event = event_info.league
+
+    @selected_year = '2019'
+    @selected_season = '秋季'
+    @selected_event = '入替戦'
+    event_info = EventInfo.find_by(year: @selected_year, season: @selected_season, league: @selected_event)
+
     describe event_info
     render :show
   end

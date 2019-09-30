@@ -3,10 +3,12 @@ class ChampionshipAwardsController < ApplicationController
   layout 'admin'
 
   def management
-    @championship_awards = ChampionshipAward.all
+    @championship = Championship.find(params[:championship_id])
+    @championship_awards = @championship.championship_awards
   end
 
   def new
+    @championship = Championship.find(params[:championship_id])
     @championship_award = ChampionshipAward.new
   end
 
@@ -15,6 +17,7 @@ class ChampionshipAwardsController < ApplicationController
 
   def create
     @championship_award = ChampionshipAward.new(championship_award_params)
+    @championship_game.championship = Championship.find(params[:championship_id])
 
     if @championship_award.save
       redirect_to management_championship_championship_awards_url, notice: '代表決定戦表彰情報の作成に成功しました。'
@@ -39,7 +42,8 @@ class ChampionshipAwardsController < ApplicationController
   private
 
   def set_championship_award
-    @championship_award = ChampionshipAward.find(params[:id])
+    @championship = Championship.find(params[:championship_id])
+    @championship_award = @championship.championship_awards.find(params[:id])
   end
 
   def championship_award_params

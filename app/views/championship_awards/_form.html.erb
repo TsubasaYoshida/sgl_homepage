@@ -1,52 +1,39 @@
-<%= form_with(model: championship_award, local: true) do |form| %>
-  <% if championship_award.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(championship_award.errors.count, "error") %> prohibited this championship_award from being saved:</h2>
+<%= form_with(model: [championship, championship_award], local: true) do |form| %>
 
-      <ul>
-      <% championship_award.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :championship_id %>
-    <%= form.text_field :championship_id %>
+  <div class="form-group">
+    <%= form.label :disp_id, '表示順' %>
+    <%= form.text_field :disp_id, class: 'form-control', placeholder: '例：1' %>
   </div>
 
-  <div class="field">
-    <%= form.label :award %>
-    <%= form.text_field :award %>
+  <div class="form-group">
+    <%= form.label :award, '賞名' %>
+    <%= form.text_field :award, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :player %>
-    <%= form.text_field :player %>
+  <div class="form-group">
+    <%= form.label :player, '選手名' %>
+    <%= form.text_field :player, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :team %>
-    <%= form.text_field :team %>
+  <div class="form-group">
+    <%= form.label :team, 'チーム' %>
+    <%= form.select :team, ['東海大学札幌キャンパス', '東京農業大学北海道オホーツク'],
+                    {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :grade %>
-    <%= form.text_field :grade %>
+  <div class="form-group">
+    <%= form.label :grade, '学年' %>
+    <%= form.select :grade, ['4年', '3年', '2年', '1年'],
+                 {include_blank: '---'}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_field :remarks %>
+  <div class="form-group">
+    <%= form.label :remarks, '特記事項' %>
+    <%= form.text_area :remarks, rows: "1", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :disp_id %>
-    <%= form.number_field :disp_id %>
+  <div class="form-group">
+    <%= form.submit '情報送信', data: {disable_with: '処理中…'}, class: 'btn btn-default' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

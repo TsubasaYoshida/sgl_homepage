@@ -1,39 +1,64 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success my-4" role="alert"><strong>完了</strong> - <%= notice %></div>
+<% end %>
 
-<h1>Championship Awards</h1>
+<%# pc %>
+<div class="d-none d-sm-block">
+  <h2 class="float-left">表彰情報管理</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Championship</th>
-      <th>Award</th>
-      <th>Player</th>
-      <th>Team</th>
-      <th>Grade</th>
-      <th>Remarks</th>
-      <th>Disp</th>
-      <th colspan="3"></th>
+  <div class="padding-bottom10 padding-top10 float-right">
+    <%= link_to '新規作成', new_championship_championship_award_path, class: 'btn btn-default' %>
+  </div>
+
+  <table class="table table-bordered text-center">
+    <tr class="bg-green">
+      <th>賞名</th>
+      <th>選手名</th>
+      <th>チーム</th>
+      <th>学年</th>
+      <th colspan="2"></th>
     </tr>
-  </thead>
-
-  <tbody>
     <% @championship_awards.each do |championship_award| %>
       <tr>
-        <td><%= championship_award.championship %></td>
-        <td><%= championship_award.award %></td>
-        <td><%= championship_award.player %></td>
-        <td><%= championship_award.team %></td>
-        <td><%= championship_award.grade %></td>
-        <td><%= championship_award.remarks %></td>
-        <td><%= championship_award.disp_id %></td>
-        <td><%= link_to 'Show', championship_award %></td>
-        <td><%= link_to 'Edit', edit_championship_award_path(championship_award) %></td>
-        <td><%= link_to 'Destroy', championship_award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="vertical-align: middle;">
+          <%= championship_award.award %>
+        </td>
+        <td style="vertical-align: middle;">
+          <%= championship_award.player %>
+        </td>
+        <td style="vertical-align: middle;">
+          <%= championship_award.team %>
+        </td>
+        <td style="vertical-align: middle;">
+          <%= championship_award.grade %>
+        </td>
+        <td>
+          <%= link_to '編集', edit_championship_championship_award_path(@championship, championship_award), class: 'btn btn-default' %>
+        </td>
+        <td>
+          <%= link_to '削除', [@championship, championship_award], method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default' %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>
 
-<br>
+<%# sp %>
+<div class="d-sm-none d-block">
+  <h2>表彰情報管理</h2>
 
-<%= link_to 'New Championship Award', new_championship_award_path %>
+  <%= link_to '新規作成', new_championship_championship_award_path, class: 'btn btn-default btn-block' %>
+
+  <% @championship_awards.each do |championship_award| %>
+    <div class="mt-3 border-bottom"></div>
+    <h3>
+      <%= championship_award.award %>
+      <br>
+      <small>
+        <%= championship_award.player %>
+      </small>
+    </h3>
+    <%= link_to '編集', edit_championship_championship_award_path(@championship, championship_award), class: 'btn btn-default btn-block' %>
+    <%= link_to '削除', [@championship, championship_award], method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-outline-danger btn-block' %>
+  <% end %>
+</div>

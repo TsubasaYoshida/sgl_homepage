@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <%= form.label :round, 'ラウンド' %>
-    <%= form.select :round, [['第1戦', 1], ['第2戦', 2], ['第3戦', 3], ['第4戦', 4]],
+    <%= form.select :round, [['1日目', 1], ['2日目', 2], ['3日目', 3], ['4日目', 4]],
                     {include_blank: '選択してください'}, class: 'form-control' %>
   </div>
 
@@ -43,6 +43,15 @@
       <label>
         <%= form.check_box :rain_date, class: 'checkbox' %>
         予備日フラグ
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <%= form.check_box :no_game, class: 'checkbox' %>
+        中止フラグ
       </label>
     </div>
   </div>

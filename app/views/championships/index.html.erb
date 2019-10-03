@@ -63,9 +63,12 @@
           <% @championship.championship_games.each do |championship_game| %>
 
             <h3 class="font-weight-bold" style="font-size: 18px">
-              <%= "第#{championship_game.round}戦" %>
+              <%= "#{championship_game.round}日目" %>
               <% if championship_game.rain_date %>
                 <span class="badge badge-danger" style="font-size: 12px">予備日</span>
+              <% end %>
+              <% if championship_game.no_game %>
+                <span class="badge badge-info" style="font-size: 12px">中止</span>
               <% end %>
             </h3>
 
@@ -80,9 +83,15 @@
               <%= championship_game.stadium %>
             </div>
 
+            <% if championship_game.message.present? %>
+              <div class="mt-2" style="font-size: 14px;color: red;">
+                <%= "- #{championship_game.message}" %>
+              </div>
+            <% end %>
+
             <div class="py-1"></div>
 
-            <% unless championship_game.rain_date %>
+            <% unless championship_game.rain_date || championship_game.no_game %>
 
               <%
                 team_top = championship_game.get_team_initial(true)

@@ -32,7 +32,7 @@ class NitteiController < ApplicationController
 
     @selected_year = '2019'
     @selected_season = '秋季'
-    @selected_event = '入替戦'
+    @selected_event = 'トーナメント'
     event_info = EventInfo.find_by(year: @selected_year, season: @selected_season, league: @selected_event)
 
     describe event_info

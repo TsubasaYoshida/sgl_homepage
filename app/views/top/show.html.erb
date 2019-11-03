@@ -1,67 +1,78 @@
-<div class="py-2"></div>
-
-<div class="d-none d-sm-block">
-  <%= link_to championships_path do %>
-    <div class="card border-danger">
-      <div class="card-body">
-        <h2 class="card-title font-weight-bold mt-0">第11回明治神宮野球大会北海道地区代表決定戦</h2>
-        <p class="card-text ml-2">- 特設ページをご用意いたしました。</p>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="d-sm-none d-block">
-  <%= link_to championships_path do %>
-    <div class="card border-danger">
-      <div class="card-body p-2">
-        <h2 class="card-title font-weight-bold my-0 text-center">
-          第11回明治神宮野球大会
-          <br>
-          北海道地区代表決定戦
-        </h2>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="py-2"></div>
-
 <div class="row">
-  <div class="px-0">
-    <%= image_tag '2019_autumn.jpg', alt: '2019年度秋季リーグ戦', class: 'd-block w-100' %>
+
+<%# pc %>
+  <nav class="col-sm-3 d-none d-sm-block text-center">
+    <div class="py-4"></div>
+    <h1 class="p-3">
+      <%= link_to '/' do %>
+        <%= image_tag 'logo_with_title.png', alt: '札幌学生野球連盟', class: 'img-fluid' %>
+      <% end %>
+    </h1>
+    <div class="py-2"></div>
+    <ul class="nav flex-column nav-item-size">
+      <li class="nav-item py-2">
+        <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item py-2">
+        <%= link_to '順位表', '/standings', class: 'nav-link' %>
+      </li>
+      <li class="nav-item py-2">
+        <%= link_to '大会日程', '/nittei', class: 'nav-link' %>
+      </li>
+      <li class="nav-item py-2">
+        <%= link_to '表彰選手', award_infos_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item py-2">
+        <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link' %>
+      </li>
+      <li class="nav-item py-2">
+        <%= link_to '代表決定戦', championships_path, class: 'nav-link' %>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="col-sm-9">
+
+<%# pc %>
+    <div class="d-none d-sm-block">
+      <div class="margin-cut eye-catch"></div>
+    </div>
+
+<%# sp %>
+    <div class="d-sm-none d-block">
+      <div class="py-2"></div>
+      <div class="row">
+        <div class="px-0">
+          <%= image_tag 'top_2020_spring.jpg', class: 'd-block w-100' %>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>
 
-<div class="d-none d-sm-block">
-  <div class="row justify-content-end" style="font-size: 10px">
-    photo by Junko Suzuki
-  </div>
-</div>
-
-<div class="d-sm-none d-block">
-  <div class="text-right" style="font-size: 8px">
-    photo by Junko Suzuki
-  </div>
-</div>
+<div class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-sm-3 bg-white border-bottom shadow-sm"></div>
 
 <div class="py-sm-2"></div>
 
-<div class="row">
-  <div class="col-sm-6">
-    <h2 style="font-size: 18px">新着情報</h2>
-    <%= render 'infos/info', infos: @infos %>
-    <div align="right">
-      <u><%= link_to 'もっとたくさん見る', infos_path %></u>
+<div class="container-top-page">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2 style="font-size: 18px">新着情報</h2>
+      <%= render 'infos/info', infos: @infos %>
+      <div align="right">
+        <u><%= link_to 'もっとたくさん見る', infos_path %></u>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-6">
-    <h2 style="font-size: 18px">試合速報
-      <small>（最新5試合）</small>
-    </h2>
-    <%= render 'game_infos/index', game_infos: @game_infos %>
-    <div align="right">
-      <u><%= link_to '試合速報ページへ', game_infos_path %></u>
+    <div class="col-sm-6">
+      <h2 style="font-size: 18px">試合速報
+        <small>（最新5試合）</small>
+      </h2>
+      <%= render 'game_infos/index', game_infos: @game_infos %>
+      <div align="right">
+        <u><%= link_to '試合速報ページへ', game_infos_path %></u>
+      </div>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@
 
   <%# ogp %>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="http://satsu6.com<%= asset_path "ogp_image.jpg" %>"/>
+  <meta property="og:image" content="http://satsu6.com<%= asset_path "ogp_2020_spring.jpg" %>"/>
   <meta property="og:site_name" content="札幌学生野球連盟公式サイト"/>
   <meta name="twitter:card" content="summary_large_image"/>
 
@@ -33,27 +33,31 @@
 
 <body>
 
-<%# pc %>
-<div class="d-none d-sm-block">
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h1 class="mr-md-auto">
-      <%= link_to '/' do %>
-        <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', style: 'width:300px' %>
-      <% end %>
-    </h1>
-    <nav class="nav my-2 my-md-0 mr-md-3">
-      <%= link_to 'トップページ', '/', class: 'nav-link border-right border-left' %>
-      <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right' %>
-      <%= link_to '順位表', '/standings', class: 'nav-link border-right' %>
-      <%= link_to '大会日程', '/nittei', class: 'nav-link border-right' %>
-      <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right' %>
-      <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
-      <%= link_to '代表決定戦', championships_path, class: 'nav-link border-right' %>
-    </nav>
-  </div>
-</div>
+<% unless current_page?(root_path) %>
 
-<div class="container">
+<%# pc %>
+  <div class="d-none d-sm-block">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h1 class="mr-md-auto">
+        <%= link_to '/' do %>
+          <%= image_tag 'title.jpg', alt: '札幌学生野球連盟', style: 'width:300px' %>
+        <% end %>
+      </h1>
+      <nav class="nav my-2 my-md-0 mr-md-3">
+        <%= link_to 'トップページ', '/', class: 'nav-link border-right border-left' %>
+        <%= link_to '試合速報・結果', game_infos_path, class: 'nav-link border-right' %>
+        <%= link_to '順位表', '/standings', class: 'nav-link border-right' %>
+        <%= link_to '大会日程', '/nittei', class: 'nav-link border-right' %>
+        <%= link_to '表彰選手', award_infos_path, class: 'nav-link border-right' %>
+        <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
+        <%= link_to '代表決定戦', championships_path, class: 'nav-link border-right' %>
+      </nav>
+    </div>
+  </div>
+
+<% end %>
+
+<div class="<%= current_page?(root_path) ? 'container-fluid' : 'container' %>">
   <div class="row">
 
     <%# sp %>

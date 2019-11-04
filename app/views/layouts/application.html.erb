@@ -124,49 +124,49 @@
   </div>
 </div>
 
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"></div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <footer class="p-footer mb-5 mt-3">
-        <div class="admin">札幌学生野球連盟事務局</div>
-        <div class="row">
-          <div class="col-sm-3">
-            〒064-0953
-            <br>
-            札幌市中央区宮の森3条9-1-30-1001
+<div class="footer mt-5 pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <footer class="p-footer mb-5 mt-3">
+          <div class="admin">札幌学生野球連盟事務局</div>
+          <div class="row">
+            <div class="col-sm-3">
+              〒064-0953
+              <br>
+              札幌市中央区宮の森3条9-1-30-1001
+            </div>
+            <div class="col-sm-3">
+              TEL：080-6081-9524
+              <br>
+              FAX：011-642-9358
+              <br>
+              MAIL：sgloffice＠yahoo.co.jp
+              <br>
+              <small>
+                ＠を半角にしてお送りください。
+              </small>
+            </div>
+            <div class="col-sm-3 banner">
+              <%= link_to '/recruit_umpire' do %>
+                <%= image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid' %>
+              <% end %>
+            </div>
+            <div class="col-sm-3"></div>
           </div>
-          <div class="col-sm-3">
-            TEL：080-6081-9524
-            <br>
-            FAX：011-642-9358
-            <br>
-            MAIL：sgloffice＠yahoo.co.jp
-            <br>
-            <small>
-              ＠を半角にしてお送りください。
-            </small>
+          <div class="text-center">
+            <p>
+              <%= link_to '#盛り上がれ札六',
+                          'https://twitter.com/search?q=%23%E7%9B%9B%E3%82%8A%E4%B8%8A%E3%81%8C%E3%82%8C%E6%9C%AD%E5%85%AD&src=typd',
+                          target: '_blank',
+                          style: 'color: #1DA1F2' %>
+            </p>
+            <p class="mt-2">
+              &#169; 2012-2019 Sapporo Gakusei League
+            </p>
           </div>
-          <div class="col-sm-3 banner">
-            <%= link_to '/recruit_umpire' do %>
-              <%= image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid' %>
-            <% end %>
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-        <div class="text-center">
-          <p>
-            <%= link_to '#盛り上がれ札六',
-                        'https://twitter.com/search?q=%23%E7%9B%9B%E3%82%8A%E4%B8%8A%E3%81%8C%E3%82%8C%E6%9C%AD%E5%85%AD&src=typd',
-                        target: '_blank',
-                        style: 'color: #1DA1F2' %>
-          </p>
-          <p class="mt-2">
-            &#169; 2012-2019 Sapporo Gakusei League
-          </p>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   </div>
 </div>

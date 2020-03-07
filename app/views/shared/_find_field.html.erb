@@ -8,7 +8,7 @@
 </div>
 <div class="col-sm-3">
   <div class="form-group">
-    <%= select_tag :key_season, options_for_select(['春季', '秋季'], @selected_season), class: 'form-control' %>
+    <%= select_tag :key_season, options_for_select({'春季': 0, '秋季': 1, '年間': 2}, @selected_season), class: 'form-control' %>
   </div>
 </div>
 <div class="col-sm-3">

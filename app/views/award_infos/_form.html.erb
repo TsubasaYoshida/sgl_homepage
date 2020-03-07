@@ -23,8 +23,8 @@
         </div>
         <div class="col-4">
           <div class="form-group">
-            <%= form.label :season, '春季／秋季' %>
-            <%= form.select :season, ['春季', '秋季'],
+            <%= form.label :season, '春季／秋季／年間' %>
+            <%= form.select :season, {'春季': 0, '秋季': 1, '年間': 2},
                             {include_blank: '選択してください'}, class: 'form-control' %>
           </div>
         </div>
@@ -47,7 +47,7 @@
         <tr>
           <th width="7%">表示順</th>
           <th width="18%">賞名</th>
-          <th width="18%">選手名</th>
+          <th width="18%">受賞者</th>
           <th width="18%">所属チーム</th>
           <th width="7%">学年</th>
           <th width="25%">特記事項</th>

@@ -1,4 +1,4 @@
-<h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">表彰選手</h2>
+<h2 class="text-center font-weight-bold my-sm-5" style="font-size: 24px">表彰</h2>
 
 <!--  pc  -->
 <div class="d-none d-sm-block">
@@ -31,15 +31,15 @@
 <div class="py-2"></div>
 
 <h3 class="text-center font-weight-bold mb-2 mb-sm-3 mt-0 mt-sm-3" style="font-size: 20px">
-  <%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+  <%= @selected_year %>年度<%= season_name(@selected_season.to_i) %><%= @selected_event %>
 </h3>
 
 <div class="text-center mt-4">
   <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
      class="twitter-share-button"
      data-show-count="false"
-     data-text="札幌学生野球連盟-表彰選手
-<%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+     data-text="札幌学生野球連盟-表彰
+<%= @selected_year %>年度<%= season_name(@selected_season.to_i) %><%= @selected_event %>
 #盛り上がれ札六
 ">Tweet</a>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -219,7 +219,7 @@
 
         <div class="text-center" style="font-size: 10px">
           <div class="font-weight-bold" style="font-size: 12px">
-            札幌学生野球連盟<%= " " %><%= @selected_year %>年度<%= @selected_season %><%= @selected_event %>
+            札幌学生野球連盟<%= " " %><%= @selected_year %>年度<%= season_name(@selected_season.to_i) %><%= @selected_event %>
           </div>
 
           <div class="py-1"></div>

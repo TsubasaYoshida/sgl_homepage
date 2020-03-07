@@ -11,7 +11,19 @@ class AwardInfosController < ApplicationController
     key_year = params[:key_year]
     key_season = params[:key_season]
     key_event = params[:key_event]
-    if key_year.nil? || key_season.nil? || key_event.nil?
+    if key_year && key_season == '2'
+      award_info = AwardInfo.find_by(year: key_year, season: key_season)
+      @selected_year = key_year
+      @selected_season = key_season
+      @selected_event = key_event
+      if award_info
+        @award_players = award_info.award_players.order(disp_id: :asc)
+        render :annual
+      else
+        @error_msg = '該当の情報はございません。'
+        render :index
+      end
+    elsif key_year.nil? || key_season.nil? || key_event.nil?
       first
     else
       award_info = AwardInfo.find_by(year: key_year, season: key_season, event: key_event)
@@ -21,7 +33,6 @@ class AwardInfosController < ApplicationController
       else
         @error_msg = '該当の情報はございません。'
       end
-
       @selected_year = key_year
       @selected_season = key_season
       @selected_event = key_event
@@ -71,14 +82,17 @@ class AwardInfosController < ApplicationController
 
   def first
     award_info = AwardInfo.order(year: :desc, season: :desc, event: :asc).first
-    @award_players = award_info.award_players.where.not('award LIKE ?', "ベストナイン%").order(disp_id: :asc)
-    @bestnine_players = award_info.award_players.where('award LIKE ?', "ベストナイン%").order(disp_id: :asc)
-
     @selected_year = award_info.year
     @selected_season = award_info.season
     @selected_event = award_info.event
-
-    render :index
+    if @selected_season == '2'
+      @award_players = award_info.award_players.order(disp_id: :asc)
+      render :annual
+    else
+      @award_players = award_info.award_players.where.not('award LIKE ?', "ベストナイン%").order(disp_id: :asc)
+      @bestnine_players = award_info.award_players.where('award LIKE ?', "ベストナイン%").order(disp_id: :asc)
+      render :index
+    end
   end
 
   def set_award_info

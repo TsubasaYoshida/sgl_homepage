@@ -1,0 +1,31 @@
+%h2.award-page-title
+  表彰
+.award-wrapper
+  .award-menu--pc
+    - AwardInfo.all.order(year: :desc, season: :desc, event: :asc).each do |award_info|
+      - if award_info.season.to_i != 2
+        = link_to "#{award_info.year}年#{season_name(award_info.season.to_i)}#{award_info.event}", find_award_infos_path(key_year: award_info.year, key_season: award_info.season, key_event: award_info.event), class: 'award-menu__item'
+      - else
+        = link_to "#{award_info.year}年度#{season_name(award_info.season.to_i)}表彰", find_award_infos_path(key_year: award_info.year, key_season: award_info.season, key_event: award_info.event), class: 'award-menu__item'
+  .award-main
+    .award-main__title
+      #{@selected_year}年度 年間表彰
+    .award-card-wrapper
+      - @award_players.each do |award_player|
+        .award-card
+          .award-card__award
+            = award_player.award
+          .award-card__player
+            = award_player.player
+          .award-card__remarks
+            = award_player.remarks
+          .award-card__team-grade
+            = award_player.team
+            = award_player.grade
+.award-menu--sp
+  %input#accordion-check.accordion-check{type: :checkbox}
+  %label.accordion-label{for: 'accordion-check'}
+    ほかの表彰情報をみる
+  .accordion-content
+    = form_tag({controller: :award_infos, action: :find}, method: :get) do
+      = render 'shared/find_field'

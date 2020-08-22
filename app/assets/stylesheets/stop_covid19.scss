@@ -1,0 +1,84 @@
+.stop-covid19 {
+  color: #3D3D3D;
+  margin-top: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Droid Sans", "游ゴシック体", "Yu Gothic", YuGothic, "NotoSansCJKjp", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.stop-covid19__event {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+  @media screen and (max-width: 1023px) {
+    font-size: 12px;
+  }
+}
+
+.stop-covid19__title {
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 10px;
+  @media screen and (max-width: 1023px) {
+    font-size: 24px;
+  }
+}
+
+.stop-covid19__sub-title {
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: solid 1px #c0c0c0;
+  margin-top: 32px;
+  @media screen and (max-width: 1023px) {
+    font-size: 18px;
+  }
+}
+
+.stop-covid19__list-item-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.stop-covid19__list {
+  margin-left: -12px;
+}
+
+.stop-covid19__last-message {
+  margin-top: 3em;
+}
+
+.border-stop-covid19 {
+  color: #dc3545 !important;
+  border: solid 4px #dc3545;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.border-stop-covid19:hover {
+  border: solid 4px #dc3545;
+  border-radius: 2px;
+  background-color: #dc3545;
+  color: #FFF !important;
+  font-weight: bold;
+}
+
+.border-bottom-stop-covid19 {
+  color: #FFF !important;
+  background-color: #dc3545;
+  font-weight: bold;
+}
+
+.button-stop-covid19 {
+  color: #dc3545 !important;
+  border: solid 2px #dc3545;
+  border-radius: 2px;
+  font-weight: bold;
+  display: block;
+  margin: 8px 13px;
+  text-align: center;
+  padding: 8px;
+}
+
+.link-stop-covid19 {
+  color: #dc3545 !important;
+}

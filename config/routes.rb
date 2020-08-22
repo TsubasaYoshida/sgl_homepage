@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'nittei' => 'nittei#show'
   get 'standings' => 'standings#index'
   get 'admin' => 'admin#top'
+  get 'stop_covid19' => 'static_pages#stop_covid19'
+  get 'special_rules_2020_autumn' => 'static_pages#special_rules_2020_autumn'
 
   get 'login' => 'login#index'
   post 'login' => 'login#auth'

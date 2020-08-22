@@ -52,6 +52,7 @@
         <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link border-right' %>
         <%= link_to '代表決定戦', championships_path, class: 'nav-link border-right' %>
       </nav>
+      <%= link_to '観戦ガイドライン', '/stop_covid19', class: 'nav-link border-stop-covid19' %>
     </div>
   </div>
 
@@ -105,9 +106,14 @@
                     <%= link_to '加盟大学・関連組織', '/team', class: 'nav-link' %>
                   </li>
                 </div>
-                <div class="border-top border-bottom">
+                <div class="border-top">
                   <li class="nav-item">
                     <%= link_to '明治神宮野球大会北海道地区代表決定戦', championships_path, class: 'nav-link' %>
+                  </li>
+                </div>
+                <div>
+                  <li class="nav-item">
+                    <%= link_to '観戦ガイドライン', '/stop_covid19', class: 'nav-link border-bottom-stop-covid19' %>
                   </li>
                 </div>
               </ul>

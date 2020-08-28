@@ -196,3 +196,32 @@ a:link {
     margin-left: auto;
   }
 }
+
+.button--yellow {
+  color: #000080 !important;
+  background-color: #FFCC00;
+  border: solid 2px #000080;
+  border-radius: 2px;
+  font-weight: bold;
+  display: block;
+  margin: 8px 13px 0;
+  text-align: center;
+  padding: 8px;
+}
+
+.alert--yellow {
+  color: #000080 !important;
+  background-color: #FFCC00;
+  border: solid 4px #000080;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.alert--yellow:hover {
+  border: solid 4px #000080;
+  border-radius: 2px;
+  background-color: #000080;
+  color: #FFCC00 !important;
+  font-weight: bold;
+}

@@ -66,8 +66,17 @@
 
 .link-stop-covid19 {
   color: #dc3545 !important;
+  font-weight: bold;
 }
 
 .link-special_rules_2020_autumn {
   color: #000080 !important;
+  font-weight: bold;
+}
+
+.link--skyblue {
+  display: inline;
+  font-weight: bold;
+  background: linear-gradient(transparent 70%, #66ccff 0%);
+  padding: .5rem .5rem;
 }

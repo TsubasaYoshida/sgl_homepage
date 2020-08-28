@@ -6,4 +6,7 @@ class StaticPagesController < ApplicationController
 
   def special_rules_2020_autumn
   end
+
+  def replacement_battle_2020_autumn
+  end
 end

@@ -1,0 +1,21 @@
+- set_meta_tags og: {title: "第#{@championship.year.to_i - 2008}回明治神宮野球大会北海道地区代表決定戦"}
+
+%h2.page-title
+  代表決定戦
+.page-wrapper
+  .side-menu--pc
+    - Championship.all.order(year: :desc).each do |championship|
+      = link_to "第#{championship.year.to_i - 2008}回(#{championship.year})",
+        championships_path(year: championship.year),
+        class: "#{@championship.year == championship.year ? 'side-menu__item side-menu__item--active' : 'side-menu__item'}"
+  .main-content
+    = render 'main', championship: @championship
+.side-menu--sp
+  %input#accordion-check.accordion-check{type: :checkbox}
+  %label.accordion-label{for: 'accordion-check'}
+    ほかの情報をみる
+  .accordion-content
+    = form_tag(championships_path, method: :get) do
+      .form-group
+        = select_tag :year, options_for_select(Championship.years_for_select, @championship.year), class: 'form-control'
+      = submit_tag '表示', name: nil, class: 'btn btn-default'

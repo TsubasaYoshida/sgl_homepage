@@ -36,6 +36,8 @@ class ChampionshipGame < ApplicationRecord
     team_initial = '　'
     if team == '東京農業大学北海道オホーツク'
       team_initial = 'オ'
+    elsif team == '苫小牧駒澤大学'
+      team_initial = '苫'
     elsif team == '東海大学札幌キャンパス'
       team_initial = '東'
     elsif team == '星槎道都大学'

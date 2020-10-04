@@ -49,7 +49,7 @@
 }
 
 .accordion-check:checked + .accordion-label + .accordion-content{
-  height: 185px;
+  height: auto;
   opacity: 1;
   padding: 10px;
   visibility: visible;

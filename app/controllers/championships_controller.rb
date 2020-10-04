@@ -4,7 +4,12 @@ class ChampionshipsController < ApplicationController
   layout 'admin', except: :index
 
   def index
-    @championship = Championship.first
+    @championship =
+      if params[:year]
+        Championship.find_by(year: params[:year])
+      else
+        Championship.order(year: :desc).first
+      end
   end
 
   def management

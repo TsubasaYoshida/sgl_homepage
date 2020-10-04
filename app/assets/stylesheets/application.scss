@@ -209,6 +209,18 @@ a:link {
   padding: 8px;
 }
 
+.button--cyan {
+  color: #FFF !important;
+  background-color: #17a2b8;
+  border: solid 2px #000080;
+  border-radius: 2px;
+  font-weight: bold;
+  display: block;
+  margin: 8px 13px 0;
+  text-align: center;
+  padding: 8px;
+}
+
 .alert--yellow {
   color: #000080 !important;
   background-color: #FFCC00;
@@ -224,4 +236,10 @@ a:link {
   background-color: #000080;
   color: #FFCC00 !important;
   font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .sp_br {
+    display: none;
+  }
 }

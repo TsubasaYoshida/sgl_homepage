@@ -28,9 +28,7 @@ header {
 }
 
 .header__site-title {
-  font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'メイリオ', Meiryo, sans-serif;
   font-size: 44px;
-  font-weight: lighter;
   position: relative;
   // sp
   @media screen and (max-width: 700px) {
@@ -83,6 +81,7 @@ header {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     display: none;
+    font-size: 20px;
   }
 }
 

@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'top#show'
+  resource :health_check_sheet, only: :show
 
+  root to: 'top#show'
 end

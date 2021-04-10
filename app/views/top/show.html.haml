@@ -2,7 +2,51 @@
 .d-sm-none.d-block
   = render 'shared/stop_covid19'
 
-= image_tag '2020-autumn.png', class: 'top-page__image'
+.d-sm-flex
+  -# pc
+  .d-none.d-lg-block.coming-soon.mb-4
+    .mb-4
+      .coming-soon__subtitle 札幌学生野球連盟
+      .coming-soon__title 2021年度春季リーグ戦
+
+    .mb-4.d-flex
+      .coming-soon__league 1部
+      .ml-5
+        .coming-soon__date
+          .coming-soon__badge 開幕
+          %span.coming-soon__date-meta 2021.
+          4. 29
+          %span.coming-soon__date-meta (木祝)
+        .coming-soon__stadium
+          .coming-soon__badge 会場
+          札幌円山球場など
+
+    .mb-4.d-flex
+      .coming-soon__league 2部
+      .ml-5
+        .coming-soon__date
+          .coming-soon__badge 開幕
+          %span.coming-soon__date-meta 2021.
+          4. 29
+          %span.coming-soon__date-meta (木祝)
+        .coming-soon__stadium
+          .coming-soon__badge 会場
+          札幌円山球場など
+
+    .d-flex
+      .coming-soon__league 3部
+      .ml-5
+        .coming-soon__date
+          .coming-soon__badge 開幕
+          %span.coming-soon__date-meta 2021.
+          4. 29
+          %span.coming-soon__date-meta (木祝)
+        .coming-soon__stadium
+          .coming-soon__badge 会場
+          札幌円山球場など
+
+  .ml-lg-4
+    = image_tag '2020-autumn.png', class: 'top-page__image'
 
 .flex-container
   .article-list

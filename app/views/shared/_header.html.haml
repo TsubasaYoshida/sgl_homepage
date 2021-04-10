@@ -1,0 +1,33 @@
+%header
+  .sp-header
+    .header__upper-half
+      = link_to root_path do
+        .d-flex
+          = image_tag 'logo_square.jpg', class: 'header__logo'
+          %h1.header__site-title.mb-0.ml-1.mt-1.mt-sm-0 札幌学生野球連盟
+    .hamburger
+      .hamburger-icon
+      .hamburger-icon
+      .hamburger-icon
+  %nav.header__navigation
+    %ul.menu
+      %li.menu-item
+        = link_to 'トップ', root_path
+      %li.menu-item
+        = link_to '試合', game_infos_path
+      %li.menu-item
+        = link_to '順位表', standings_path
+      %li.menu-item
+        = link_to '日程', nittei_path
+      %li.menu-item
+        = link_to '表彰', award_infos_path
+      %li.menu-item
+        = link_to '加盟大学・関連組織', team_path
+      %li.menu-item
+        = link_to '代表決定戦', championships_path
+      -#%li.menu-item--unusual
+      -#  = link_to '実施条件・特別規定', special_rules_2020_autumn_path
+
+-# pc
+-#.d-none.d-sm-block
+-#  = render 'shared/stop_covid19'

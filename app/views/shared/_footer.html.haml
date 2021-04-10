@@ -1,0 +1,21 @@
+%footer
+  .footer-container
+    .footer__title 札幌学生野球連盟事務局
+    .footer__contact
+      .footer__contact-item 〒064-0953
+      .footer__contact-item 札幌市中央区宮の森3条9-1-30-1001
+      .footer__contact-item TEL: 080-6081-9524
+      .footer__contact-item FAX: 011-642-9358
+      .footer__contact-item MAIL: sgloffice＠yahoo.co.jp
+      .footer__please-half-size ＠を半角にしてお送りください。
+    .mt-4
+      = link_to recruit_umpire_path do
+        = image_tag 'recruit_umpire.png', alt: '審判員募集', class: 'img-fluid'
+    .footer__hashtag
+      = link_to '#盛り上がれ札六',
+                'https://twitter.com/search?q=%23%E7%9B%9B%E3%82%8A%E4%B8%8A%E3%81%8C%E3%82%8C%E6%9C%AD%E5%85%AD&src=typd',
+                target: '_blank',
+                class: 'footer__hashtag-link'
+    .footer__copyright &#169; 2012-#{Time.zone.now.year} Sapporo Gakusei League
+
+

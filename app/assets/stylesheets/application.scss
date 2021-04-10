@@ -68,23 +68,6 @@ a:link {
   background-color: #fff;
 }
 
-.p-footer p {
-  margin-bottom: 0;
-  margin-top: 20px;
-}
-
-.admin {
-  font-size: 17px;
-}
-
-.banner {
-  margin-top: 10px;
-}
-
-.admin {
-  margin-bottom: 5px;
-}
-
 .col-12-footer {
   margin-top: 15px;
   padding-top: 10px;
@@ -93,11 +76,6 @@ a:link {
 
 #notice {
   color: red;
-}
-
-.bg-red {
-  color: #fff;
-  background-color: #dc3545;
 }
 
 .bg-green {
@@ -137,10 +115,6 @@ a:link {
   border-top: 5px solid #dee2e6 !important;
 }
 
-.font-size-16 {
-  font-size: 16px;
-}
-
 .font-size-12 {
   font-size: 12px;
 }
@@ -162,84 +136,16 @@ a:link {
   border-color: #666666;
 }
 
-.eye-catch {
-  background-image: image-url("2020-autumn.png");
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  height: 100vh;
-}
-
-.margin-cut {
-  margin-right: -30px;
-  margin-left: -30px;
-}
-
-.nav-item-size {
-  font-size: 16px;
-}
-
-.footer {
-  background-color: #232F3E;
-  color: #DDD;
-}
-
-/* for PC */
-@media screen and (min-width: 1024px) {
-  .container-top-page {
-    max-width: 1300px;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+.sp_br {
+  // pc
+  @media screen and (min-width: 701px) {
+    display: none;
   }
 }
 
-.button--yellow {
-  color: #000080 !important;
-  background-color: #FFCC00;
-  border: solid 2px #000080;
-  border-radius: 2px;
-  font-weight: bold;
-  display: block;
-  margin: 8px 13px 0;
-  text-align: center;
-  padding: 8px;
-}
-
-.button--cyan {
-  color: #FFF !important;
-  background-color: #17a2b8;
-  border: solid 2px #000080;
-  border-radius: 2px;
-  font-weight: bold;
-  display: block;
-  margin: 8px 13px 0;
-  text-align: center;
-  padding: 8px;
-}
-
-.alert--yellow {
-  color: #000080 !important;
-  background-color: #FFCC00;
-  border: solid 4px #000080;
-  border-radius: 2px;
-  font-weight: bold;
-  margin-right: 16px;
-}
-
-.alert--yellow:hover {
-  border: solid 4px #000080;
-  border-radius: 2px;
-  background-color: #000080;
-  color: #FFCC00 !important;
-  font-weight: bold;
-}
-
-@media screen and (min-width: 768px) {
-  .sp_br {
+.pc_br {
+  // sp
+  @media screen and (max-width: 700px) {
     display: none;
   }
 }

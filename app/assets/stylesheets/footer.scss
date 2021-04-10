@@ -1,0 +1,42 @@
+footer {
+  background-color: #232F3E;
+  color: #FFF;
+  margin-top: 32px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  // sp
+  @media screen and (max-width: 700px) {
+    padding-top: 24px;
+  }
+}
+
+.footer__title {
+  font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'メイリオ', Meiryo, sans-serif;
+  font-size: 24px;
+  font-weight: lighter;
+  margin-bottom: 16px;
+}
+
+.footer__contact {
+  line-height: 1.4;
+}
+
+.footer__please-half-size {
+  font-size: 12px;
+}
+
+.footer__hashtag {
+  margin-top: 24px;
+}
+
+.footer__hashtag-link {
+  color: #1DA1F2 !important;
+}
+
+.footer__copyright {
+  margin-top: 16px;
+}

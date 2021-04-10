@@ -1,0 +1,25 @@
+.stop-covid-19-alert {
+  border: 2px solid #F37167;
+  border-radius: 4px;
+  color: #F37167;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.btn-stop-covid-19 {
+  background-color: #F37167;
+  border: solid 2px transparent !important;
+  color: #FFF !important;
+  font-weight: bold !important;
+
+  // sp
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
+}
+
+.btn-stop-covid-19:hover {
+  background-color: #FFF;
+  border: solid 2px #F37167 !important;
+  color: #F37167 !important;
+}

@@ -55,3 +55,12 @@
 .article__last-message {
   margin-top: 3em;
 }
+
+.article-list {
+  flex: 1;
+  margin: 0 8px;
+  // sp
+  @media screen and (max-width: 700px) {
+    margin: 0 0 24px;
+  }
+}

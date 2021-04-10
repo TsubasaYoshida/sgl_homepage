@@ -25,9 +25,9 @@
         = link_to '加盟大学・関連組織', team_path
       %li.menu-item
         = link_to '代表決定戦', championships_path
-      -#%li.menu-item--unusual
-      -#  = link_to '実施条件・特別規定', special_rules_2020_autumn_path
+      %li.menu-item--unusual
+        = link_to '実施条件・特別規定', special_rules_2020_autumn_path
 
 -# pc
--#.d-none.d-sm-block
--#  = render 'shared/stop_covid19'
+.d-none.d-sm-block
+  = render 'shared/stop_covid19'

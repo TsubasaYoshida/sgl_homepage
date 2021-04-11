@@ -27,11 +27,11 @@
         .coming-soon__date
           .coming-soon__badge 開幕
           %span.coming-soon__date-meta 2021.
-          4. 29
-          %span.coming-soon__date-meta (木祝)
+          5. 8
+          %span.coming-soon__date-meta (土)
         .coming-soon__stadium
           .coming-soon__badge 会場
-          札幌円山球場など
+          栗山町民球場など
 
     .d-flex
       .coming-soon__league 3部
@@ -43,19 +43,23 @@
           %span.coming-soon__date-meta (木祝)
         .coming-soon__stadium
           .coming-soon__badge 会場
-          札幌円山球場など
+          各大学グラウンドなど
 
   .ml-lg-4
     = image_tag '2020-autumn.png', class: 'top-page__image'
 
 .flex-container
   .article-list
-    %h2.top-page__subtitle 新着情報
+    %h2.top-page__subtitle
+      = icon('fas', 'rss')
+      新着情報
     = render 'infos/info', infos: @infos
     .more-link
       = link_to 'もっとたくさん見る', infos_path
   .game-list
-    %h2.top-page__subtitle 試合速報（最新5試合）
+    %h2.top-page__subtitle
+      = icon('fas', 'baseball-ball')
+      試合速報（最新5試合）
     = render 'game_infos/index', game_infos: @game_infos
     .more-link
       = link_to '試合一覧ページへ', game_infos_path

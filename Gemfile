@@ -23,6 +23,7 @@ gem 'cocoon'
 gem 'rails-i18n'
 gem 'meta-tags'
 gem 'hamlit-rails'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

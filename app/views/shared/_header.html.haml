@@ -12,22 +12,38 @@
   %nav.header__navigation
     %ul.menu
       %li.menu-item
-        = link_to 'トップ', root_path
+        = link_to root_path do
+          トップ
+          = icon('fas', 'home', class: 'ml-1')
       %li.menu-item
-        = link_to '試合', game_infos_path
+        = link_to game_infos_path do
+          試合
+          = icon('fas', 'baseball-ball', class: 'ml-1')
       %li.menu-item
-        = link_to '順位表', standings_path
+        = link_to standings_path do
+          順位表
+          = icon('fas', 'table', class: 'ml-1')
       %li.menu-item
-        = link_to '日程', nittei_path
+        = link_to nittei_path do
+          日程
+          = icon('far', 'calendar-alt', class: 'ml-1')
       %li.menu-item
-        = link_to '表彰', award_infos_path
+        = link_to award_infos_path do
+          表彰
+          = icon('fas', 'award', class: 'ml-1')
       %li.menu-item
-        = link_to '加盟大学・関連組織', team_path
+        = link_to team_path do
+          加盟大学・関連組織
+          = icon('fas', 'sitemap', class: 'ml-1')
       %li.menu-item
-        = link_to '代表決定戦', championships_path
-      -#%li.menu-item--unusual
-      -#  = link_to '実施条件・特別規定', special_rules_2020_autumn_path
+        = link_to championships_path do
+          代表決定戦
+          = icon('fas', 'crown', class: 'ml-1')
+      %li.menu-item--unusual
+        = link_to special_rules_2021_spring_path do
+          実施条件・特別規定
+          = icon('fas', 'book', class: 'ml-1')
 
 -# pc
--#.d-none.d-sm-block
--#  = render 'shared/stop_covid19'
+.d-none.d-sm-block
+  = render 'shared/stop_covid19'

@@ -1,10 +1,20 @@
 .stop-covid-19-alert.mb-3.mb-sm-4
-  新型コロナウイルス感染症拡大防止のため、
-  %br.sp_br
-  春季リーグ戦の観戦ガイドラインを作成いたしました。
-  %br.pc_br
-  球場にご来場の際は、ご理解とご協力のほどよろしくお願いいたします。
+  .mb-2
+    新型コロナウイルス感染症拡大防止のため、春季リーグ戦の観戦ガイドラインを作成いたしました。
+    %br.pc_br
+    球場にご来場の際は、ご理解とご協力のほどよろしくお願いいたします。
 
-  .d-sm-flex.mt-2
-    .mb-2.mb-sm-0= link_to '2021年度春季リーグ戦観戦ガイドライン', stop_covid19_path, class: 'btn btn-stop-covid-19'
-    .ml-sm-2= link_to 'ご来場者健康チェックシートダウンロード', root_path, class: 'btn btn-stop-covid-19'
+  = link_to stop_covid19_path, class: 'btn btn-stop-covid-19' do
+    観戦ガイドライン
+    = icon('fas', 'file-alt', class: 'ml-1')
+
+  .stop-covid-19-alert__dashed-border
+
+  .mt-3.mb-2
+    ご入場に記載いただく「健康チェックシート」はスタンド入口等に用意いたしますが、以下のボタンからダウンロードすることもできます。
+    %br.pc_br
+    ダウンロードしたものを印刷しご記入の上、来場時に提出いただくことで、よりスムーズに入場することも可能です。
+
+  = link_to health_check_sheet_path, class: 'btn btn-stop-covid-19', target: '_blank', rel: 'noopener noreferrer' do
+    健康チェックシートダウンロード
+    = icon('fas', 'file-download', class: 'ml-1')

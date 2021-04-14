@@ -6,6 +6,11 @@
   padding: 8px;
 }
 
+.stop-covid-19-alert__dashed-border {
+  border-top: 2px dashed #F37167;
+  margin-top: 16px;
+}
+
 .btn-stop-covid-19 {
   background-color: #F37167;
   border: solid 2px transparent !important;
@@ -14,6 +19,7 @@
 
   // sp
   @media screen and (max-width: 700px) {
+    font-size: 15px !important;
     width: 100%;
   }
 }

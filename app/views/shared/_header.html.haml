@@ -10,7 +10,7 @@
       .hamburger-icon
       .hamburger-icon
   %nav.header__navigation
-    %ul.menu
+    %ul.menu.mb-sm-2.mb-0
       %li.menu-item
         = link_to root_path do
           トップ
@@ -35,6 +35,7 @@
         = link_to team_path do
           加盟大学・関連組織
           = icon('fas', 'sitemap', class: 'ml-1')
+    %ul.menu.mt-sm-2.mt-0
       %li.menu-item
         = link_to championships_path do
           代表決定戦
@@ -43,6 +44,11 @@
         = link_to special_rules_2021_spring_path do
           実施条件・特別規定
           = icon('fas', 'book', class: 'ml-1')
+      %li.menu-item--unusual
+        = link_to stop_covid19_path do
+          %del 観戦ガイドライン
+          = icon('fas', 'book', class: 'ml-1')
+          %span.ml-2 ※無観客開催中
 
 -# pc
 .d-none.d-sm-block

@@ -9,4 +9,7 @@ class StaticPagesController < ApplicationController
 
   def replacement_battle_2020_autumn
   end
+
+  def calling_off_2021_spring
+  end
 end

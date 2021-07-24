@@ -5,80 +5,17 @@
 }
 
 .top-page__image {
-  max-height: 400px;
-  margin-bottom: 24px;
+  filter: brightness(1.3);
+  // pc
+  @media screen and (min-width: 701px) {
+    margin-bottom: 8px;
+    max-width: 100%;
+    height: auto;
+  }
   // sp
   @media screen and (max-width: 700px) {
     width: 100vw;
-    border: none;
-    margin-bottom: 0;
     margin-right: calc(50% - 50vw);
     margin-left: calc(50% - 50vw);
-  }
-}
-
-.coming-soon {
-  border: solid 2px #ff9f43;
-  border-radius: 4px;
-  padding: 16px 32px 20px;
-  width: 100%;
-}
-
-.coming-soon {
-  &__title {
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 1.0;
-  }
-
-  &__subtitle {
-    font-size: 20px;
-  }
-
-  &__league {
-    background-color: #2e86de;
-    border-radius: 4px;
-    color: #FFF;
-    font-size: 22px;
-    padding: 2px 16px;
-    margin-bottom: auto;
-  }
-
-  &__badge {
-    background-color: #8395a7;
-    border-radius: 4px 0 0 4px;
-    color: #FFF;
-    font-size: 16px;
-    margin-top: auto;
-    padding: 4px 8px 4px 12px;
-    position: absolute;
-    bottom: -8px;
-    left: -60px;
-  }
-
-  &__date {
-    border: 8px solid #8395a7;
-    border-radius: 4px 4px 0 0;
-    font-size: 44px;
-    font-weight: bold;
-    line-height: 1.0;
-    padding: 8px 12px;
-    position: relative;
-    width: 260px;
-  }
-
-  &__date-meta {
-    font-size: 20px;
-  }
-
-  &__stadium {
-    border: 8px solid #8395a7;
-    border-top: none;
-    border-radius: 0 0 4px 0;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.0;
-    padding: 8px 12px;
-    position: relative;
   }
 }

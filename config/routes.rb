@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'standings' => 'standings#index'
   get 'admin' => 'admin#top'
   get 'stop_covid19' => 'static_pages#stop_covid19'
-  get 'special_rules_2021_spring' => 'static_pages#special_rules_2021_spring'
+  get 'special_rules' => 'static_pages#special_rules'
   get 'articles/1' => 'static_pages#replacement_battle_2020_autumn'
   get 'articles/2' => 'static_pages#calling_off_2021_spring'
 

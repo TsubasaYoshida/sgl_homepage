@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def stop_covid19
   end
 
-  def special_rules_2021_spring
+  def special_rules
   end
 
   def replacement_battle_2020_autumn

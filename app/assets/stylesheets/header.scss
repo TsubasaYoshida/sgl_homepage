@@ -128,7 +128,32 @@ header {
   }
 }
 
-.menu-item:last-child {
+.menu-item--unusual {
+  // pc
+  @media screen and (min-width: 701px) {
+    border-bottom: solid 4px darkorange;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 12px;
+    padding: 0 6px;
+  }
+  // sp
+  @media screen and (max-width: 700px) {
+    padding: 12px;
+    border-top: solid 1px #666;
+    font-weight: bold;
+    background-color: #FCF16E;
+  }
+}
+
+.menu-item--unusual:hover {
+  // pc
+  @media screen and (min-width: 701px) {
+    border-bottom: solid 4px red;
+  }
+}
+
+.menu-item--unusual:last-child {
   // sp
   @media screen and (max-width: 700px) {
     border-bottom: solid 1px #666;

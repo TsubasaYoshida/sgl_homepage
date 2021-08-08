@@ -35,7 +35,20 @@
         = link_to team_path do
           加盟大学・関連組織
           = icon('fas', 'sitemap', class: 'ml-1')
+    %ul.menu.mt-sm-2.mt-0
       %li.menu-item
         = link_to championships_path do
           代表決定戦
           = icon('fas', 'crown', class: 'ml-1')
+      %li.menu-item--unusual
+        = link_to special_rules_path do
+          実施条件・特別規定
+          = icon('fas', 'book', class: 'ml-1')
+      %li.menu-item--unusual
+        = link_to stop_covid19_path do
+          観戦ガイドライン
+          = icon('fas', 'book', class: 'ml-1')
+
+-# pc
+.d-none.d-sm-block
+  = render 'shared/stop_covid19'

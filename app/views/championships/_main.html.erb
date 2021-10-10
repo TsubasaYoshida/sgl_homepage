@@ -36,14 +36,14 @@
 <div class="mt-3">
   札幌学生野球連盟代表
   <div class="championship__team">
-    <%= championship.year.to_i == 2019 ? '東海大学札幌キャンパス' : '星槎道都大学' %>
+    <%= championships_team_name(year: championship.year.to_i, sapporo: true) %>
   </div>
 </div>
 
 <div class="mt-3">
   北海道学生野球連盟代表
   <div class="championship__team">
-    <%= championship.year.to_i == 2019 ? '東京農業大学北海道オホーツク' : '苫小牧駒澤大学' %>
+    <%= championships_team_name(year: championship.year.to_i, sapporo: false) %>
   </div>
 </div>
 
